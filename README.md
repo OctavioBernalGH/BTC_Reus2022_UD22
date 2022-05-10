@@ -1,14 +1,14 @@
 <table>
  <tr>
-    <td> <img src="https://github.com/OctavioBernalGH/BTC_Reus2022_UD16/blob/main/dou_logo.png" alt="Team DOU"/></td>
-    <td><h1>Ejercicio UD20 T03</h1></td>
+    <td width="100px"><img src="https://github.com/OctavioBernalGH/BTC_Reus2022_UD16/blob/main/dou_logo.png" alt="Team DOU"/></td>
+    <td width="1000px"><h1>Ejercicio UD20 T03</h1></td>
   
  </tr>
 </table>
  
  [comment]: <> (<img src="https://github.com/OctavioBernalGH/BTC_Reus2022_UD16/blob/main/dou_logo.png" alt="Team DOU"/><br>)
  
-<hr>
+
  
  [comment]: <> (### Ejercicios SQL Unidad UD16<hr>)
 
