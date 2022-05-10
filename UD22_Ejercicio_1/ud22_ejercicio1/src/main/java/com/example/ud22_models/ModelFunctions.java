@@ -27,39 +27,42 @@ public class ModelFunctions {
 	 * 
 	 * @throws ClassNotFoundException
 	 */
-	public static void selectorVistas() throws ClassNotFoundException {
+	/*public static void selectorVistas() throws ClassNotFoundException {
 
 		// Panel de seleccion mediante showOptionalDialog.
 		int seleccion = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Selector de opciones",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
 				new Object[] { "IP Uri", "IP David", "IP Octavio", "IP Manual", "Exit" }, " 1");
+	}*/
 
-		// Condicional selector de servidor.
-		if (seleccion == 0) {
-			address = "192.168.56.102";
-			userSQL = "remote";
-			password = "Reus_2022";
-			System.out.println("Conectado a BBDD de Uri");
+		public static void selectVista(int option) throws ClassNotFoundException {
+			
+			mysqlConn=null;
+			switch(option) {
+				case 0://uri
+					address = "192.168.56.102";
+					userSQL = "remote";
+					password = "Reus_2022";
+					break;
+				case 1://David
+					address = "192.168.1.69";
+					userSQL = "remote";
+					password = "Reus_2022";			
+					break;
+				case 2://Octavio
+					address = "192.168.1.123";
+					userSQL = "remote";
+					password = "Reus_2022";
+					break;
+				case 3:
+					//exercute manual view
+					break;
+				case 4://Exit
+					System.exit(0);
+					break;
+			}
+		if(mysqlConn!=null) {
 			mysqlConn = createConnection(address, userSQL, password);
-		} else if (seleccion == 1) {
-			address = "192.168.1.69";
-			userSQL = "remote";
-			password = "Reus_2022";
-			System.out.println("Conectado a BBDD de David");
-			mysqlConn = createConnection(address, userSQL, password);
-		} else if (seleccion == 2) {
-			address = "192.168.1.123";
-			userSQL = "remote";
-			password = "Reus_2022";
-			System.out.println("Conectado a BBDD de Octavio");
-			mysqlConn = createConnection(address, userSQL, password);
-		} else if (seleccion == 3) {
-			address = JOptionPane.showInputDialog("Direccion del servidor");
-			userSQL = JOptionPane.showInputDialog("Nombre del usuario");
-			password = JOptionPane.showInputDialog("Password");
-			mysqlConn = createConnection(address, userSQL, password);
-		} else if (seleccion == 4) {
-			JOptionPane.showMessageDialog(null, "Se ha salido con exito del programa.");
 		}
 	}
 

@@ -12,6 +12,6 @@ public class App
     public static void main( String[] args ) throws ClassNotFoundException
     {
         ModelFunctions testConexion = new ModelFunctions();
-        ModelFunctions.selectorVistas();
+        //ModelFunctions.selectorVistas();
     }
 }
