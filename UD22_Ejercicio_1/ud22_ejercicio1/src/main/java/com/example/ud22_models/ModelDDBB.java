@@ -9,22 +9,32 @@ import java.sql.SQLException;
  * @author David Dalmau Dieguez
  * @author Octavio Bernal Vilana
  */
-public class Model {
+public class ModelDDBB {
 
-	// Se crean los atributos de clase correspondiente a las columnas de la tablas.
+	/**
+	 * Se crean los atributos de clase correspondiente a las columnas de la tablas.
+	 */
 	private int id;
 	private String nombre;
 	private String apellido;
 	private String direccion;
 	private String fecha;
-	static Connection mysqlConn = null;
 
-	// Se crean los constructores
 
-	public Model() {
+	
+	/** Se crea constructor vacío
+	 */
+	public ModelDDBB() {
 	}
 
-	public Model(String nombre, String apellido, String direccion, String fecha) {
+	/** Se crea constructor completo
+	 * 
+	 * @param nombre
+	 * @param apellido
+	 * @param direccion
+	 * @param fecha
+	 */
+	public ModelDDBB(String nombre, String apellido, String direccion, String fecha) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
@@ -93,36 +103,6 @@ public class Model {
 	 */
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
-	}
-
-	// Función para abrir la conexión a la BBDD
-
-	public static Connection createConnection(String address, String userMysql, String passwordMysql)
-			throws ClassNotFoundException {
-
-		try {
-
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			mysqlConn = DriverManager.getConnection("jdbc:mysql://" + address + ":3306?useTimezone=UTC", userMysql,
-					passwordMysql);
-			System.out.println("Conectado");
-
-		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println("No se ha podido connectar a la base de datos");
-			System.out.println(e);
-		}
-
-		return mysqlConn;
-	}
-
-	// Función para cerrar la conexión a la BBDD.
-
-	public static void closeConnection() {
-		try {
-			mysqlConn.close();
-		} catch (SQLException e) {
-			System.out.println(e);
-		}
 	}
 
 }
