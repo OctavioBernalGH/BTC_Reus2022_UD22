@@ -28,7 +28,8 @@ Este ejercicio ha sido realizado por los miembros del equipo 1. Dicho equipo est
 
 <p align="justify">Primero de todo se comenzarán los ejercicios creando la base de datos y las tablas correspondientes a la base de datos, en el ejercicio 1 se crea la base de datos UD22_Ejercicio_1 con la tabla cliente, esta tabla tendrá las columnas (id, nombre, apellido, dirección, dni y fecha). En la siguiente imagen se muestra el script de creación de la BBDD, la creación de la tabla con sus columnas y el esquema de ingeniería inversa realizado con MySQL Worbench.</p>
 
-![fotoSQLe1](https://user-images.githubusercontent.com/103035621/167586084-15257c4d-0d60-4174-9c18-0fab4e04a69d.png)
+![fotoSQLe1](https://user-images.githubusercontent.com/103035621/167591585-465536ad-3a5b-49f7-9725-046a15c46da1.png)
+
 
 ### Ejercicio 2 UD22
 
