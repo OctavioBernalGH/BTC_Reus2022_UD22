@@ -1,7 +1,7 @@
 <table>
  <tr>
     <td width="100px"><img src="https://github.com/OctavioBernalGH/BTC_Reus2022_UD16/blob/main/dou_logo.png" alt="Team DOU"/></td>
-  <td width="1000px"> <h2> Ejercicio UD20 T03 </h2> </td>
+  <td width="1000px"> <h2> Ejercicios Modelo-Vista-Controlador Unidad 22 </h2> </td>
   
  </tr>
 </table>
