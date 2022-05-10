@@ -19,6 +19,18 @@ public class Model {
 	private String fecha;
 	static Connection mysqlConn = null;
 
+	// Se crean los constructores
+
+	public Model() {
+	}
+
+	public Model(String nombre, String apellido, String direccion, String fecha) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.direccion = direccion;
+		this.fecha = fecha;
+	}
+
 	// Se crean los getters y setters de las diferentes columnas.
 	/**
 	 * @return the id
