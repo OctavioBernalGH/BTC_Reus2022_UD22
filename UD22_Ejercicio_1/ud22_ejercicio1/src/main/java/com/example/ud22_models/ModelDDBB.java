@@ -14,26 +14,28 @@ public class ModelDDBB {
 	private String nombre;
 	private String apellido;
 	private String direccion;
+	private String dni;
 	private String fecha;
 
-
-	
-	/** Se crea constructor vacío
+	/**
+	 * Se crea constructor vacío
 	 */
 	public ModelDDBB() {
 	}
 
-	/** Se crea constructor completo
+	/**
+	 * Se crea constructor completo
 	 * 
 	 * @param nombre
 	 * @param apellido
 	 * @param direccion
 	 * @param fecha
 	 */
-	public ModelDDBB(String nombre, String apellido, String direccion, String fecha) {
+	public ModelDDBB(String nombre, String apellido, String direccion, String dni, String fecha) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
+		this.dni = dni;
 		this.fecha = fecha;
 	}
 
@@ -85,6 +87,20 @@ public class ModelDDBB {
 	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	/**
+	 * @return the dni
+	 */
+	public String getDni() {
+		return dni;
+	}
+
+	/**
+	 * @param dni to set to dni
+	 */
+	public void setDni() {
+		this.dni = dni;
 	}
 
 	/**
