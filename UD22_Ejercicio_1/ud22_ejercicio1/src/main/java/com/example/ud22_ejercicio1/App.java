@@ -1,4 +1,4 @@
-package com.example.ejercicio_1;
+package com.example.ud22_ejercicio1;
 
 /**
  * Hello world!
