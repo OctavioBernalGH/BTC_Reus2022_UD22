@@ -102,7 +102,7 @@ public class ModelFunctions {
 	}
 
 	/**
-	 * Función para añadir una persona nueva al registro
+	 * Función para añadir una persona nueva al registro.
 	 * 
 	 * @throws SQLException
 	 */
@@ -114,5 +114,19 @@ public class ModelFunctions {
 				+ modelo.getDireccion() + ", " + modelo.getDni() + ", " + modelo.getFecha() + ");";
 		// Ejecutamos la sentencia.
 		st.execute(insert);
+	}
+
+	/**
+	 * Función para eliminar un registro de la tabla.
+	 * 
+	 * @throws SQLException
+	 */
+	public void borrarPersona() throws SQLException {
+		// Se crea una sentencia sql.
+		Statement st = (Statement) mysqlConn.createStatement();
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String delete = "delete from cliente where " + modelo.getNombre() + ", dni=" + modelo.getDni() + ");";
+		// Ejecutamos la sentencia.
+		st.execute(delete);
 	}
 }
