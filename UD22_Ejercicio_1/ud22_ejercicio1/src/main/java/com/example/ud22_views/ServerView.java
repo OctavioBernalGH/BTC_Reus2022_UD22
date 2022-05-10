@@ -8,6 +8,9 @@ package com.example.ud22_views;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import com.example.controlador.ActionListenersClass;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -15,7 +18,7 @@ import javax.swing.JButton;
 public class ServerView {
 
 	public JFrame frmCrearPersona;
-
+	private ActionListenersClass ac = new ActionListenersClass();
 	/**
 	 * Launch the application.
 	 */
@@ -67,13 +70,16 @@ public class ServerView {
 		lblConexion.setBounds(29, 56, 137, 14);
 		frmCrearPersona.getContentPane().add(lblConexion);
 
-		JButton btnNewButton = new JButton("Servidor Uri");
-		btnNewButton.setBounds(37, 99, 156, 23);
-		frmCrearPersona.getContentPane().add(btnNewButton);
+		JButton btnServidorUri = new JButton("Servidor Uri");
+		btnServidorUri.setBounds(37, 99, 156, 23);
+		frmCrearPersona.getContentPane().add(btnServidorUri);
+		
+		btnServidorUri.addActionListener(ac);
 
 		JButton btnServidorDavid = new JButton("Servidor David");
 		btnServidorDavid.setBounds(37, 133, 156, 23);
 		frmCrearPersona.getContentPane().add(btnServidorDavid);
+		btnServidorDavid.addActionListener(ac);
 
 		JButton btnServidorOctavio = new JButton("Servidor Octavio");
 		btnServidorOctavio.setBounds(37, 167, 156, 23);

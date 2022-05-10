@@ -15,7 +15,12 @@ public class ActionListenersClass implements ActionListener{
 		String name = btnPress.getText();
 		
 		switch(name) {
-		case "":
+		case "Servidor Uri":
+			System.out.println("hola");
+			//Selectvista 1
+			break;
+		case "Servidor David":
+			System.out.println("adios");
 			break;
 		}
 		
