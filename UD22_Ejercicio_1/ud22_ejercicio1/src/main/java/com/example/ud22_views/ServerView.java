@@ -14,7 +14,7 @@ import javax.swing.JButton;
 
 public class ServerView {
 
-	private JFrame frmCrearPersona;
+	public JFrame frmCrearPersona;
 
 	/**
 	 * Launch the application.
