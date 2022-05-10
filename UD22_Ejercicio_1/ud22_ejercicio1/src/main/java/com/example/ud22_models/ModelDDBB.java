@@ -1,9 +1,5 @@
 package com.example.ud22_models;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 /**
  * @author Josep Oriol López Bosch
  * @author David Dalmau Dieguez
