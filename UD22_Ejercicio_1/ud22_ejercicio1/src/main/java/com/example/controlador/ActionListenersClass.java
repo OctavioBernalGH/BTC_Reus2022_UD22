@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
 import com.example.ud22_views.CRUDSelectorView;
 import com.example.ud22_views.ServerView;
-import com.example.ud22_views.ViewCreate;
 
 public class ActionListenersClass implements ActionListener {
 
@@ -15,7 +14,6 @@ public class ActionListenersClass implements ActionListener {
 	ModelFunctions funcionesModelo = new ModelFunctions();
 	ServerView vistaSelectorServidor = new ServerView();
 	CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
-	//ViewCreate vistaCrear = new ViewCreate();
 	
 	// Se gestionan los eventos con el actionPerformed.
 	
@@ -53,19 +51,6 @@ public class ActionListenersClass implements ActionListener {
 			break;
 		}
 		
-		/*
-		JButton btnPressCRUDSelector = (JButton) e.getSource();
-		String opcion = btnPressCRUDSelector.getText();
-		
-		switch (opcion) {
-		case "Añadir Cliente":
-			vistaCrear.frmCrearPersona.setVisible(true);
-			break;
-
-		default:
-			break;
-		}
-		*/
 	}
 }
 

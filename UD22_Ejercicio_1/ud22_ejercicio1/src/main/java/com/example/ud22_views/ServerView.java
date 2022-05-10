@@ -8,17 +8,15 @@ package com.example.ud22_views;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import com.example.controlador.ActionListenersClass;
-
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 
 public class ServerView {
 
+	private ActionListenersClass ac = new ActionListenersClass();
 	public JFrame frameServerView;
-	public ActionListenersClass ac = new ActionListenersClass();
 	/**
 	 * Launch the application.
 	 */
