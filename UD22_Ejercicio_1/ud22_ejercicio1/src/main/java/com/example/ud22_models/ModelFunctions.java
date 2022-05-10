@@ -110,7 +110,7 @@ public class ModelFunctions {
 		// Se crea una sentencia sql.
 		Statement st = (Statement) mysqlConn.createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "Insert into cliente values(" + modelo.getNombre() + ", " + modelo.getApellido() + ", "
+		String insert = "insert into cliente values(" + modelo.getNombre() + ", " + modelo.getApellido() + ", "
 				+ modelo.getDireccion() + ", " + modelo.getDni() + ", " + modelo.getFecha() + ");";
 		// Ejecutamos la sentencia.
 		st.execute(insert);
