@@ -1,16 +1,22 @@
 package com.example.ud22_models;
 
+/**
+ * @author Josep Oriol López Bosch
+ * @author David Dalmau Dieguez
+ * @author Octavio Bernal Vilana
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ModelFunctions {
-	
+
 	// Se crea una conexion del tipo Connection.
 	static Connection mysqlConn = null;
-	
+
 	/**
 	 * Función para abrir la conexión a la BBDD
+	 * 
 	 * @param address
 	 * @param userMysql
 	 * @param passwordMysql
