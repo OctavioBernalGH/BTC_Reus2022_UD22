@@ -14,7 +14,7 @@ public class App
     {
 
         ServerView selectorServidor = new ServerView();
-        selectorServidor.frmCrearPersona.setVisible(true);
+        selectorServidor.frameServerView.setVisible(true);
 
     }
 }
