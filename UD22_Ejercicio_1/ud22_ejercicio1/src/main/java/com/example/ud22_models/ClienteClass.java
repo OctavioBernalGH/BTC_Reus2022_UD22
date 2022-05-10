@@ -1,11 +1,13 @@
 package com.example.ud22_models;
 
+import java.util.Date;
+
 /**
  * @author Josep Oriol López Bosch
  * @author David Dalmau Dieguez
  * @author Octavio Bernal Vilana
  */
-public class ModelDDBB {
+public class ClienteClass {
 
 	/**
 	 * Se crean los atributos de clase correspondiente a las columnas de la tablas.
@@ -14,26 +16,28 @@ public class ModelDDBB {
 	private String nombre;
 	private String apellido;
 	private String direccion;
-	private String fecha;
+	private String dni;
+	private Date fecha;
 
-
-	
-	/** Se crea constructor vacío
+	/**
+	 * Se crea constructor vacío
 	 */
-	public ModelDDBB() {
+	public ClienteClass() {
 	}
 
-	/** Se crea constructor completo
+	/**
+	 * Se crea constructor completo
 	 * 
 	 * @param nombre
 	 * @param apellido
 	 * @param direccion
 	 * @param fecha
 	 */
-	public ModelDDBB(String nombre, String apellido, String direccion, String fecha) {
+	public ClienteClass(String nombre, String apellido, String direccion, String dni, Date fecha) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
+		this.dni = dni;
 		this.fecha = fecha;
 	}
 
@@ -88,16 +92,30 @@ public class ModelDDBB {
 	}
 
 	/**
+	 * @return the dni
+	 */
+	public String getDni() {
+		return dni;
+	}
+
+	/**
+	 * @param dni to set to dni
+	 */
+	public void setDni() {
+		this.dni = dni;
+	}
+
+	/**
 	 * @return the fecha
 	 */
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

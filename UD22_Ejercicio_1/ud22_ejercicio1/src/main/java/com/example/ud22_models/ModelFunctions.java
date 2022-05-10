@@ -8,14 +8,63 @@ package com.example.ud22_models;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class ModelFunctions {
 
 	// Se crea una conexion del tipo Connection.
-	static Connection mysqlConn = null;
+	public static Connection mysqlConn = null;
+	// Atributos para completar la String de conexión al servidor.
+	static String address;
+	static String userSQL;
+	static String password;
+
+	ClienteClass modelo = new ClienteClass();
 
 	/**
-	 * Función para abrir la conexión a la BBDD
+	 * Función para seleccionar el servidor.
+	 * 
+	 * @throws ClassNotFoundException
+	 */
+	public static void selectorVistas() throws ClassNotFoundException {
+
+		// Panel de seleccion mediante showOptionalDialog.
+		int seleccion = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Selector de opciones",
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+				new Object[] { "IP Uri", "IP David", "IP Octavio", "IP Manual", "Exit" }, " 1");
+
+		// Condicional selector de servidor.
+		if (seleccion == 0) {
+			address = "192.168.56.102";
+			userSQL = "remote";
+			password = "Reus_2022";
+			System.out.println("Conectado a BBDD de Uri");
+			mysqlConn = createConnection(address, userSQL, password);
+		} else if (seleccion == 1) {
+			address = "192.168.1.69";
+			userSQL = "remote";
+			password = "Reus_2022";
+			System.out.println("Conectado a BBDD de David");
+			mysqlConn = createConnection(address, userSQL, password);
+		} else if (seleccion == 2) {
+			address = "192.168.1.123";
+			userSQL = "remote";
+			password = "Reus_2022";
+			System.out.println("Conectado a BBDD de Octavio");
+			mysqlConn = createConnection(address, userSQL, password);
+		} else if (seleccion == 3) {
+			address = JOptionPane.showInputDialog("Direccion del servidor");
+			userSQL = JOptionPane.showInputDialog("Nombre del usuario");
+			password = JOptionPane.showInputDialog("Password");
+			mysqlConn = createConnection(address, userSQL, password);
+		} else if (seleccion == 4) {
+			JOptionPane.showMessageDialog(null, "Se ha salido con exito del programa.");
+		}
+	}
+
+	/**
+	 * Función para crear la conexión a la BBDD.
 	 * 
 	 * @param address
 	 * @param userMysql
@@ -23,7 +72,6 @@ public class ModelFunctions {
 	 * @return
 	 * @throws ClassNotFoundException
 	 */
-
 	public static Connection createConnection(String address, String userMysql, String passwordMysql)
 			throws ClassNotFoundException {
 
@@ -53,4 +101,32 @@ public class ModelFunctions {
 		}
 	}
 
+	/**
+	 * Función para añadir una persona nueva al registro.
+	 * 
+	 * @throws SQLException
+	 */
+	public void crearPersona() throws SQLException {
+		// Se crea una sentencia sql.
+		Statement st = (Statement) mysqlConn.createStatement();
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String insert = "insert into cliente values(" + modelo.getNombre() + ", " + modelo.getApellido() + ", "
+				+ modelo.getDireccion() + ", " + modelo.getDni() + ", " + modelo.getFecha() + ");";
+		// Ejecutamos la sentencia.
+		st.execute(insert);
+	}
+
+	/**
+	 * Función para eliminar un registro de la tabla.
+	 * 
+	 * @throws SQLException
+	 */
+	public void borrarPersona() throws SQLException {
+		// Se crea una sentencia sql.
+		Statement st = (Statement) mysqlConn.createStatement();
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String delete = "delete from cliente where " + modelo.getNombre() + ", dni=" + modelo.getDni() + ");";
+		// Ejecutamos la sentencia.
+		st.execute(delete);
+	}
 }
