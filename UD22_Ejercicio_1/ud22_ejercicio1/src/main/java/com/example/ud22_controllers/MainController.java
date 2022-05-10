@@ -7,7 +7,7 @@ package com.example.ud22_controllers;
  */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import com.example.ud22_models.ModelDDBB;
+import com.example.ud22_models.ClienteClass;
 import com.example.ud22_models.ModelFunctions;
 import com.example.ud22_views.ViewCreate;
 import com.example.ud22_views.ViewDelete;
@@ -17,7 +17,7 @@ public class MainController {
 
 	public class Controlador implements ActionListener {
 
-		private ModelDDBB modeloBBDD;
+		private ClienteClass cliente;
 		private ModelFunctions funcionesModelo;
 		private ViewCreate vistaCrear;
 		private ViewDelete vistaBorrar;

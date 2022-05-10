@@ -20,7 +20,7 @@ public class ModelFunctions {
 	static String userSQL;
 	static String password;
 
-	ModelDDBB modelo = new ModelDDBB();
+	ClienteClass modelo = new ClienteClass();
 
 	/**
 	 * Función para seleccionar el servidor.
