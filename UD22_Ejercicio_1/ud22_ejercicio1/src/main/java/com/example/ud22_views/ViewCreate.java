@@ -1,7 +1,11 @@
 package com.example.ud22_views;
 
+/**
+ * @author Josep Oriol López Bosch
+ * @author David Dalmau Dieguez
+ * @author Octavio Bernal Vilana
+ */
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -11,7 +15,7 @@ import javax.swing.JButton;
 
 public class ViewCreate {
 
-	private JFrame frmCrearPersona;
+	public JFrame frmCrearPersona;
 	private JTextField nombreField;
 	private JTextField apellidoField;
 	private JTextField direccionField;
