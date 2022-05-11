@@ -156,9 +156,26 @@ public class ModelFunctions {
 		// Creamos una cadena con los parámetros pasados por pantalla.
 		String delete = "DELETE "
 				+ "FROM cliente "
-				+ "WHERE " + modelo.getNombre() + ", dni=" + modelo.getDni() + ");";
+				+ "WHERE nombre=" + modelo.getNombre() + ", dni=" + modelo.getDni() + ");";
 		// Ejecutamos la sentencia.
 		st.execute(delete);
 	}
-
+	
+	
+	/**
+	 * Función para actualizar un registro de la tabla.
+	 * 
+	 * @throws SQLException
+	 */
+	
+	public void updatePersona() throws SQLException {
+		// Se crea una sentencia sql.
+		Statement st = (Statement) mysqlConn.createStatement();
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String update = "UPDATE " 
+				+ "FROM cliente "
+				+ "WHERE dni=" + modelo.getDni() + ");";
+		// Ejecutamos la sentencia.
+		st.execute(update);
+	}
 }
