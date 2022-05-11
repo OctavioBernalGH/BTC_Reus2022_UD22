@@ -59,7 +59,7 @@ public class ViewDelete {
 		nombreBorrarField = new JTextField();
 		dniBorrarField = new JTextField();
 		// Se crean los JButtons
-		JButton borrarButton = new JButton("Borrar");
+		JButton btnBorrar = new JButton("Borrar");
 
 		// Se definen los diferentes componentes
 		frmCrearPersona.setTitle("Borrar persona");
@@ -97,8 +97,8 @@ public class ViewDelete {
 		dniBorrarField.setBounds(117, 153, 190, 20);
 		frmCrearPersona.getContentPane().add(dniBorrarField);
 
-		borrarButton.setBounds(131, 201, 89, 23);
-		frmCrearPersona.getContentPane().add(borrarButton);
+		btnBorrar.setBounds(131, 201, 89, 23);
+		frmCrearPersona.getContentPane().add(btnBorrar);
 
 		lblIntroducirDatosBorrar.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblIntroducirDatosBorrar.setForeground(Color.RED);

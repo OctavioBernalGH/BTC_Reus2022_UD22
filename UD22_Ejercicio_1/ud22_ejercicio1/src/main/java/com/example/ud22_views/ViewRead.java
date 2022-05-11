@@ -61,7 +61,7 @@ public class ViewRead {
 		nombreField = new JTextField();
 		dniField = new JTextField();
 		// Se crean los JButtons
-		JButton buscarButton = new JButton("Buscar");
+		JButton btnbuscar = new JButton("Buscar");
 
 		// Se definen los diferentes componentes
 		frmCrearPersona.setTitle("Buscar persona");
@@ -99,8 +99,8 @@ public class ViewRead {
 		dniField.setBounds(117, 176, 190, 20);
 		frmCrearPersona.getContentPane().add(dniField);
 
-		buscarButton.setBounds(145, 229, 89, 23);
-		frmCrearPersona.getContentPane().add(buscarButton);
+		btnbuscar.setBounds(145, 229, 89, 23);
+		frmCrearPersona.getContentPane().add(btnbuscar);
 
 		lblNewLabel.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblNewLabel.setForeground(Color.RED);

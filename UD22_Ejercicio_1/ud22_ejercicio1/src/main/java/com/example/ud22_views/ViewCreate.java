@@ -66,7 +66,7 @@ public class ViewCreate {
 		dniField = new JTextField();
 		fechaField = new JTextField();
 		// Se crean los JButtons
-		JButton crearButton = new JButton("Crear");
+		JButton btnCrear = new JButton("Crear");
 
 		// Se definen los diferentes componentes
 		frmCrearPersona.setTitle("Crear persona");
@@ -141,8 +141,8 @@ public class ViewCreate {
 		fechaField.setBounds(117, 255, 190, 20);
 		frmCrearPersona.getContentPane().add(fechaField);
 
-		crearButton.setBounds(137, 306, 89, 23);
-		frmCrearPersona.getContentPane().add(crearButton);
+		btnCrear.setBounds(137, 306, 89, 23);
+		frmCrearPersona.getContentPane().add(btnCrear);
 
 		lblIntroduzcaDatos.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblIntroduzcaDatos.setForeground(Color.RED);
