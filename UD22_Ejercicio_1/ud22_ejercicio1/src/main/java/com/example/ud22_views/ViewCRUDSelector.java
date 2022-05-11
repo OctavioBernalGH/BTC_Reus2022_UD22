@@ -8,13 +8,19 @@ package com.example.ud22_views;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import com.example.controlador.ActionsCRUDView;
+import com.example.controlador.ActionsServerView;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JButton;
 
-public class CRUDSelectorView {
+public class ViewCRUDSelector {
 
 	public JFrame frameCRUDSelectorView;
+	private ActionsCRUDView ac = new ActionsCRUDView();
 	
 
 	/**
@@ -24,7 +30,7 @@ public class CRUDSelectorView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CRUDSelectorView window = new CRUDSelectorView();
+					ViewCRUDSelector window = new ViewCRUDSelector();
 					window.frameCRUDSelectorView.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +42,7 @@ public class CRUDSelectorView {
 	/**
 	 * Create the application.
 	 */
-	public CRUDSelectorView() {
+	public ViewCRUDSelector() {
 		initialize();
 	}
 
@@ -46,10 +52,14 @@ public class CRUDSelectorView {
 	private void initialize() {
 
 		// Se crea componente JFrame.
-		frameCRUDSelectorView = new JFrame();
+		frameCRUDSelectorView 		= new JFrame();
 		// Se crean las diferentes JLabels.
-		JLabel lblTitulo = new JLabel("Seleccionar operación");
-		JLabel lblConexion = new JLabel("** Selecciona operación a realizar");
+		JLabel lblTitulo 			= new JLabel("Seleccionar operación");
+		JLabel lblConexion 			= new JLabel("** Selecciona operación a realizar");
+		JButton btnBuscarCliente 	= new JButton("Buscar Cliente");
+		JButton btnModificarCliente = new JButton("Modificar Cliente");
+		JButton btnBorrarCliente 	= new JButton("Borrar Cliente");
+		JButton btnAnyadirCliente 	= new JButton("Añadir Cliente");
 
 		// Se definen los diferentes componentes
 		frameCRUDSelectorView.setTitle("Menu CRUD");
@@ -61,30 +71,31 @@ public class CRUDSelectorView {
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTitulo.setBounds(29, 22, 227, 31);
-		frameCRUDSelectorView.getContentPane().add(lblTitulo);
+		
 
 		lblConexion.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblConexion.setForeground(Color.RED);
 		lblConexion.setBounds(29, 56, 164, 14);
-		frameCRUDSelectorView.getContentPane().add(lblConexion);
-
-		JButton btnAnyadirCliente = new JButton("Añadir Cliente");
+		
+		
 		btnAnyadirCliente.setBounds(37, 99, 156, 23);
-		frameCRUDSelectorView.getContentPane().add(btnAnyadirCliente);
-
-		JButton btnBorrarCliente = new JButton("Borrar Cliente");
 		btnBorrarCliente.setBounds(37, 133, 156, 23);
-		frameCRUDSelectorView.getContentPane().add(btnBorrarCliente);
-
-		JButton btnModificarCliente = new JButton("Modificar Cliente");
 		btnModificarCliente.setBounds(37, 167, 156, 23);
-		frameCRUDSelectorView.getContentPane().add(btnModificarCliente);
-		
-		JButton btnBuscarCliente = new JButton("Buscar Cliente");
 		btnBuscarCliente.setBounds(37, 201, 156, 23);
-		frameCRUDSelectorView.getContentPane().add(btnBuscarCliente);
-
 		
+//Action Listeners
+		btnBuscarCliente.addActionListener(ac);
+		btnModificarCliente.addActionListener(ac);
+		btnBorrarCliente.addActionListener(ac);
+		btnAnyadirCliente.addActionListener(ac);
+		
+//Adding elements to Content panel
+		frameCRUDSelectorView.getContentPane().add(btnBuscarCliente);
+		frameCRUDSelectorView.getContentPane().add(btnModificarCliente);
+		frameCRUDSelectorView.getContentPane().add(btnBorrarCliente);
+		frameCRUDSelectorView.getContentPane().add(btnAnyadirCliente);
+		frameCRUDSelectorView.getContentPane().add(lblConexion);
+		frameCRUDSelectorView.getContentPane().add(lblTitulo);
 	}
 	
 }

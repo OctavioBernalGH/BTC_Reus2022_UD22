@@ -13,7 +13,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-public class ManualConnView {
+public class ViewManualConn {
 
 	private JFrame frmCrearPersona;
 	private JTextField txtIP;
@@ -27,7 +27,7 @@ public class ManualConnView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ManualConnView window = new ManualConnView();
+					ViewManualConn window = new ViewManualConn();
 					window.frmCrearPersona.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class ManualConnView {
 	/**
 	 * Create the application.
 	 */
-	public ManualConnView() {
+	public ViewManualConn() {
 		initialize();
 	}
 
@@ -48,13 +48,18 @@ public class ManualConnView {
 	 */
 	private void initialize() {
 
-		// Se crea componente JFrame.
-		frmCrearPersona = new JFrame();
-		// Se crean las diferentes JLabels.
-		JLabel lblTitulo = new JLabel("Seleccionar servidor");
-		JLabel lblConexion = new JLabel("** Introduzca IP separada por puntos");
+//Declaring objects
+		txtIP 							= new JTextField();
+		frmCrearPersona 				= new JFrame();
+		txtUsuario 						= new JTextField();
+		txtContraseña 					= new JTextField();
+		JLabel lblContrasea 			= new JLabel("Contraseña:");
+		JLabel lblUsuario 				= new JLabel("Usuario:");
+		JLabel lblIpManual 				= new JLabel("IP Servidor:");
+		JButton btnServidorManual 		= new JButton("Conectarse");
+		JLabel lblTitulo 				= new JLabel("Seleccionar servidor");
+		JLabel lblConexion 				= new JLabel("** Introduzca IP separada por puntos");
 
-		// Se definen los diferentes componentes
 		frmCrearPersona.setTitle("Conexión Manual");
 		frmCrearPersona.getContentPane().setBackground(Color.DARK_GRAY);
 		frmCrearPersona.setBounds(100, 100, 289, 314);
@@ -64,52 +69,57 @@ public class ManualConnView {
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTitulo.setBounds(29, 22, 227, 31);
-		frmCrearPersona.getContentPane().add(lblTitulo);
+		
 
 		lblConexion.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblConexion.setForeground(Color.RED);
 		lblConexion.setBounds(29, 56, 187, 14);
-		frmCrearPersona.getContentPane().add(lblConexion);
-
-		JButton btnServidorManual = new JButton("Conectarse");
+		
+		
 		btnServidorManual.setBackground(Color.YELLOW);
 		btnServidorManual.setBounds(60, 228, 156, 23);
-		frmCrearPersona.getContentPane().add(btnServidorManual);
 		
-		JLabel lblIpManual = new JLabel("IP Servidor:");
+		
 		lblIpManual.setForeground(Color.WHITE);
 		lblIpManual.setBounds(10, 87, 78, 14);
-		frmCrearPersona.getContentPane().add(lblIpManual);
 		
-		txtIP = new JTextField();
+		
+		
 		txtIP.setForeground(Color.WHITE);
 		txtIP.setBackground(Color.GRAY);
 		txtIP.setBounds(96, 84, 137, 20);
-		frmCrearPersona.getContentPane().add(txtIP);
+		
 		txtIP.setColumns(10);
 		
-		JLabel lblUsuario = new JLabel("Usuario:");
+		
 		lblUsuario.setForeground(Color.WHITE);
 		lblUsuario.setBounds(10, 133, 78, 14);
-		frmCrearPersona.getContentPane().add(lblUsuario);
 		
-		txtUsuario = new JTextField();
 		txtUsuario.setForeground(Color.WHITE);
 		txtUsuario.setBackground(Color.GRAY);
 		txtUsuario.setColumns(10);
 		txtUsuario.setBounds(96, 130, 137, 20);
-		frmCrearPersona.getContentPane().add(txtUsuario);
 		
-		JLabel lblContrasea = new JLabel("Contraseña:");
+		
 		lblContrasea.setForeground(Color.WHITE);
 		lblContrasea.setBounds(10, 178, 78, 14);
-		frmCrearPersona.getContentPane().add(lblContrasea);
 		
-		txtContraseña = new JTextField();
 		txtContraseña.setForeground(Color.WHITE);
 		txtContraseña.setBackground(Color.GRAY);
 		txtContraseña.setColumns(10);
 		txtContraseña.setBounds(96, 175, 137, 20);
+//Action listeners
+		
+//Adding elements to content Panel
+		frmCrearPersona.getContentPane().add(txtIP);
+		frmCrearPersona.getContentPane().add(lblTitulo);
+		frmCrearPersona.getContentPane().add(lblConexion);
+		frmCrearPersona.getContentPane().add(btnServidorManual);
+		frmCrearPersona.getContentPane().add(lblIpManual);
+		frmCrearPersona.getContentPane().add(lblUsuario);
+		frmCrearPersona.getContentPane().add(txtUsuario);
+		frmCrearPersona.getContentPane().add(lblContrasea);
 		frmCrearPersona.getContentPane().add(txtContraseña);
+		
 	}
 }
