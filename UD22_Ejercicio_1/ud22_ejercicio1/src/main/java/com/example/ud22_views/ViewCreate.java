@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
+
+import com.example.controlador.ActionsCreateView;
+
 import javax.swing.JButton;
 
 public class ViewCreate {
@@ -21,6 +24,7 @@ public class ViewCreate {
 	private JTextField direccionField;
 	private JTextField dniField;
 	private JTextField fechaField;
+	private ActionsCreateView ac = new ActionsCreateView();
 
 	/**
 	 * Launch the application.
@@ -67,6 +71,7 @@ public class ViewCreate {
 		fechaField = new JTextField();
 		// Se crean los JButtons
 		JButton btnCrear = new JButton("Crear");
+		btnCrear.addActionListener(ac);
 
 		// Se definen los diferentes componentes
 		frmCrearPersona.setTitle("Crear persona");
@@ -148,5 +153,10 @@ public class ViewCreate {
 		lblIntroduzcaDatos.setForeground(Color.RED);
 		lblIntroduzcaDatos.setBounds(29, 56, 137, 14);
 		frmCrearPersona.getContentPane().add(lblIntroduzcaDatos);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(236, 306, 89, 23);
+		frmCrearPersona.getContentPane().add(btnAtras);
+		btnAtras.addActionListener(ac);
 	}
 }

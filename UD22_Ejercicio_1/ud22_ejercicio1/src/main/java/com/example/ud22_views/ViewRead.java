@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
+
+import com.example.controlador.ActionsRead;
+
 import javax.swing.JButton;
 
 public class ViewRead {
@@ -19,6 +22,8 @@ public class ViewRead {
 	private JFrame frmCrearPersona;
 	private JTextField nombreField;
 	private JTextField dniField;
+	
+	private ActionsRead ac  = new ActionsRead();
 
 	/**
 	 * Launch the application.
@@ -116,5 +121,10 @@ public class ViewRead {
 		lblBuscarPorDni.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblBuscarPorDni.setBounds(29, 151, 137, 14);
 		frmCrearPersona.getContentPane().add(lblBuscarPorDni);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(246, 229, 89, 23);
+		frmCrearPersona.getContentPane().add(btnAtras);
+		btnAtras.addActionListener(ac);
 	}
 }

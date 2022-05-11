@@ -8,13 +8,19 @@ package com.example.ud22_views;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import com.example.controlador.ActionsCRUDView;
+import com.example.controlador.ActionsServerView;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JButton;
 
 public class CRUDSelectorView {
 
 	public JFrame frameCRUDSelectorView;
+	private ActionsCRUDView ac = new ActionsCRUDView();
 	
 
 	/**
@@ -71,19 +77,22 @@ public class CRUDSelectorView {
 		JButton btnAnyadirCliente = new JButton("Añadir Cliente");
 		btnAnyadirCliente.setBounds(37, 99, 156, 23);
 		frameCRUDSelectorView.getContentPane().add(btnAnyadirCliente);
+		btnAnyadirCliente.addActionListener(ac);
 
 		JButton btnBorrarCliente = new JButton("Borrar Cliente");
 		btnBorrarCliente.setBounds(37, 133, 156, 23);
 		frameCRUDSelectorView.getContentPane().add(btnBorrarCliente);
-
+		//btnBorrarCliente.addActionListener(ac);
+		
 		JButton btnModificarCliente = new JButton("Modificar Cliente");
 		btnModificarCliente.setBounds(37, 167, 156, 23);
 		frameCRUDSelectorView.getContentPane().add(btnModificarCliente);
+		//btnModificarCliente.addActionListener(ac);
 		
 		JButton btnBuscarCliente = new JButton("Buscar Cliente");
 		btnBuscarCliente.setBounds(37, 201, 156, 23);
 		frameCRUDSelectorView.getContentPane().add(btnBuscarCliente);
-
+		//btnBuscarCliente.addActionListener(ac);
 		
 	}
 	

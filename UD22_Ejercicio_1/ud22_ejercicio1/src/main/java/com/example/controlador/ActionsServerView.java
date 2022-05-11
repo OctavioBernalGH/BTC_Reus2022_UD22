@@ -5,21 +5,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
 import com.example.ud22_views.CRUDSelectorView;
-import com.example.ud22_views.ServerView;
 
-public class ActionListenersClass implements ActionListener {
 
-	
+public class ActionsServerView implements ActionListener {
+
 	//Se crean las diferentes instancias de clase.
 	ModelFunctions funcionesModelo = new ModelFunctions();
-	//ServerView vistaSelectorServidor = new ServerView();
 	CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
 	
 	// Se gestionan los eventos con el actionPerformed.
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 		JButton btnPress = (JButton) e.getSource();
 		// Getting the text of the widget
 		String name = btnPress.getText();
@@ -28,7 +25,7 @@ public class ActionListenersClass implements ActionListener {
 //ServerView
 		case "Servidor Uri":
 			try {
-				funcionesModelo.selectServer(0);
+				ModelFunctions.selectServer(0);
 				vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
 			} catch (ClassNotFoundException e1) {
 			} catch (Throwable e1) {
@@ -51,30 +48,26 @@ public class ActionListenersClass implements ActionListener {
 			}
 			break;
 		case "btnServidorManual":
+			try {
+				funcionesModelo.selectServer(3);
+				vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
+			} catch (ClassNotFoundException e1) {
+			} catch (Throwable e1) {
+			}
 			break;
 //CRUDSelectorView
-		case "btnAnyadirCliente":
+		case "Añadir Cliente":
+			System.out.println("hola");
 			break;
-		case "btnBorrarCliente":
+		case "Borrar Cliente":
 			break;
-		case "btnModificarCliente":
+		case "Modificar Cliente":
 			break;
-		case "btnBuscarCliente":
-			break;
-//Crear
-		case "crearButton":
-			break;
-//Borrar
-		case "borrarButton":
-			break;
-//Buscar 
-		case "buscarButton":
-			break;
-		case "actualizarButton":
+		case "Buscar Cliente":
 			break;
 		}
 		
-	}
+	}	
 }
 
 		

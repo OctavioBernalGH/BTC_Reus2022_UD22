@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
+
+import com.example.controlador.ActionsDelete;
+
 import javax.swing.JButton;
 
 public class ViewDelete {
@@ -18,6 +21,8 @@ public class ViewDelete {
 	private JFrame frmCrearPersona;
 	private JTextField nombreBorrarField;
 	private JTextField dniBorrarField;
+	
+	private ActionsDelete ac = new ActionsDelete();
 
 	/**
 	 * Launch the application.
@@ -60,6 +65,7 @@ public class ViewDelete {
 		dniBorrarField = new JTextField();
 		// Se crean los JButtons
 		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(ac);
 
 		// Se definen los diferentes componentes
 		frmCrearPersona.setTitle("Borrar persona");
@@ -109,5 +115,9 @@ public class ViewDelete {
 		lblBuscarPorDniBorrar.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblBuscarPorDniBorrar.setBounds(29, 80, 227, 14);
 		frmCrearPersona.getContentPane().add(lblBuscarPorDniBorrar);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(232, 198, 89, 23);
+		frmCrearPersona.getContentPane().add(btnAtras);
 	}
 }

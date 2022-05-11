@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
+
+import com.example.controlador.ActionsUpdate;
+
 import javax.swing.JButton;
 
 public class ViewUpdate {
@@ -22,6 +25,8 @@ public class ViewUpdate {
 	private JTextField direccionFieldUpdate;
 	private JTextField dniFieldUpdate;
 	private JTextField fechaFieldUpdate;
+	
+	private ActionsUpdate ac = new ActionsUpdate();
 
 	/**
 	 * Launch the application.
@@ -68,6 +73,7 @@ public class ViewUpdate {
 		fechaFieldUpdate = new JTextField();
 		// Se crean los JButtons
 		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(ac);
 
 		// Se definen los diferentes componentes
 		frmCrearPersona.setTitle("Actualizar persona");
@@ -149,5 +155,10 @@ public class ViewUpdate {
 		lblIntroduzcaDatos.setForeground(Color.RED);
 		lblIntroduzcaDatos.setBounds(29, 56, 278, 14);
 		frmCrearPersona.getContentPane().add(lblIntroduzcaDatos);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(238, 306, 89, 23);
+		frmCrearPersona.getContentPane().add(btnAtras);
+		btnAtras.addActionListener(ac);
 	}
 }
