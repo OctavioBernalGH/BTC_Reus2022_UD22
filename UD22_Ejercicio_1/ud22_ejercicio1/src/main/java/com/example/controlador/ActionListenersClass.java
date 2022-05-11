@@ -50,7 +50,8 @@ public class ActionListenersClass implements ActionListener {
 			} catch (Throwable e1) {
 			}
 			break;
-			
+		case "btnServidorManual":
+			break;
 //CRUDSelectorView
 		case "btnAnyadirCliente":
 			break;
@@ -60,7 +61,17 @@ public class ActionListenersClass implements ActionListener {
 			break;
 		case "btnBuscarCliente":
 			break;
-//
+//Crear
+		case "crearButton":
+			break;
+//Borrar
+		case "borrarButton":
+			break;
+//Buscar 
+		case "buscarButton":
+			break;
+		case "actualizarButton":
+			break;
 		}
 		
 	}
