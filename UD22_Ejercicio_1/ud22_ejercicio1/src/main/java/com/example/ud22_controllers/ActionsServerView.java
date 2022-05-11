@@ -1,4 +1,4 @@
-package com.example.controlador;
+package com.example.ud22_controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +6,7 @@ import java.sql.Connection;
 
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
+import com.example.ud22_views.ErrorConnectionView;
 import com.example.ud22_views.ViewCRUDSelector;
 
 
@@ -14,8 +15,8 @@ public class ActionsServerView implements ActionListener {
 	//Se crean las diferentes instancias de clase.
 	private ModelFunctions funcionesModelo = new ModelFunctions();
 	private ViewCRUDSelector vistaSelectorCRUD = new ViewCRUDSelector();
-	// Se crea una conexion del tipo Connection.
-	private static Connection mysqlConn = null;
+	private ErrorConnectionView errorView = new ErrorConnectionView();
+	
 	
 	// Se gestionan los eventos con el actionPerformed.
 	
@@ -30,7 +31,7 @@ public class ActionsServerView implements ActionListener {
 		case "Servidor Uri":
 			try {
 				funcionesModelo.selectServer(0);
-				vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
+				//vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
 			} catch (ClassNotFoundException e1) {
 			} catch (Throwable e1) {
 			}
@@ -62,9 +63,8 @@ public class ActionsServerView implements ActionListener {
 		}
 		if(funcionesModelo.checkConnection()) {
 			vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
-			System.out.println(funcionesModelo.checkConnection());
 		}else {
-			//TODO: Lanzar error view
+			errorView.frameErrorConection.setVisible(true);
 		}
 	}	
 }

@@ -8,11 +8,14 @@ package com.example.ud22_views;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import com.example.controlador.ActionsServerView;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+
+import com.example.ud22_controllers.ActionsServerView;
+
 import java.awt.TextArea;
 import java.awt.TextField;
 import javax.swing.JTextField;

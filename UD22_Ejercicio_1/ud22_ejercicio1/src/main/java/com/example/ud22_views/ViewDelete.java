@@ -12,7 +12,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 
-import com.example.controlador.ActionsDelete;
+import com.example.ud22_controllers.ActionsDelete;
 
 import javax.swing.JButton;
 

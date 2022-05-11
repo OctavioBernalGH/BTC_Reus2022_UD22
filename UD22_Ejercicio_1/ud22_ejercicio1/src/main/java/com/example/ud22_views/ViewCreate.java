@@ -12,7 +12,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 
-import com.example.controlador.ActionsCreateView;
+import com.example.ud22_controllers.ActionsCreateView;
 
 import javax.swing.JButton;
 

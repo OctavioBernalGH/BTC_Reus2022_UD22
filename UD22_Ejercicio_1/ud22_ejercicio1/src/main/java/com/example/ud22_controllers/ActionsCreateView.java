@@ -1,4 +1,4 @@
-package com.example.controlador;
+package com.example.ud22_controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +7,7 @@ import com.example.ud22_models.ModelFunctions;
 import com.example.ud22_views.ViewCRUDSelector;
 
 
-public class ActionsDelete implements ActionListener {
+public class ActionsCreateView implements ActionListener {
 
 
 	//Se crean las diferentes instancias de clase.
@@ -25,7 +25,7 @@ public class ActionsDelete implements ActionListener {
 		switch (name) {
 
 //CRUDSelectorView
-		case "Borrar":
+		case "Crear":
 			break;
 		case "Atras":
 			break;
