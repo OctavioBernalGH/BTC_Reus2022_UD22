@@ -130,12 +130,17 @@ public class ModelFunctions {
 	 * 
 	 * @throws SQLException
 	 */
-	public void crearPersona() throws SQLException {
+	public void crearCliente() throws SQLException {
 		// Se crea una sentencia sql.
 		Statement st = (Statement) mysqlConn.createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "insert into cliente values(" + modelo.getNombre() + ", " + modelo.getApellido() + ", "
-				+ modelo.getDireccion() + ", " + modelo.getDni() + ", " + modelo.getFecha() + ");";
+		String insert = "INSERT INTO cliente "
+				+ "VALUES(" + 
+				modelo.getNombre() + ", " + 
+				modelo.getApellido() + ", " + 
+				modelo.getDireccion() + ", " + 
+				modelo.getDni() + ", " + 
+				modelo.getFecha() + ");";
 		// Ejecutamos la sentencia.
 		st.execute(insert);
 	}
@@ -149,8 +154,11 @@ public class ModelFunctions {
 		// Se crea una sentencia sql.
 		Statement st = (Statement) mysqlConn.createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String delete = "delete from cliente where " + modelo.getNombre() + ", dni=" + modelo.getDni() + ");";
+		String delete = "DELETE "
+				+ "FROM cliente "
+				+ "WHERE " + modelo.getNombre() + ", dni=" + modelo.getDni() + ");";
 		// Ejecutamos la sentencia.
 		st.execute(delete);
 	}
+
 }
