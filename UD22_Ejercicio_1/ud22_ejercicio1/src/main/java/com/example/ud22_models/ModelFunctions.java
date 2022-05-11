@@ -67,7 +67,6 @@ public class ModelFunctions {
 			System.exit(0);
 			break;
 		}
-
 	}
 	
 
@@ -122,6 +121,18 @@ public class ModelFunctions {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
+	}
+	public static boolean checkConnection() {
+		boolean flag = false;
+		try {
+			if(!mysqlConn.isClosed()) {
+				flag = true;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return flag;
 	}
 
 
