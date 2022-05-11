@@ -1,15 +1,15 @@
-package com.example.controlador;
+package com.example.ud22_controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
 import com.example.ud22_views.ViewCRUDSelector;
-import com.example.ud22_views.ViewCreate;
 
 
-public class ActionsCreateView  extends ViewCreate implements ActionListener{
-	
+public class ActionsUpdate implements ActionListener {
+
+
 	//Se crean las diferentes instancias de clase.
 	ModelFunctions funcionesModelo = new ModelFunctions();
 	//CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
@@ -24,9 +24,8 @@ public class ActionsCreateView  extends ViewCreate implements ActionListener{
 
 		switch (name) {
 
-		//CRUDSelectorView
+//CRUDSelectorView
 		case "Crear":
-			System.out.println(ViewCreate.nombreField);
 			break;
 		case "Atras":
 			break;
