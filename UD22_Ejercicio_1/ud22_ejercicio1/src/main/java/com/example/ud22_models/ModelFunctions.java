@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
+import com.example.ud22_views.ErrorConnectionView;
+
 public class ModelFunctions {
 
 	// Se crea una conexion del tipo Connection.
@@ -20,7 +22,7 @@ public class ModelFunctions {
 	static String userSQL;
 	static String password;
 
-	ClienteClass modelo = new ClienteClass();
+	private ClienteClass modelo 			= new ClienteClass();
 
 	/**
 	 * Función para seleccionar el servidor.
@@ -40,7 +42,7 @@ public class ModelFunctions {
 	public static void selectServer(int option) throws Throwable {
 
 		mysqlConn = null;
-
+		
 		switch (option) {
 		case 0:// uri
 			address = "192.168.56.102";
@@ -67,7 +69,6 @@ public class ModelFunctions {
 			System.exit(0);
 			break;
 		}
-
 	}
 	
 
@@ -102,12 +103,15 @@ public class ModelFunctions {
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
+			
 			mysqlConn = DriverManager.getConnection("jdbc:mysql://" + address + ":3306?useTimezone=UTC", userMysql,
 					passwordMysql);
-			System.out.println("Conectado");
+
 
 		} catch (SQLException | ClassNotFoundException e) {
-			JOptionPane.showMessageDialog( null, "No se ha podido establecer conexión" + e.getLocalizedMessage());
+			
+			//errorView.frameErrorConection.setVisible(true);
+			//JOptionPane.showMessageDialog( null, "No se ha podido establecer conexión" + e.getLocalizedMessage());
 		}
 
 		return mysqlConn;
@@ -122,6 +126,19 @@ public class ModelFunctions {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
+	}
+	public static boolean checkConnection() {
+		boolean flag = false;
+		try {
+			if(!mysqlConn.isClosed()) {
+				flag = true;
+			}
+		} catch (SQLException e) {
+			 ErrorConnectionView errorView 	= new ErrorConnectionView();
+			 errorView.frameErrorConection.setVisible(true);
+		}
+		System.out.println(flag);
+		return flag;
 	}
 
 

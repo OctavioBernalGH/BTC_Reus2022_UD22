@@ -9,8 +9,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import com.example.controlador.ActionsCRUDView;
-import com.example.controlador.ActionsServerView;
+import com.example.ud22_controllers.ActionsCRUDView;
+import com.example.ud22_controllers.ActionsServerView;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;

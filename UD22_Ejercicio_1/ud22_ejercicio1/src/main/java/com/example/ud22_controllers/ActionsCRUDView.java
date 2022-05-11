@@ -1,4 +1,4 @@
-package com.example.controlador;
+package com.example.ud22_controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

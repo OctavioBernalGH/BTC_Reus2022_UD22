@@ -1,17 +1,22 @@
-package com.example.controlador;
+package com.example.ud22_controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
+import com.example.ud22_views.ErrorConnectionView;
 import com.example.ud22_views.ViewCRUDSelector;
 
 
 public class ActionsServerView implements ActionListener {
 
 	//Se crean las diferentes instancias de clase.
-	ModelFunctions funcionesModelo = new ModelFunctions();
-	ViewCRUDSelector vistaSelectorCRUD = new ViewCRUDSelector();
+	private ModelFunctions funcionesModelo = new ModelFunctions();
+	private ViewCRUDSelector vistaSelectorCRUD = new ViewCRUDSelector();
+	private ErrorConnectionView errorView = new ErrorConnectionView();
+	
 	
 	// Se gestionan los eventos con el actionPerformed.
 	
@@ -25,8 +30,8 @@ public class ActionsServerView implements ActionListener {
 //ServerView
 		case "Servidor Uri":
 			try {
-				ModelFunctions.selectServer(0);
-				vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
+				funcionesModelo.selectServer(0);
+				//vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
 			} catch (ClassNotFoundException e1) {
 			} catch (Throwable e1) {
 			}
@@ -34,7 +39,7 @@ public class ActionsServerView implements ActionListener {
 		case "Servidor David":
 			try {
 				funcionesModelo.selectServer(1);
-				vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
+				//vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
 			} catch (ClassNotFoundException e1) {
 			} catch (Throwable e1) {
 			}
@@ -42,7 +47,7 @@ public class ActionsServerView implements ActionListener {
 		case "Servidor Octavio":
 			try {
 				funcionesModelo.selectServer(2);
-				vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
+				//vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
 			} catch (ClassNotFoundException e1) {
 			} catch (Throwable e1) {
 			}
@@ -50,23 +55,17 @@ public class ActionsServerView implements ActionListener {
 		case "btnServidorManual":
 			try {
 				funcionesModelo.selectServer(3);
-				vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
+				//vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
 			} catch (ClassNotFoundException e1) {
 			} catch (Throwable e1) {
 			}
 			break;
-//CRUDSelectorView
-		case "Añadir Cliente":
-			System.out.println("hola");
-			break;
-		case "Borrar Cliente":
-			break;
-		case "Modificar Cliente":
-			break;
-		case "Buscar Cliente":
-			break;
 		}
-		
+		if(funcionesModelo.checkConnection()) {
+			vistaSelectorCRUD.frameCRUDSelectorView.setVisible(true);
+		}else {
+			errorView.frameErrorConection.setVisible(true);
+		}
 	}	
 }
 

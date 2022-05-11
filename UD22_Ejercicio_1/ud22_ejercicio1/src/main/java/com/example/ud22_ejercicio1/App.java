@@ -12,9 +12,7 @@ public class App
 {
     public static void main( String[] args ) throws ClassNotFoundException
     {
-
         ServerView selectorServidor = new ServerView();
         selectorServidor.frameServerView.setVisible(true);
-
     }
 }
