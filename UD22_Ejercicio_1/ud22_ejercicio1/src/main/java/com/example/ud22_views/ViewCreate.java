@@ -15,7 +15,7 @@ import javax.swing.JButton;
 
 public class ViewCreate {
 
-	private JFrame frmCrearPersona;
+	public JFrame frmCrearPersona;
 	private JTextField nombreField;
 	private JTextField apellidoField;
 	private JTextField direccionField;

@@ -25,42 +25,66 @@ public class ModelFunctions {
 	/**
 	 * Función para seleccionar el servidor.
 	 * 
-	 * @throws ClassNotFoundException
+	 * @throws Throwable
 	 */
-	public static void selectorVistas() throws ClassNotFoundException {
+	/*
+	 * public static void selectorVistas() throws ClassNotFoundException {
+	 * 
+	 * // Panel de seleccion mediante showOptionalDialog. int seleccion =
+	 * JOptionPane.showOptionDialog(null, "Seleccione opcion",
+	 * "Selector de opciones", JOptionPane.YES_NO_CANCEL_OPTION,
+	 * JOptionPane.QUESTION_MESSAGE, null, new Object[] { "IP Uri", "IP David",
+	 * "IP Octavio", "IP Manual", "Exit" }, " 1"); }
+	 */
 
-		// Panel de seleccion mediante showOptionalDialog.
-		int seleccion = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Selector de opciones",
-				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-				new Object[] { "IP Uri", "IP David", "IP Octavio", "IP Manual", "Exit" }, " 1");
+	public static void selectServer(int option) throws Throwable {
 
-		// Condicional selector de servidor.
-		if (seleccion == 0) {
+		mysqlConn = null;
+
+		switch (option) {
+		case 0:// uri
 			address = "192.168.56.102";
 			userSQL = "remote";
 			password = "Reus_2022";
-			System.out.println("Conectado a BBDD de Uri");
-			mysqlConn = createConnection(address, userSQL, password);
-		} else if (seleccion == 1) {
+			createStringConnection(address, userSQL, password);
+			break;
+		case 1:// David
 			address = "192.168.1.69";
 			userSQL = "remote";
 			password = "Reus_2022";
-			System.out.println("Conectado a BBDD de David");
-			mysqlConn = createConnection(address, userSQL, password);
-		} else if (seleccion == 2) {
+			createStringConnection(address, userSQL, password);
+			break;
+		case 2:// Octavio
 			address = "192.168.1.123";
 			userSQL = "remote";
 			password = "Reus_2022";
-			System.out.println("Conectado a BBDD de Octavio");
-			mysqlConn = createConnection(address, userSQL, password);
-		} else if (seleccion == 3) {
-			address = JOptionPane.showInputDialog("Direccion del servidor");
-			userSQL = JOptionPane.showInputDialog("Nombre del usuario");
-			password = JOptionPane.showInputDialog("Password");
-			mysqlConn = createConnection(address, userSQL, password);
-		} else if (seleccion == 4) {
-			JOptionPane.showMessageDialog(null, "Se ha salido con exito del programa.");
+			createStringConnection(address, userSQL, password);
+			break;
+		case 3:
+			// exercute manual view
+			break;
+		case 4:// Exit
+			System.exit(0);
+			break;
 		}
+
+	}
+	
+
+	/**
+	 * Funcion para crear la cadena de conexión SQL y establecer conexión.
+	 * 
+	 * @param adress
+	 * @param userSQL
+	 * @param password
+	 * @return
+	 * @throws Throwable
+	 */
+	public static Connection createStringConnection(String adress, String userSQL, String password) throws Throwable {
+
+		mysqlConn = createConnection(address, userSQL, password);
+
+		return mysqlConn;
 	}
 
 	/**
@@ -83,8 +107,7 @@ public class ModelFunctions {
 			System.out.println("Conectado");
 
 		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println("No se ha podido connectar a la base de datos");
-			System.out.println(e);
+			JOptionPane.showMessageDialog( null, "No se ha podido establecer conexión" + e.getLocalizedMessage());
 		}
 
 		return mysqlConn;
@@ -100,6 +123,7 @@ public class ModelFunctions {
 			System.out.println(e);
 		}
 	}
+
 
 	/**
 	 * Función para añadir una persona nueva al registro.

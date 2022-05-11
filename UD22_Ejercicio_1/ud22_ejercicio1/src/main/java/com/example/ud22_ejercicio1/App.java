@@ -1,6 +1,7 @@
 package com.example.ud22_ejercicio1;
 
-import com.example.ud22_models.ModelFunctions;
+
+import com.example.ud22_views.ServerView;
 
 /**
  * @author Josep Oriol López Bosch
@@ -11,7 +12,9 @@ public class App
 {
     public static void main( String[] args ) throws ClassNotFoundException
     {
-        ModelFunctions testConexion = new ModelFunctions();
-        ModelFunctions.selectorVistas();
+
+        ServerView selectorServidor = new ServerView();
+        selectorServidor.frameServerView.setVisible(true);
+
     }
 }
