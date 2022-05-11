@@ -12,7 +12,7 @@ public class ActionListenersClass implements ActionListener {
 	
 	//Se crean las diferentes instancias de clase.
 	ModelFunctions funcionesModelo = new ModelFunctions();
-	ServerView vistaSelectorServidor = new ServerView();
+	//ServerView vistaSelectorServidor = new ServerView();
 	CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
 	
 	// Se gestionan los eventos con el actionPerformed.
