@@ -68,9 +68,9 @@ public class CRUDSelectorView {
 		lblConexion.setBounds(29, 56, 164, 14);
 		frameCRUDSelectorView.getContentPane().add(lblConexion);
 
-		JButton btnAñadirCliente = new JButton("Añadir Cliente");
-		btnAñadirCliente.setBounds(37, 99, 156, 23);
-		frameCRUDSelectorView.getContentPane().add(btnAñadirCliente);
+		JButton btnAnyadirCliente = new JButton("Añadir Cliente");
+		btnAnyadirCliente.setBounds(37, 99, 156, 23);
+		frameCRUDSelectorView.getContentPane().add(btnAnyadirCliente);
 
 		JButton btnBorrarCliente = new JButton("Borrar Cliente");
 		btnBorrarCliente.setBounds(37, 133, 156, 23);

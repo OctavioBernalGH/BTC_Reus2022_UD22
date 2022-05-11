@@ -25,6 +25,7 @@ public class ActionListenersClass implements ActionListener {
 		String name = btnPress.getText();
 
 		switch (name) {
+//ServerView
 		case "Servidor Uri":
 			try {
 				funcionesModelo.selectServer(0);
@@ -49,6 +50,17 @@ public class ActionListenersClass implements ActionListener {
 			} catch (Throwable e1) {
 			}
 			break;
+			
+//CRUDSelectorView
+		case "btnAnyadirCliente":
+			break;
+		case "btnBorrarCliente":
+			break;
+		case "btnModificarCliente":
+			break;
+		case "btnBuscarCliente":
+			break;
+//
 		}
 		
 	}
