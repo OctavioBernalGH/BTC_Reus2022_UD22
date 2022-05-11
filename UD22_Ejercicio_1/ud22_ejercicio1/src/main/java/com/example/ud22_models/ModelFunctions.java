@@ -134,13 +134,12 @@ public class ModelFunctions {
 		// Se crea una sentencia sql.
 		Statement st = (Statement) mysqlConn.createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO cliente "
-				+ "VALUES(" + 
-				modelo.getNombre() + ", " + 
-				modelo.getApellido() + ", " + 
-				modelo.getDireccion() + ", " + 
-				modelo.getDni() + ", " + 
-				modelo.getFecha() + ");";
+		String insert = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha";
+		modelo.setNombre(modelo.getNombre());
+		modelo.setApellido(modelo.getApellido());
+		modelo.setDireccion(modelo.getDireccion());
+		modelo.setDni(modelo.getDni());
+		modelo.setFecha(modelo.getFecha());
 		// Ejecutamos la sentencia.
 		st.execute(insert);
 	}

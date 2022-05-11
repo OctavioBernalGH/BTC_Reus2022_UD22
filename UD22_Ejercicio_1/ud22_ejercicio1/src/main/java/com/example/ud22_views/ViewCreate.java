@@ -19,11 +19,11 @@ import javax.swing.JButton;
 public class ViewCreate {
 
 	public JFrame frmCrearPersona;
-	private JTextField nombreField;
-	private JTextField apellidoField;
-	private JTextField direccionField;
-	private JTextField dniField;
-	private JTextField fechaField;
+	public static JTextField nombreField;
+	public JTextField apellidoField;
+	public JTextField direccionField;
+	public JTextField dniField;
+	public JTextField fechaField;
 	private ActionsCreateView ac = new ActionsCreateView();
 
 	/**
@@ -45,7 +45,7 @@ public class ViewCreate {
 	/**
 	 * Create the application.
 	 */
-	public ViewCreate() {
+	public ViewCreate() {		
 		initialize();
 	}
 

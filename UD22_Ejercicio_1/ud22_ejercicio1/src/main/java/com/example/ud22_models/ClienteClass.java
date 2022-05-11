@@ -105,7 +105,7 @@ public class ClienteClass {
 	/**
 	 * @param dni to set to dni
 	 */
-	public void setDni() {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
