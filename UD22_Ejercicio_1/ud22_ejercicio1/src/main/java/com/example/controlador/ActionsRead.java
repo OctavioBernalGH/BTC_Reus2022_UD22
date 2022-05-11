@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
-import com.example.ud22_views.CRUDSelectorView;
+import com.example.ud22_views.ViewCRUDSelector;
 
 
 public class ActionsRead implements ActionListener {

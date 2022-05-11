@@ -4,14 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
-import com.example.ud22_views.CRUDSelectorView;
+import com.example.ud22_views.ViewCRUDSelector;
 
 
 public class ActionsServerView implements ActionListener {
 
 	//Se crean las diferentes instancias de clase.
 	ModelFunctions funcionesModelo = new ModelFunctions();
-	CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
+	ViewCRUDSelector vistaSelectorCRUD = new ViewCRUDSelector();
 	
 	// Se gestionan los eventos con el actionPerformed.
 	

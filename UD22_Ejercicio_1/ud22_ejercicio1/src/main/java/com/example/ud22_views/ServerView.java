@@ -46,10 +46,14 @@ public class ServerView {
 	private void initialize() {
 
 		// Se crea componente JFrame.
-		frameServerView = new JFrame();
+		frameServerView 				= new JFrame();
 		// Se crean las diferentes JLabels.
-		JLabel lblTitulo = new JLabel("Seleccionar servidor");
-		JLabel lblConexion = new JLabel("** Selecciona conexión");
+		JLabel lblTitulo 				= new JLabel("Seleccionar servidor");
+		JLabel lblConexion 				= new JLabel("** Selecciona conexión");
+		JButton btnServidorManual 		= new JButton("Conexión Manual");
+		JButton btnServidorOctavio 		= new JButton("Servidor Octavio");
+		JButton btnServidorDavid 		= new JButton("Servidor David");
+		JButton btnServidorUri 			= new JButton("Servidor Uri");
 
 		// Se definen los diferentes componentes
 		frameServerView.setTitle("Crear persona");
@@ -61,31 +65,28 @@ public class ServerView {
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTitulo.setBounds(29, 22, 227, 31);
-		frameServerView.getContentPane().add(lblTitulo);
+		
 
 		lblConexion.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblConexion.setForeground(Color.RED);
 		lblConexion.setBounds(29, 56, 137, 14);
-		frameServerView.getContentPane().add(lblConexion);
-
-		JButton btnServidorUri = new JButton("Servidor Uri");
+		
 		btnServidorUri.setBounds(37, 99, 156, 23);
-		frameServerView.getContentPane().add(btnServidorUri);	
-		btnServidorUri.addActionListener(ac);
-
-		JButton btnServidorDavid = new JButton("Servidor David");
 		btnServidorDavid.setBounds(37, 133, 156, 23);
-		frameServerView.getContentPane().add(btnServidorDavid);
-		btnServidorDavid.addActionListener(ac);
-
-		JButton btnServidorOctavio = new JButton("Servidor Octavio");
 		btnServidorOctavio.setBounds(37, 167, 156, 23);
-		frameServerView.getContentPane().add(btnServidorOctavio);
-		btnServidorOctavio.addActionListener(ac);
-
-		JButton btnServidorManual = new JButton("Conexión Manual");
 		btnServidorManual.setBackground(Color.YELLOW);
 		btnServidorManual.setBounds(37, 221, 156, 23);
+		
+//Action Listeners
+		btnServidorOctavio.addActionListener(ac);
+		btnServidorDavid.addActionListener(ac);
+		btnServidorUri.addActionListener(ac);
+//Adding elements to content panel
 		frameServerView.getContentPane().add(btnServidorManual);
+		frameServerView.getContentPane().add(btnServidorOctavio);
+		frameServerView.getContentPane().add(btnServidorDavid);
+		frameServerView.getContentPane().add(btnServidorUri);	
+		frameServerView.getContentPane().add(lblConexion);
+		frameServerView.getContentPane().add(lblTitulo);
 	}
 }

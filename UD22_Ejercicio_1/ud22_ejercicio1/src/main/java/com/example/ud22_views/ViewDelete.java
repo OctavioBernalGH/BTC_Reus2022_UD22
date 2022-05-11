@@ -18,7 +18,7 @@ import javax.swing.JButton;
 
 public class ViewDelete {
 
-	private JFrame frmCrearPersona;
+	public JFrame frmCrearPersona;
 	private JTextField nombreBorrarField;
 	private JTextField dniBorrarField;
 	
@@ -52,22 +52,20 @@ public class ViewDelete {
 	 */
 	private void initialize() {
 
-		// Se crea componente JFrame.
-		frmCrearPersona = new JFrame();
-		// Se crean las diferentes JLabels.
-		JLabel lblTituloBorrar = new JLabel("Borrar usuario");
-		JLabel lblIntroducirDatosBorrar = new JLabel("** Introduzca los datos");
-		JLabel lblNombreBorrar = new JLabel("Nombre:");
-		JLabel lblBuscarPorDniBorrar = new JLabel("Necesario introducir Nombre y DNI.");
-		JLabel lblDocumentoDeIdentidadBorrar = new JLabel("DNI:");
-		// Se crean las diferentes JTextFields
-		nombreBorrarField = new JTextField();
-		dniBorrarField = new JTextField();
-		// Se crean los JButtons
-		JButton btnBorrar = new JButton("Borrar");
-		btnBorrar.addActionListener(ac);
+//Creating elements
+		frmCrearPersona 						= new JFrame();
+		nombreBorrarField 						= new JTextField();
+		dniBorrarField 							= new JTextField();
+		
+		JButton btnBorrar 						= new JButton("Borrar");
+		JButton btnAtras		 				= new JButton("Atras");
+		JLabel lblTituloBorrar 					= new JLabel("Borrar usuario");
+		JLabel lblIntroducirDatosBorrar 		= new JLabel("** Introduzca los datos");
+		JLabel lblNombreBorrar 					= new JLabel("Nombre:");
+		JLabel lblBuscarPorDniBorrar 			= new JLabel("Necesario introducir Nombre y DNI.");
+		JLabel lblDocumentoDeIdentidadBorrar 	= new JLabel("DNI:");
 
-		// Se definen los diferentes componentes
+//Parameterizing
 		frmCrearPersona.setTitle("Borrar persona");
 		frmCrearPersona.getContentPane().setBackground(Color.DARK_GRAY);
 		frmCrearPersona.setBounds(100, 100, 415, 465);
@@ -77,23 +75,23 @@ public class ViewDelete {
 		lblTituloBorrar.setForeground(Color.WHITE);
 		lblTituloBorrar.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTituloBorrar.setBounds(29, 22, 227, 31);
-		frmCrearPersona.getContentPane().add(lblTituloBorrar);
+		
 
 		lblNombreBorrar.setForeground(Color.WHITE);
 		lblNombreBorrar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNombreBorrar.setBounds(29, 105, 78, 31);
-		frmCrearPersona.getContentPane().add(lblNombreBorrar);
+		
 
 		lblDocumentoDeIdentidadBorrar.setForeground(Color.WHITE);
 		lblDocumentoDeIdentidadBorrar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblDocumentoDeIdentidadBorrar.setBounds(29, 147, 78, 31);
-		frmCrearPersona.getContentPane().add(lblDocumentoDeIdentidadBorrar);
+		
 
 		nombreBorrarField.setFont(new Font("Tahoma", Font.BOLD, 11));
 		nombreBorrarField.setForeground(Color.WHITE);
 		nombreBorrarField.setBackground(Color.LIGHT_GRAY);
 		nombreBorrarField.setBounds(117, 111, 190, 20);
-		frmCrearPersona.getContentPane().add(nombreBorrarField);
+		
 		nombreBorrarField.setColumns(10);
 
 		dniBorrarField.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -101,23 +99,36 @@ public class ViewDelete {
 		dniBorrarField.setColumns(10);
 		dniBorrarField.setBackground(Color.LIGHT_GRAY);
 		dniBorrarField.setBounds(117, 153, 190, 20);
-		frmCrearPersona.getContentPane().add(dniBorrarField);
+		
 
 		btnBorrar.setBounds(131, 201, 89, 23);
-		frmCrearPersona.getContentPane().add(btnBorrar);
+		
 
 		lblIntroducirDatosBorrar.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblIntroducirDatosBorrar.setForeground(Color.RED);
 		lblIntroducirDatosBorrar.setBounds(29, 56, 137, 14);
-		frmCrearPersona.getContentPane().add(lblIntroducirDatosBorrar);
+		
 
 		lblBuscarPorDniBorrar.setForeground(Color.RED);
 		lblBuscarPorDniBorrar.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		lblBuscarPorDniBorrar.setBounds(29, 80, 227, 14);
-		frmCrearPersona.getContentPane().add(lblBuscarPorDniBorrar);
 		
-		JButton btnAtras = new JButton("Atras");
+		
 		btnAtras.setBounds(232, 198, 89, 23);
+		
+//Action Listeners
+		btnAtras.addActionListener(ac);
+		btnBorrar.addActionListener(ac);
+		
+//Adding to content Panel
 		frmCrearPersona.getContentPane().add(btnAtras);
+		frmCrearPersona.getContentPane().add(lblBuscarPorDniBorrar);
+		frmCrearPersona.getContentPane().add(lblIntroducirDatosBorrar);
+		frmCrearPersona.getContentPane().add(btnBorrar);
+		frmCrearPersona.getContentPane().add(dniBorrarField);
+		frmCrearPersona.getContentPane().add(nombreBorrarField);
+		frmCrearPersona.getContentPane().add(lblDocumentoDeIdentidadBorrar);
+		frmCrearPersona.getContentPane().add(lblNombreBorrar);
+		frmCrearPersona.getContentPane().add(lblTituloBorrar);
 	}
 }
