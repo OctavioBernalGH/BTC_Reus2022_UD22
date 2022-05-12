@@ -26,7 +26,6 @@ public class ActionsCreateView  extends ViewCreate implements ActionListener{
 
 		//CRUDSelectorView
 		case "Crear":
-
 			System.out.println(ViewCreate.nombreField);
 
 			break;
