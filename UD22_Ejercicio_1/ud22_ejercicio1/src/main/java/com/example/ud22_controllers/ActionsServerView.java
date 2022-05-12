@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
-import com.example.ud22_views.ErrorConnectionView;
+import com.example.ud22_views.ViewErrorConnection;
 import com.example.ud22_views.ViewCRUDSelector;
 
 
@@ -15,7 +15,7 @@ public class ActionsServerView implements ActionListener {
 	//Se crean las diferentes instancias de clase.
 	private ModelFunctions funcionesModelo = new ModelFunctions();
 	private ViewCRUDSelector vistaSelectorCRUD = new ViewCRUDSelector();
-	private ErrorConnectionView errorView = new ErrorConnectionView();
+	private ViewErrorConnection errorView = new ViewErrorConnection();
 	
 	
 	// Se gestionan los eventos con el actionPerformed.

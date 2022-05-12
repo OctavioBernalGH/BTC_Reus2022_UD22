@@ -15,7 +15,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 
-public class ServerView {
+public class ViewServer {
 
 	public ActionsServerView ac = new ActionsServerView();
 	public JFrame frameServerView;
@@ -26,7 +26,7 @@ public class ServerView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ServerView window = new ServerView();
+					ViewServer window = new ViewServer();
 					window.frameServerView.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class ServerView {
 	/**
 	 * Create the application.
 	 */
-	public ServerView() {
+	public ViewServer() {
 		initialize();
 	}
 

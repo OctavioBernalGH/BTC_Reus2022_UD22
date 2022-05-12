@@ -20,7 +20,7 @@ import java.awt.TextArea;
 import java.awt.TextField;
 import javax.swing.JTextField;
 
-public class ErrorConnectionView {
+public class ViewErrorConnection {
 
 	public JFrame frameErrorConection;
 	private JTextField txtFallo1linea;
@@ -33,7 +33,7 @@ public class ErrorConnectionView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ErrorConnectionView window = new ErrorConnectionView();
+					ViewErrorConnection window = new ViewErrorConnection();
 					window.frameErrorConection.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class ErrorConnectionView {
 	/**
 	 * Create the application.
 	 */
-	public ErrorConnectionView() {
+	public ViewErrorConnection() {
 		initialize();
 	}
 

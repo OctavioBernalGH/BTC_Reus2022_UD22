@@ -23,28 +23,12 @@ public class ViewRead {
 	private JTextField nombreField;
 	private JTextField dniField;
 	
-	private ActionsRead ac  = new ActionsRead();
+	private ActionsRead alREad;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewRead window = new ViewRead();
-					window.frmReadPersona.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
+	//Constructor
 	public ViewRead() {
+		alREad  = new ActionsRead();
 		initialize();
 	}
 
@@ -52,8 +36,10 @@ public class ViewRead {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		//Envio de esta ventana al action listener
+		alREad.setVwREad(this);
+		
 		//Creating elements
-
 		frmReadPersona = new JFrame();
 		nombreField = new JTextField();
 		dniField = new JTextField();
@@ -119,8 +105,8 @@ public class ViewRead {
 		btnAtras.setBounds(246, 229, 89, 23);
 		
 //Action listeners
-		btnAtras.addActionListener(ac);
-		btnbuscar.addActionListener(ac);
+		btnAtras.addActionListener(alREad);
+		btnbuscar.addActionListener(alREad);
 		
 //Adding elements to content panel
 		frmReadPersona.getContentPane().add(lblDocumentoDeIdentidad);
@@ -134,4 +120,31 @@ public class ViewRead {
 		frmReadPersona.getContentPane().add(lblBuscarPorNombre);
 		frmReadPersona.getContentPane().add(lblNewLabel);
 	}
+	
+//Getters y setters
+	public JTextField getNombreField() {
+		return nombreField;
+	}
+
+	public void setNombreField(JTextField nombreField) {
+		this.nombreField = nombreField;
+	}
+
+	public JTextField getDniField() {
+		return dniField;
+	}
+
+	public void setDniField(JTextField dniField) {
+		this.dniField = dniField;
+	}
+
+	public ActionsRead getAlREad() {
+		return alREad;
+	}
+
+	public void setAlREad(ActionsRead alREad) {
+		this.alREad = alREad;
+	}
+	
+	
 }
