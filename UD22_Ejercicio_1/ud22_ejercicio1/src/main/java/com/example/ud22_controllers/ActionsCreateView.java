@@ -8,9 +8,8 @@ import com.example.ud22_views.ViewCRUDSelector;
 import com.example.ud22_views.ViewCreate;
 
 
-public class ActionsCreateView implements ActionListener {
-
-
+public class ActionsCreateView  extends ViewCreate implements ActionListener{
+	
 	//Se crean las diferentes instancias de clase.
 	ModelFunctions funcionesModelo = new ModelFunctions();
 	//CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
@@ -25,9 +24,11 @@ public class ActionsCreateView implements ActionListener {
 
 		switch (name) {
 
-//CRUDSelectorView
+		//CRUDSelectorView
 		case "Crear":
-			
+
+			System.out.println(ViewCreate.nombreField);
+
 			break;
 		case "Atras":
 			break;

@@ -49,6 +49,10 @@ public class ClienteClass {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	/**
 	 * @return the nombre
 	 */
@@ -101,7 +105,7 @@ public class ClienteClass {
 	/**
 	 * @param dni to set to dni
 	 */
-	public void setDni() {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
