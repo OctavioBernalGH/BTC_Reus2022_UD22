@@ -13,12 +13,22 @@ import java.awt.Color;
 import javax.swing.JTextField;
 
 import com.example.ud22_controllers.ActionsCreateView;
+import com.example.ud22_controllers.ActionsRead;
 
 import javax.swing.JButton;
 
 public class ViewCreate {
 
 	public JFrame frmCrearPersona;
+
+	public JTextField nombreField;
+	private JTextField apellidoField;
+	private JTextField direccionField;
+	private JTextField dniField;
+	private JTextField fechaField;
+	//private ActionsRead accionL;
+	
+
 	public static JTextField nombreField;
 	public JTextField apellidoField;
 	public JTextField direccionField;
@@ -26,27 +36,19 @@ public class ViewCreate {
 	public JTextField fechaField;
 	private ActionsCreateView ac = new ActionsCreateView();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewCreate window = new ViewCreate();
-					window.frmCrearPersona.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
 	 */
+
+	public ViewCreate() {
+		//ActionsRead accionL = new ActionsRead();
+
 	public ViewCreate() {		
+
 		initialize();
+		
 	}
 
 	/**
@@ -149,8 +151,8 @@ public class ViewCreate {
 		btnAtras.setBounds(236, 306, 89, 23);
 		
 //Action Listeners
-		btnAtras.addActionListener(ac);
-		btnCrear.addActionListener(ac);
+		//btnAtras.addActionListener(accionL);
+		//btnCrear.addActionListener(accionL);
 		
 //Adding elements to content panel
 		frmCrearPersona.getContentPane().add(btnAtras);
@@ -167,7 +169,14 @@ public class ViewCreate {
 		frmCrearPersona.getContentPane().add(lblNombre);
 		frmCrearPersona.getContentPane().add(lblTitulo);
 		frmCrearPersona.getContentPane().add(lblApellido);
-		
-		
 	}
+
+	/*public ActionsRead getAccionL() {
+		return accionL;
+	}
+
+	public void setAccionL(ActionsRead accionL) {
+		this.accionL = accionL;
+	}*/
+	
 }

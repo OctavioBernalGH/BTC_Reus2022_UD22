@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-import com.example.ud22_views.ErrorConnectionView;
+import com.example.ud22_views.ViewErrorConnection;
 
 public class ModelFunctions {
 
@@ -134,7 +134,7 @@ public class ModelFunctions {
 				flag = true;
 			}
 		} catch (SQLException e) {
-			 ErrorConnectionView errorView 	= new ErrorConnectionView();
+			 ViewErrorConnection errorView 	= new ViewErrorConnection();
 			 errorView.frameErrorConection.setVisible(true);
 		}
 		System.out.println(flag);
