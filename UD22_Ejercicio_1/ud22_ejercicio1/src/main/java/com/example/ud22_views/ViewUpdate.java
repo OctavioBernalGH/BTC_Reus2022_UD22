@@ -26,28 +26,12 @@ public class ViewUpdate {
 	private JTextField dniFieldUpdate;
 	private JTextField fechaFieldUpdate;
 	
-	private ActionsUpdate ac = new ActionsUpdate();
+	private ActionsUpdate actionsUpdate;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewUpdate window = new ViewUpdate();
-					window.frmCrearPersona.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
+	
 	public ViewUpdate() {
+		actionsUpdate = new ActionsUpdate();
 		initialize();
 	}
 
@@ -55,6 +39,7 @@ public class ViewUpdate {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		actionsUpdate.setViewUpdate(this);
 
 		
 //Declaring objects
@@ -161,8 +146,8 @@ public class ViewUpdate {
 		frmCrearPersona.getContentPane().add(btnAtras);
 		
 //Acction listeners
-		btnAtras.addActionListener(ac);
-		btnActualizar.addActionListener(ac);
+		btnAtras.addActionListener(actionsUpdate);
+		btnActualizar.addActionListener(actionsUpdate);
 		
 //Adding to content panel
 		frmCrearPersona.getContentPane().add(nombreFieldUpdate);
@@ -179,4 +164,62 @@ public class ViewUpdate {
 		frmCrearPersona.getContentPane().add(lblIntroduzcaDatos);
 		frmCrearPersona.getContentPane().add(btnActualizar);
 	}
+
+	public JFrame getFrmCrearPersona() {
+		return frmCrearPersona;
+	}
+
+	public void setFrmCrearPersona(JFrame frmCrearPersona) {
+		this.frmCrearPersona = frmCrearPersona;
+	}
+
+	public JTextField getNombreFieldUpdate() {
+		return nombreFieldUpdate;
+	}
+
+	public void setNombreFieldUpdate(JTextField nombreFieldUpdate) {
+		this.nombreFieldUpdate = nombreFieldUpdate;
+	}
+
+	public JTextField getApellidoFieldUpdate() {
+		return apellidoFieldUpdate;
+	}
+
+	public void setApellidoFieldUpdate(JTextField apellidoFieldUpdate) {
+		this.apellidoFieldUpdate = apellidoFieldUpdate;
+	}
+
+	public JTextField getDireccionFieldUpdate() {
+		return direccionFieldUpdate;
+	}
+
+	public void setDireccionFieldUpdate(JTextField direccionFieldUpdate) {
+		this.direccionFieldUpdate = direccionFieldUpdate;
+	}
+
+	public JTextField getDniFieldUpdate() {
+		return dniFieldUpdate;
+	}
+
+	public void setDniFieldUpdate(JTextField dniFieldUpdate) {
+		this.dniFieldUpdate = dniFieldUpdate;
+	}
+
+	public JTextField getFechaFieldUpdate() {
+		return fechaFieldUpdate;
+	}
+
+	public void setFechaFieldUpdate(JTextField fechaFieldUpdate) {
+		this.fechaFieldUpdate = fechaFieldUpdate;
+	}
+
+	public ActionsUpdate getActionsUpdate() {
+		return actionsUpdate;
+	}
+
+	public void setActionsUpdate(ActionsUpdate actionsUpdate) {
+		this.actionsUpdate = actionsUpdate;
+	}
+	
+	
 }

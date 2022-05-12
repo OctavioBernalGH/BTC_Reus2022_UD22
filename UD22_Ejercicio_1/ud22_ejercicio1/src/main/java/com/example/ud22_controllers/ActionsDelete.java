@@ -5,16 +5,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
 import com.example.ud22_views.ViewCRUDSelector;
+import com.example.ud22_views.ViewDelete;
 
 
 public class ActionsDelete implements ActionListener {
 
 
 	//Se crean las diferentes instancias de clase.
-	ModelFunctions funcionesModelo = new ModelFunctions();
-	//CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
+	private ModelFunctions funcionesModelo = new ModelFunctions();
+	private ViewDelete viewDelete;
 	
-	// Se gestionan los eventos con el actionPerformed.
+	public void ActionsDelete() {
+		viewDelete = new ViewDelete();
+	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -26,12 +30,24 @@ public class ActionsDelete implements ActionListener {
 
 //CRUDSelectorView
 		case "Borrar":
+			System.out.println("Borrar");
 			break;
 		case "Atras":
 			break;
 		}
 		
 	}
+
+
+	public ViewDelete getViewDelete() {
+		return viewDelete;
+	}
+
+
+	public void setViewDelete(ViewDelete viewDelete) {
+		this.viewDelete = viewDelete;
+	}
+	
 	
 }
 

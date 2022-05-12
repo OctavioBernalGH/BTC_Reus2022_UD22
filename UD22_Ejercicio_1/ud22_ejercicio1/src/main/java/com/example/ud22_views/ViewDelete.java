@@ -22,28 +22,15 @@ public class ViewDelete {
 	private JTextField nombreBorrarField;
 	private JTextField dniBorrarField;
 	
-	private ActionsDelete ac = new ActionsDelete();
+	private ActionsDelete actionsDelete;
+	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewDelete window = new ViewDelete();
-					window.frmCrearPersona.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
 	 */
 	public ViewDelete() {
+		actionsDelete = new ActionsDelete();
 		initialize();
 	}
 
@@ -51,6 +38,7 @@ public class ViewDelete {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		actionsDelete.setViewDelete(this);
 
 //Creating elements
 		frmCrearPersona 						= new JFrame();
@@ -117,8 +105,8 @@ public class ViewDelete {
 		btnAtras.setBounds(232, 198, 89, 23);
 		
 //Action Listeners
-		btnAtras.addActionListener(ac);
-		btnBorrar.addActionListener(ac);
+		btnAtras.addActionListener(actionsDelete);
+		btnBorrar.addActionListener(actionsDelete);
 		
 //Adding to content Panel
 		frmCrearPersona.getContentPane().add(btnAtras);
@@ -131,4 +119,13 @@ public class ViewDelete {
 		frmCrearPersona.getContentPane().add(lblNombreBorrar);
 		frmCrearPersona.getContentPane().add(lblTituloBorrar);
 	}
+
+	public ActionsDelete getActionsDelete() {
+		return actionsDelete;
+	}
+
+	public void setActionsDelete(ActionsDelete actionsDelete) {
+		this.actionsDelete = actionsDelete;
+	}
+	
 }

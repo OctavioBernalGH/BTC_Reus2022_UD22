@@ -1,7 +1,10 @@
 package com.example.ud22_ejercicio1;
 
 
+import com.example.ud22_controllers.ActionsCreate;
+import com.example.ud22_controllers.ActionsDelete;
 import com.example.ud22_controllers.ActionsRead;
+import com.example.ud22_controllers.ActionsUpdate;
 import com.example.ud22_views.ViewCRUDSelector;
 import com.example.ud22_views.ViewCreate;
 import com.example.ud22_views.ViewDelete;
@@ -35,12 +38,21 @@ public class App
     	ViewUpdate vUpdate 				= new ViewUpdate();
     	
 //Declaration of Listeners
-    	ActionsRead actionsRead = new ActionsRead();
+    	ActionsRead actionsRead 		= new ActionsRead();
+    	ActionsCreate actionsCreate 	= new ActionsCreate();
+    	ActionsDelete actionsDelete		= new ActionsDelete();
+    	ActionsUpdate actionsUpdate		= new ActionsUpdate();
     	
 //Asignaciones a views
     	vRead.setAlREad(actionsRead);
+    	vCreate.setActionsCreate(actionsCreate);
+    	vDelete.setActionsDelete(actionsDelete);
+    	vUpdate.setActionsUpdate(actionsUpdate);
 //Asignaciones a Listeners
-        actionsRead.setVwREad(vRead);
+        actionsRead.setViewRead(vRead);
+        actionsCreate.setViewCreate(vCreate);
+        actionsDelete.setViewDelete(vDelete);
+        actionsUpdate.setViewUpdate(vUpdate);
         
 //Show view
         vServidor.frameServerView.setVisible(true);

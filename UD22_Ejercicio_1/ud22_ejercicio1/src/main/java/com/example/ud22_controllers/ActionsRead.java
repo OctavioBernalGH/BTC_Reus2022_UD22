@@ -10,17 +10,13 @@ import com.example.ud22_views.ViewRead;
 
 public class ActionsRead implements ActionListener {
 
-
 	//Se crean las diferentes instancias de clase.
 	private ModelFunctions funcionesModelo = new ModelFunctions();
-	private ViewRead vwREad;
-	//CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
-	
-	// Se gestionan los eventos con el actionPerformed.
+	private ViewRead viewRead;
 	
 	public void ActionsRead() {
 		//Ventana asociada
-		vwREad = new ViewRead();;
+		viewRead = new ViewRead();
 	}
 	
 	@Override
@@ -30,24 +26,22 @@ public class ActionsRead implements ActionListener {
 		String name = btnPress.getText();
 
 		switch (name) {
-
-//CRUDSelectorView
-		case "Buscar":
-			System.out.println(vwREad.getDniField().getText());
-			System.out.println("hola");
-			break;
-		case "Atras":
-			break;
+			case "Buscar":
+				System.out.println(viewRead.getDniField().getText());
+				break;
+			case "Atras":
+				break;
 		}
 		
 	}
 //Getters y setters
-	public ViewRead getVwREad() {
-		return vwREad;
+
+	public ViewRead getViewRead() {
+		return viewRead;
 	}
 
-	public void setVwREad(ViewRead vwREad) {
-		this.vwREad = vwREad;
+	public void setViewRead(ViewRead viewRead) {
+		this.viewRead = viewRead;
 	}
 	
 }

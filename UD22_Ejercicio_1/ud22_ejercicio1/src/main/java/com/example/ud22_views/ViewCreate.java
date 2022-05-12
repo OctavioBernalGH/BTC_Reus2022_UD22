@@ -12,7 +12,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 
-import com.example.ud22_controllers.ActionsCreateView;
+import com.example.ud22_controllers.ActionsCreate;
 import com.example.ud22_controllers.ActionsRead;
 
 import javax.swing.JButton;
@@ -20,42 +20,22 @@ import javax.swing.JButton;
 public class ViewCreate {
 
 	public JFrame frmCrearPersona;
-
-	public JTextField nombreField;
+	private JTextField nombreField;
 	private JTextField apellidoField;
 	private JTextField direccionField;
 	private JTextField dniField;
 	private JTextField fechaField;
-	//private ActionsRead accionL;
 	
+	private ActionsCreate actionsCreate;
 
-	public static JTextField nombreField;
-	public JTextField apellidoField;
-	public JTextField direccionField;
-	public JTextField dniField;
-	public JTextField fechaField;
-	private ActionsCreateView ac = new ActionsCreateView();
-
-
-
-	/**
-	 * Create the application.
-	 */
-
-	public ViewCreate() {
-		//ActionsRead accionL = new ActionsRead();
-
-	public ViewCreate() {		
-
+	//Constructor
+	public ViewCreate() {	
+		actionsCreate = new ActionsCreate();
 		initialize();
-		
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
-
+		actionsCreate.setViewCreate(this);
 //Creating 
 		frmCrearPersona 				= new JFrame();
 		nombreField 					= new JTextField();
@@ -151,8 +131,8 @@ public class ViewCreate {
 		btnAtras.setBounds(236, 306, 89, 23);
 		
 //Action Listeners
-		//btnAtras.addActionListener(accionL);
-		//btnCrear.addActionListener(accionL);
+		btnAtras.addActionListener(actionsCreate);
+		btnCrear.addActionListener(actionsCreate);
 		
 //Adding elements to content panel
 		frmCrearPersona.getContentPane().add(btnAtras);
@@ -171,12 +151,62 @@ public class ViewCreate {
 		frmCrearPersona.getContentPane().add(lblApellido);
 	}
 
-	/*public ActionsRead getAccionL() {
-		return accionL;
+	public JFrame getFrmCrearPersona() {
+		return frmCrearPersona;
 	}
 
-	public void setAccionL(ActionsRead accionL) {
-		this.accionL = accionL;
-	}*/
+	public void setFrmCrearPersona(JFrame frmCrearPersona) {
+		this.frmCrearPersona = frmCrearPersona;
+	}
+
+	public JTextField getNombreField() {
+		return nombreField;
+	}
+
+	public void setNombreField(JTextField nombreField) {
+		this.nombreField = nombreField;
+	}
+
+	public JTextField getApellidoField() {
+		return apellidoField;
+	}
+
+	public void setApellidoField(JTextField apellidoField) {
+		this.apellidoField = apellidoField;
+	}
+
+	public JTextField getDireccionField() {
+		return direccionField;
+	}
+
+	public void setDireccionField(JTextField direccionField) {
+		this.direccionField = direccionField;
+	}
+
+	public JTextField getDniField() {
+		return dniField;
+	}
+
+	public void setDniField(JTextField dniField) {
+		this.dniField = dniField;
+	}
+
+	public JTextField getFechaField() {
+		return fechaField;
+	}
+
+	public void setFechaField(JTextField fechaField) {
+		this.fechaField = fechaField;
+	}
+
+	public ActionsCreate getActionsCreate() {
+		return actionsCreate;
+	}
+
+	public void setActionsCreate(ActionsCreate actionsCreate) {
+		this.actionsCreate = actionsCreate;
+	}
+
 	
+
 }

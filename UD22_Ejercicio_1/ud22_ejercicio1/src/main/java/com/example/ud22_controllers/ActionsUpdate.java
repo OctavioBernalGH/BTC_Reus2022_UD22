@@ -5,16 +5,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
 import com.example.ud22_views.ViewCRUDSelector;
+import com.example.ud22_views.ViewUpdate;
 
 
 public class ActionsUpdate implements ActionListener {
 
 
 	//Se crean las diferentes instancias de clase.
-	ModelFunctions funcionesModelo = new ModelFunctions();
-	//CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
+	private ModelFunctions funcionesModelo = new ModelFunctions();
+	private ViewUpdate viewUpdate;
 	
-	// Se gestionan los eventos con el actionPerformed.
+	
+	public void ActionsUpdate() {
+		viewUpdate = new ViewUpdate();
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -24,13 +28,22 @@ public class ActionsUpdate implements ActionListener {
 
 		switch (name) {
 
-//CRUDSelectorView
-		case "Crear":
-			break;
-		case "Atras":
-			break;
+			case "Actualizar":
+				System.out.println("Update");
+				break;
+			case "Atras":
+				break;
+				
 		}
 		
+	}
+
+	public ViewUpdate getViewUpdate() {
+		return viewUpdate;
+	}
+
+	public void setViewUpdate(ViewUpdate viewUpdate) {
+		this.viewUpdate = viewUpdate;
 	}
 	
 }

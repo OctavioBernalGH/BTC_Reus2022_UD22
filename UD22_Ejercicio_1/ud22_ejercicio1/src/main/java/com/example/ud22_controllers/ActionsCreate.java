@@ -8,13 +8,15 @@ import com.example.ud22_views.ViewCRUDSelector;
 import com.example.ud22_views.ViewCreate;
 
 
-public class ActionsCreateView  extends ViewCreate implements ActionListener{
+public class ActionsCreate implements ActionListener{
 	
 	//Se crean las diferentes instancias de clase.
-	ModelFunctions funcionesModelo = new ModelFunctions();
-	//CRUDSelectorView vistaSelectorCRUD = new CRUDSelectorView();
+	private ModelFunctions funcionesModelo = new ModelFunctions();
+	private ViewCreate viewCreate; 
 	
-	// Se gestionan los eventos con el actionPerformed.
+	public void ActionsCreate() {
+		viewCreate = new ViewCreate();
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -23,19 +25,23 @@ public class ActionsCreateView  extends ViewCreate implements ActionListener{
 		String name = btnPress.getText();
 
 		switch (name) {
-
-		//CRUDSelectorView
-		case "Crear":
-
-			System.out.println(ViewCreate.nombreField);
-
-			break;
-		case "Atras":
-			break;
-		}
-		
-	}
 	
+			case "Crear":
+				System.out.println("Crear");
+				//System.out.println(nombreField.getText());
+				break;
+			case "Atras":
+				break;
+		}
+	}
+
+	public ViewCreate getViewCreate() {
+		return viewCreate;
+	}
+
+	public void setViewCreate(ViewCreate viewCreate) {
+		this.viewCreate = viewCreate;
+	}
 }
 
 		

@@ -23,12 +23,11 @@ public class ViewRead {
 	private JTextField nombreField;
 	private JTextField dniField;
 	
-	private ActionsRead alREad;
-
-
+	private ActionsRead actionsRead;
+	
 	//Constructor
 	public ViewRead() {
-		alREad  = new ActionsRead();
+		actionsRead  = new ActionsRead();
 		initialize();
 	}
 
@@ -37,7 +36,7 @@ public class ViewRead {
 	 */
 	private void initialize() {
 		//Envio de esta ventana al action listener
-		alREad.setVwREad(this);
+		actionsRead.setViewRead(this);
 		
 		//Creating elements
 		frmReadPersona = new JFrame();
@@ -105,8 +104,8 @@ public class ViewRead {
 		btnAtras.setBounds(246, 229, 89, 23);
 		
 //Action listeners
-		btnAtras.addActionListener(alREad);
-		btnbuscar.addActionListener(alREad);
+		btnAtras.addActionListener(actionsRead);
+		btnbuscar.addActionListener(actionsRead);
 		
 //Adding elements to content panel
 		frmReadPersona.getContentPane().add(lblDocumentoDeIdentidad);
@@ -139,11 +138,11 @@ public class ViewRead {
 	}
 
 	public ActionsRead getAlREad() {
-		return alREad;
+		return actionsRead;
 	}
 
 	public void setAlREad(ActionsRead alREad) {
-		this.alREad = alREad;
+		this.actionsRead = alREad;
 	}
 	
 	
