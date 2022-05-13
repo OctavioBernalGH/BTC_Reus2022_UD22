@@ -26,19 +26,18 @@ public class ActionsCientifico implements ActionListener{
 		switch(name) {
 		
 			case "Crear":
-				viewCientifico.getBtnCientificoCrear().setBackground(Color.blue);
-				viewCientifico.getBtnCientificoCrear().setOpaque(true);
+				viewCientifico.unshowAll();
+				viewCientifico.showCreate();
+				break;
+			case "Borrar":
+				viewCientifico.unshowAll();
+				viewCientifico.showErase();
+				break;
+			case "Buscar":
 				
-				viewCientifico.getLblCientificoNombre().setVisible(true);
-				viewCientifico.getLblCientificoDNI().setVisible(true);
+				break;
+			case "Modificar":
 				
-				viewCientifico.getTfCientificoDNI().setVisible(true);
-				viewCientifico.getTfCientificoDNI().setEnabled(true);
-				viewCientifico.getTfCientificoNombre().setVisible(true);
-				viewCientifico.getTfCientificoNombre().setEnabled(true);
-				
-				viewCientifico.getBtnCrearCientifico().setVisible(true);
-				viewCientifico.getBtnCrearCientifico().setEnabled(true);
 				break;
 		}
 		

@@ -8,6 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import com.example.ud22_ejercicio3.ActionsCientifico;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
+import javax.swing.JToggleButton;
+import java.awt.Color;
 
 public class ViewCientifico {
 
@@ -53,6 +57,7 @@ public class ViewCientifico {
 		lblCientifico.setBounds(6, 6, 118, 16);
 		lblCientificoNombre.setBounds(211, 90, 61, 16);
 		lblCientificoDNI.setBounds(211, 54, 61, 16);
+		
 	
 		btnCientificoCrear.setBounds(7, 34, 117, 29);
 		btncientificoBorrar.setBounds(7, 75, 117, 29);
@@ -74,30 +79,14 @@ public class ViewCientifico {
 		tfCientificoDNI.setBounds(284, 49, 130, 26);
 		
 //Initial views of elements
-		
-		tfCientificoDNI.setVisible(false);
-		tfCientificoDNI.setEnabled(false);
-		tfCientificoNombre.setVisible(false);
-		tfCientificoNombre.setEnabled(false);
+		//Ocultamos todos los elementos no necesarios en la primera vista
+		unshowAll();
 		
 //Action Listeners
 		btnCientificoCrear.addActionListener(actionsCientifico);
 		btncientificoBorrar.addActionListener(actionsCientifico);
 		btnCientificoBuscar.addActionListener(actionsCientifico);
-		btnCientificoModificar.addActionListener(actionsCientifico);
-		
-		/*btnCientificoCrear
-		btncientificoBorrar
-		btnCientificoBuscar
-		btnCientificoModificar*/
-//TODO: Transformar a funcion para quitar la visibilidad al pulsar otro boton
-		btnBorrarCientifico.setVisible(false);
-		btnBuscarCientifico.setVisible(false);
-		btnModificarCientifico.setVisible(false);
-		btnCrearCientifico.setVisible(false);
-		lblCientificoNombre.setVisible(false);
-		lblCientificoDNI.setVisible(false);
-		
+		btnCientificoModificar.addActionListener(actionsCientifico);	
 	
 //Adding to content Panel
 		frame.getContentPane().add(btnModificarCientifico);
@@ -113,6 +102,75 @@ public class ViewCientifico {
 		frame.getContentPane().add(btnCientificoCrear);
 		frame.getContentPane().add(lblCientifico);
 	}
+	
+	public void unshowAll() {
+		//botones secundarios
+		btnBorrarCientifico.setVisible(false);
+		btnBuscarCientifico.setVisible(false);
+		btnModificarCientifico.setVisible(false);
+		btnCrearCientifico.setVisible(false);
+		
+		
+		lblCientificoNombre.setVisible(false);
+		lblCientificoDNI.setVisible(false);
+		tfCientificoDNI.setVisible(false);
+		
+		tfCientificoNombre.setVisible(false);
+		
+		tfCientificoNombre.setEnabled(false);
+		tfCientificoDNI.setEnabled(false);
+		
+		//Quitamos los marcadores de boton activo principal
+		btncientificoBorrar.setForeground(null);
+		btnCientificoCrear.setForeground(null);
+		btnCientificoBuscar.setForeground(null);
+		btnCientificoModificar.setForeground(null);
+	}
+	//Muestra los elementos para crear
+	public void showCreate() {
+		btnCientificoCrear.setForeground(Color.BLUE);
+		
+		lblCientificoNombre.setVisible(true);
+		lblCientificoDNI.setVisible(true);
+		
+		tfCientificoDNI.setVisible(true);
+		tfCientificoNombre.setVisible(true);
+		
+		tfCientificoDNI.setEnabled(true);
+		tfCientificoNombre.setEnabled(true);
+		
+		btnCrearCientifico.setVisible(true);
+		btnCrearCientifico.setEnabled(true);
+	}
+	//Muestra elementos de la funcion de borrar
+	public void showErase() {
+		
+		btncientificoBorrar.setForeground(Color.BLUE);
+		
+		btnBorrarCientifico.setVisible(true);
+		tfCientificoDNI.setVisible(true);
+		lblCientificoDNI.setVisible(true);
+		
+		btnBorrarCientifico.setEnabled(true);
+		tfCientificoDNI.setEnabled(true);
+		
+	}
+	//Muestra los elementos de la funcion search
+	public void showSearch() {
+		btnCientificoBuscar.setForeground(Color.BLUE);
+		
+		btnBuscarCientifico.setVisible(true);
+		tfCientificoDNI.setVisible(true);
+		lblCientificoDNI.setVisible(true);
+		
+		btnBuscarCientifico.setEnabled(true);
+		tfCientificoDNI.setEnabled(true);
+	}
+	
+	public void showModify() {
+		btnCientificoModificar.setForeground(Color.BLUE);
+	}
+	
 
 	public JFrame getFrame() {
 		return frame;
@@ -233,7 +291,4 @@ public class ViewCientifico {
 	public void setBtnCrearCientifico(JButton btnCrearCientifico) {
 		this.btnCrearCientifico = btnCrearCientifico;
 	}
-	
-	
-	
 }
