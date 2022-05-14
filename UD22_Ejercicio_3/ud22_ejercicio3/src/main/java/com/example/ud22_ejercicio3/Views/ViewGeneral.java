@@ -6,47 +6,57 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-
-import com.example.ud22_ejercicio3.ActionsCientifico;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
+
+import com.example.ud22_ejercicio3.controllers.ActionsCientifico;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
-public class ViewCientifico {
+public class ViewGeneral {
 
 	public JFrame frame;
 	private JTextField tfCientificoNombre;
 	private JTextField tfCientificoDNI;
 	private ActionsCientifico actionsCientifico;
 	
-	JLabel lblCientifico = new JLabel("Cientifico");
-	JLabel lblCientificoNombre = new JLabel("Nombre");
-	JLabel lblCientificoDNI = new JLabel("DNI");
+	private JLabel lblTittle = new JLabel("Cientifico");
+	private JLabel lblCientificoNombre = new JLabel("Nombre");
+	private JLabel lblCientificoDNI = new JLabel("DNI");
 	//view principales
-	JButton btnPCientificoCrear = new JButton("Crear");
-	JButton btnPCientificoBorrar = new JButton("Borrar");
-	JButton btnPCientificoBuscar = new JButton("Buscar");
-	JButton btnPCientificoModificar = new JButton("Modificar");
+	private JButton btnPCientificoCrear = new JButton("Crear");
+	private JButton btnPCientificoBorrar = new JButton("Borrar");
+	private JButton btnPCientificoBuscar = new JButton("Buscar");
+	private JButton btnPCientificoModificar = new JButton("Modificar");
 	//view conjunta
 	JTextArea txaMostrarResultados = new JTextArea();
 	//view borrar
-	JButton btnBorrarCientifico = new JButton("Borrar Cientifico");
-	JButton btnCientificoMostrar = new JButton("Mostrar");
+	private JButton btnBorrarCientifico = new JButton("Borrar Cientifico");
+	private JButton btnCientificoMostrar = new JButton("Mostrar");
 	//view buscar
-	JButton btnBuscarCientifico = new JButton("Buscar Cientifico");
-	JButton btnModificarCientifico = new JButton("Modificar Cientifico");
-	JButton btnCrearCientifico = new JButton("Crear Cientifico");
-	JButton tglbtnToggleEntity = new JButton("Cambiar a Proyecto");
+	private JButton btnBuscarCientifico = new JButton("Buscar Cientifico");
+	private JButton btnModificarCientifico = new JButton("Modificar Cientifico");
+	private JButton btnCrearCientifico = new JButton("Crear Cientifico");
+	private JButton tglbtnToggleEntity = new JButton("Cambiar a Proyecto");
 	
+//Elementos de Proyecto
+	private JLabel lblProyectoID = new JLabel("ID");
+	private JLabel lblProyectoHoras = new JLabel("Horas");
+	private JLabel lblProyectoNombre = new JLabel("Nombre");
 	
-
-
-
-	public ViewCientifico() {
+	private JTextField tfProyectoID;
+	private JTextField tfProyectoNombre;
+	private JTextField tfProyectoHoras;
+	private JButton btnProyectoCrear = new JButton("Crear Proyecto");
+	private JButton btnProyectoBorrar = new JButton("Borrar Proyecto");
+	private final JButton btnProyectoMostrar = new JButton("Busqueda");
+	private final JButton btnProyectoModificar = new JButton("Modificar Proyecto");
+	
+	public ViewGeneral() {
 		actionsCientifico = new ActionsCientifico(); 
 		initialize();
 	}
@@ -55,6 +65,11 @@ public class ViewCientifico {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		tfProyectoID = new JTextField();
+		tfProyectoNombre = new JTextField();
+		tfProyectoHoras = new JTextField();
+		
 		actionsCientifico.setViewCientifico(this);
 		frame = new JFrame();
 		frame.setBounds(100, 100, 662, 362);
@@ -64,9 +79,7 @@ public class ViewCientifico {
 		tfCientificoDNI = new JTextField();
 		tfCientificoNombre = new JTextField();
 		
-		
-		
-		lblCientifico.setBounds(6, 6, 118, 16);
+		lblTittle.setBounds(6, 6, 118, 16);
 		lblCientificoNombre.setBounds(211, 90, 61, 16);
 		lblCientificoDNI.setBounds(211, 54, 61, 16);
 		
@@ -83,7 +96,7 @@ public class ViewCientifico {
 		
 		
 		tfCientificoNombre.setBounds(284, 85, 130, 26);
-		frame.getContentPane().add(tfCientificoNombre);
+		
 		tfCientificoNombre.setColumns(10);
 		
 		
@@ -94,6 +107,26 @@ public class ViewCientifico {
 		
 		txaMostrarResultados.setBounds(211, 85, 307, 85);
 		tglbtnToggleEntity.setBounds(6, 299, 161, 29);
+		tfProyectoID.setBounds(286, 52, 130, 26);
+		
+		tfProyectoID.setColumns(10);
+
+		tfProyectoNombre.setColumns(10);
+		tfProyectoNombre.setBounds(286, 90, 130, 26);
+	
+		tfProyectoHoras.setBounds(286, 128, 130, 26);
+		
+		tfProyectoHoras.setColumns(10);
+		
+		lblProyectoID.setBounds(211, 57, 61, 16);
+		
+		lblProyectoHoras.setBounds(211, 133, 61, 16);
+		
+		lblProyectoNombre.setBounds(211, 95, 61, 16);
+		btnProyectoCrear.setBounds(428, 128, 117, 29);
+		btnProyectoBorrar.setBounds(357, 182, 161, 29);
+		btnProyectoMostrar.setBounds(417, 49, 117, 29);
+		btnProyectoModificar.setBounds(361, 223, 157, 29);
 		
 //Initial views of elements
 		//Ocultamos todos los elementos no necesarios en la primera vista
@@ -119,13 +152,30 @@ public class ViewCientifico {
 		frame.getContentPane().add(btnPCientificoBuscar);
 		frame.getContentPane().add(btnPCientificoBorrar);
 		frame.getContentPane().add(btnPCientificoCrear);
-		frame.getContentPane().add(lblCientifico);
+		frame.getContentPane().add(lblTittle);
 		frame.getContentPane().add(btnCientificoMostrar);
 		frame.getContentPane().add(txaMostrarResultados);
 		frame.getContentPane().add(tglbtnToggleEntity);	
+		frame.getContentPane().add(tfCientificoNombre);
+		frame.getContentPane().add(tfProyectoID);
+		frame.getContentPane().add(tfProyectoNombre);
+		frame.getContentPane().add(tfProyectoHoras);
+		frame.getContentPane().add(lblProyectoID);
+		frame.getContentPane().add(lblProyectoHoras);
+		frame.getContentPane().add(lblProyectoNombre);
+		frame.getContentPane().add(btnProyectoCrear);
+		frame.getContentPane().add(btnProyectoBorrar);
+		frame.getContentPane().add(btnProyectoMostrar);
+		frame.getContentPane().add(btnProyectoModificar);
 		
-	}
+		
+		
+		
+		
+		
 	
+	}
+	//Seteamos todo a no visible y no enable
 	public void unshowAll() {
 		//botones secundarios
 		btnBorrarCientifico.setVisible(false);
@@ -153,81 +203,164 @@ public class ViewCientifico {
 		btnPCientificoCrear.setForeground(null);
 		btnPCientificoBuscar.setForeground(null);
 		btnPCientificoModificar.setForeground(null);
+		
+		//Proyecto
+		tfProyectoID.setVisible(false);
+		tfProyectoNombre.setVisible(false);
+		tfProyectoHoras.setVisible(false);
+		lblProyectoID.setVisible(false);
+		lblProyectoHoras.setVisible(false);
+		lblProyectoNombre.setVisible(false);
+		btnProyectoCrear.setVisible(false);
+		btnProyectoBorrar.setVisible(false);
+		btnProyectoMostrar.setVisible(false);
+		btnProyectoModificar.setVisible(false);
+		
+		tfProyectoID.setEnabled(false);
+		tfProyectoNombre.setEnabled(false);
+		tfProyectoHoras.setEnabled(false);
+		btnProyectoCrear.setEnabled(false);
+		btnProyectoBorrar.setEnabled(false);
+		btnProyectoMostrar.setEnabled(false);
+		btnProyectoModificar.setEnabled(false);
+		
+		
+		
 	}
 	//Muestra los elementos para crear
 	public void showCreate() {
 		unshowAll();
-		btnPCientificoCrear.setForeground(Color.BLUE);
+		if(lblTittle.getText().equals("Cientifico")) {
+			btnPCientificoCrear.setForeground(Color.BLUE);
+			
+			lblCientificoNombre.setVisible(true);
+			lblCientificoDNI.setVisible(true);
+			
+			tfCientificoDNI.setVisible(true);
+			tfCientificoNombre.setVisible(true);
+			
+			tfCientificoDNI.setEnabled(true);
+			tfCientificoNombre.setEnabled(true);
+			
+			btnCrearCientifico.setVisible(true);
+			btnCrearCientifico.setEnabled(true);
+		}else {//Proyecto
+			
+			tfProyectoID.setVisible(true);
+			tfProyectoNombre.setVisible(true);
+			tfProyectoHoras.setVisible(true);
+			lblProyectoID.setVisible(true);
+			lblProyectoHoras.setVisible(true);
+			lblProyectoNombre.setVisible(true);
+			btnProyectoCrear.setVisible(true);
+			
+			tfProyectoID.setEnabled(true);
+			tfProyectoNombre.setEnabled(true);
+			tfProyectoHoras.setEnabled(true);
+			btnProyectoCrear.setEnabled(true);
+		}
 		
-		lblCientificoNombre.setVisible(true);
-		lblCientificoDNI.setVisible(true);
-		
-		tfCientificoDNI.setVisible(true);
-		tfCientificoNombre.setVisible(true);
-		
-		tfCientificoDNI.setEnabled(true);
-		tfCientificoNombre.setEnabled(true);
-		
-		btnCrearCientifico.setVisible(true);
-		btnCrearCientifico.setEnabled(true);
 	}
 	//Muestra elementos de la funcion de borrar
 	public void showErase() {
 		unshowAll();
-		btnPCientificoBorrar.setForeground(Color.BLUE);
+		if(lblTittle.getText().equals("Cientifico")) {
+			btnPCientificoBorrar.setForeground(Color.BLUE);
+			
+			btnBorrarCientifico.setVisible(true);
+			tfCientificoDNI.setVisible(true);
+			lblCientificoDNI.setVisible(true);
+			btnCientificoMostrar.setVisible(true);
+			txaMostrarResultados.setVisible(true);
+			
+			btnBorrarCientifico.setEnabled(true);
+			tfCientificoDNI.setEnabled(true);
+			btnCientificoMostrar.setEnabled(true);
+			txaMostrarResultados.setEnabled(true);
+		}else {//Proyecto
+			lblProyectoID.setVisible(true);
+			tfProyectoID.setVisible(true);
+			txaMostrarResultados.setVisible(true);
+			btnProyectoBorrar.setVisible(true);
+			btnProyectoMostrar.setVisible(true);
+			
+			lblProyectoID.setEnabled(true);
+			tfProyectoID.setEnabled(true);
+			btnProyectoBorrar.setEnabled(true);
+			btnProyectoMostrar.setEnabled(true);
+			
+			}
 		
-		btnBorrarCientifico.setVisible(true);
-		tfCientificoDNI.setVisible(true);
-		lblCientificoDNI.setVisible(true);
-		btnCientificoMostrar.setVisible(true);
-		txaMostrarResultados.setVisible(true);
-		
-		btnBorrarCientifico.setEnabled(true);
-		tfCientificoDNI.setEnabled(true);
-		btnCientificoMostrar.setEnabled(true);
-		txaMostrarResultados.setEnabled(true);
 		
 	}
 	//Muestra los elementos de la funcion search
 	public void showSearch() {
 		unshowAll();
-		btnPCientificoBuscar.setForeground(Color.BLUE);
-		
-		btnBuscarCientifico.setVisible(true);
-		tfCientificoDNI.setVisible(true);
-		lblCientificoDNI.setVisible(true);
-		txaMostrarResultados.setVisible(true);
-		
-		btnBuscarCientifico.setEnabled(true);
-		tfCientificoDNI.setEnabled(true);
-		txaMostrarResultados.setEnabled(true);
+		if(lblTittle.getText().equals("Cientifico")) {
+			btnPCientificoBuscar.setForeground(Color.BLUE);
+			
+			btnBuscarCientifico.setVisible(true);
+			tfCientificoDNI.setVisible(true);
+			lblCientificoDNI.setVisible(true);
+			txaMostrarResultados.setVisible(true);
+			
+			btnBuscarCientifico.setEnabled(true);
+			tfCientificoDNI.setEnabled(true);
+			txaMostrarResultados.setEnabled(true);
+		}else {//Proyecto
+			lblProyectoID.setVisible(true);
+			tfProyectoID.setVisible(true);
+			btnProyectoMostrar.setVisible(true);
+				
+			txaMostrarResultados.setVisible(true);
+			btnProyectoMostrar.setEnabled(true);
+		}
+
 	}
 	
 	public void showModify() {
 		unshowAll();
-		btnPCientificoModificar.setForeground(Color.BLUE);
+		if(lblTittle.getText().equals("Cientifico")) {
+			btnPCientificoModificar.setForeground(Color.BLUE);
+			
+			btnModificarCientifico.setVisible(true);
+			tfCientificoDNI.setVisible(true);
+			lblCientificoDNI.setVisible(true);
+			lblCientificoNombre.setVisible(true);
+			tfCientificoNombre.setVisible(true);
+			btnCientificoMostrar.setVisible(true);
+			
+			
+			btnModificarCientifico.setEnabled(true);
+			tfCientificoNombre.setEnabled(true);
+			btnCientificoMostrar.setEnabled(true);	
+			}else {//Proyecto
+				tfProyectoID.setVisible(true);
+				tfProyectoNombre.setVisible(true);
+				tfProyectoHoras.setVisible(true);
+				lblProyectoID.setVisible(true);
+				lblProyectoHoras.setVisible(true);
+				lblProyectoNombre.setVisible(true);
+				btnProyectoModificar.setVisible(true);
+				
+				
+				tfProyectoID.setEnabled(true);
+				tfProyectoNombre.setEnabled(true);
+				tfProyectoHoras.setEnabled(true);
+				btnProyectoModificar.setEnabled(true);
+				
+			}
 		
-		btnModificarCientifico.setVisible(true);
-		tfCientificoDNI.setVisible(true);
-		lblCientificoDNI.setVisible(true);
-		lblCientificoNombre.setVisible(true);
-		tfCientificoNombre.setVisible(true);
-		btnCientificoMostrar.setVisible(true);
-		
-		
-		btnModificarCientifico.setEnabled(true);
-		tfCientificoNombre.setEnabled(true);
-		btnCientificoMostrar.setEnabled(true);
 	
 	}
 	public void toggleEntity(String entidadActual) {
-		
+		unshowAll();
 		if(entidadActual.equals("Cambiar a Proyecto")) {
 			tglbtnToggleEntity.setText("Cambiar a Cientifico");
-			lblCientifico.setText("Proyecto");
+			lblTittle.setText("Proyecto");
 		}else {
 			tglbtnToggleEntity.setText("Cambiar a Proyecto");
-			lblCientifico.setText("Cientifico");
+			lblTittle.setText("Cientifico");
 		}
 		
 	}
@@ -265,12 +398,12 @@ public class ViewCientifico {
 		this.actionsCientifico = actionsCientifico;
 	}
 
-	public JLabel getLblCientifico() {
-		return lblCientifico;
+	public JLabel getLblTittle() {
+		return lblTittle;
 	}
 
-	public void setLblCientifico(JLabel lblCientifico) {
-		this.lblCientifico = lblCientifico;
+	public void setLblTittle(JLabel lblCientifico) {
+		this.lblTittle = lblCientifico;
 	}
 
 	public JLabel getLblCientificoNombre() {

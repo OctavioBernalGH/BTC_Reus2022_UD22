@@ -1,6 +1,7 @@
 package com.example.ud22_ejercicio3;
 
-import com.example.ud22_ejercicio3.Views.ViewCientifico;
+import com.example.ud22_ejercicio3.Views.ViewGeneral;
+import com.example.ud22_ejercicio3.controllers.ActionsCientifico;
 
 /**
  * Hello world!
@@ -14,7 +15,7 @@ public class App
     }
     public void iniciar() {
     	
-    	ViewCientifico viewCientifico = new ViewCientifico();
+    	ViewGeneral viewCientifico = new ViewGeneral();
     	ActionsCientifico actionsCientifico = new ActionsCientifico();
     	
     	viewCientifico.setActionsCientifico(actionsCientifico);
