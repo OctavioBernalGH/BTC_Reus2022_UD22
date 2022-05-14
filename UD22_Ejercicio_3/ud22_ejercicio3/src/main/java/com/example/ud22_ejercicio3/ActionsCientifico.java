@@ -26,18 +26,25 @@ public class ActionsCientifico implements ActionListener{
 		switch(name) {
 		
 			case "Crear":
-				viewCientifico.unshowAll();
 				viewCientifico.showCreate();
 				break;
 			case "Borrar":
-				viewCientifico.unshowAll();
 				viewCientifico.showErase();
 				break;
 			case "Buscar":
-				
+				viewCientifico.showSearch();
 				break;
 			case "Modificar":
+				viewCientifico.showModify();
+				break;
+			//Toggle entity
+			case "Cambiar a Proyecto":
+				viewCientifico.toggleEntity("Cambiar a Proyecto");
 				
+				break;
+			//Toggle entity
+			case "Cambiar a Cientifico":
+				viewCientifico.toggleEntity("Cambiar a Cientifico");
 				break;
 		}
 		

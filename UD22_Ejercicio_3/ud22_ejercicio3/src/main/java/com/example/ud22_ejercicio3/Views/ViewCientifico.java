@@ -12,6 +12,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 public class ViewCientifico {
 
@@ -23,14 +26,23 @@ public class ViewCientifico {
 	JLabel lblCientifico = new JLabel("Cientifico");
 	JLabel lblCientificoNombre = new JLabel("Nombre");
 	JLabel lblCientificoDNI = new JLabel("DNI");
-	JButton btnCientificoCrear = new JButton("Crear");
-	JButton btncientificoBorrar = new JButton("Borrar");
-	JButton btnCientificoBuscar = new JButton("Buscar");
-	JButton btnCientificoModificar = new JButton("Modificar");
+	//view principales
+	JButton btnPCientificoCrear = new JButton("Crear");
+	JButton btnPCientificoBorrar = new JButton("Borrar");
+	JButton btnPCientificoBuscar = new JButton("Buscar");
+	JButton btnPCientificoModificar = new JButton("Modificar");
+	//view conjunta
+	JTextArea txaMostrarResultados = new JTextArea();
+	//view borrar
 	JButton btnBorrarCientifico = new JButton("Borrar Cientifico");
+	JButton btnCientificoMostrar = new JButton("Mostrar");
+	//view buscar
 	JButton btnBuscarCientifico = new JButton("Buscar Cientifico");
 	JButton btnModificarCientifico = new JButton("Modificar Cientifico");
 	JButton btnCrearCientifico = new JButton("Crear Cientifico");
+	JButton tglbtnToggleEntity = new JButton("Cambiar a Proyecto");
+	
+	
 
 
 
@@ -59,14 +71,14 @@ public class ViewCientifico {
 		lblCientificoDNI.setBounds(211, 54, 61, 16);
 		
 	
-		btnCientificoCrear.setBounds(7, 34, 117, 29);
-		btncientificoBorrar.setBounds(7, 75, 117, 29);
-		btnCientificoBuscar.setBounds(7, 116, 117, 29);
-		btnCientificoModificar.setBounds(6, 157, 117, 29);
+		btnPCientificoCrear.setBounds(7, 34, 117, 29);
+		btnPCientificoBorrar.setBounds(7, 75, 117, 29);
+		btnPCientificoBuscar.setBounds(7, 116, 117, 29);
+		btnPCientificoModificar.setBounds(6, 157, 117, 29);
 		
 		btnCrearCientifico.setBounds(351, 182, 167, 29);
 		btnBorrarCientifico.setBounds(351, 182, 167, 29);
-		btnBuscarCientifico.setBounds(351, 182, 167, 29);
+		btnBuscarCientifico.setBounds(417, 49, 167, 29);
 		btnModificarCientifico.setBounds(351, 182, 167, 29);
 		
 		
@@ -78,15 +90,22 @@ public class ViewCientifico {
 		tfCientificoDNI.setColumns(10);
 		tfCientificoDNI.setBounds(284, 49, 130, 26);
 		
+		btnCientificoMostrar.setBounds(417, 49, 117, 29);
+		
+		txaMostrarResultados.setBounds(211, 85, 307, 85);
+		tglbtnToggleEntity.setBounds(6, 299, 161, 29);
+		
 //Initial views of elements
 		//Ocultamos todos los elementos no necesarios en la primera vista
 		unshowAll();
 		
 //Action Listeners
-		btnCientificoCrear.addActionListener(actionsCientifico);
-		btncientificoBorrar.addActionListener(actionsCientifico);
-		btnCientificoBuscar.addActionListener(actionsCientifico);
-		btnCientificoModificar.addActionListener(actionsCientifico);	
+		btnPCientificoCrear.addActionListener(actionsCientifico);
+		btnPCientificoBorrar.addActionListener(actionsCientifico);
+		btnPCientificoBuscar.addActionListener(actionsCientifico);
+		btnPCientificoModificar.addActionListener(actionsCientifico);	
+		btnCientificoMostrar.addActionListener(actionsCientifico);
+		tglbtnToggleEntity.addActionListener(actionsCientifico);
 	
 //Adding to content Panel
 		frame.getContentPane().add(btnModificarCientifico);
@@ -96,11 +115,15 @@ public class ViewCientifico {
 		frame.getContentPane().add(tfCientificoDNI);
 		frame.getContentPane().add(lblCientificoDNI);
 		frame.getContentPane().add(lblCientificoNombre);
-		frame.getContentPane().add(btnCientificoModificar);
-		frame.getContentPane().add(btnCientificoBuscar);
-		frame.getContentPane().add(btncientificoBorrar);
-		frame.getContentPane().add(btnCientificoCrear);
+		frame.getContentPane().add(btnPCientificoModificar);
+		frame.getContentPane().add(btnPCientificoBuscar);
+		frame.getContentPane().add(btnPCientificoBorrar);
+		frame.getContentPane().add(btnPCientificoCrear);
 		frame.getContentPane().add(lblCientifico);
+		frame.getContentPane().add(btnCientificoMostrar);
+		frame.getContentPane().add(txaMostrarResultados);
+		frame.getContentPane().add(tglbtnToggleEntity);	
+		
 	}
 	
 	public void unshowAll() {
@@ -119,16 +142,22 @@ public class ViewCientifico {
 		
 		tfCientificoNombre.setEnabled(false);
 		tfCientificoDNI.setEnabled(false);
+		txaMostrarResultados.setVisible(false);
+		txaMostrarResultados.setEnabled(false);
+		//Borrar
+		btnCientificoMostrar.setVisible(false);
+		btnCientificoMostrar.setEnabled(false);
 		
 		//Quitamos los marcadores de boton activo principal
-		btncientificoBorrar.setForeground(null);
-		btnCientificoCrear.setForeground(null);
-		btnCientificoBuscar.setForeground(null);
-		btnCientificoModificar.setForeground(null);
+		btnPCientificoBorrar.setForeground(null);
+		btnPCientificoCrear.setForeground(null);
+		btnPCientificoBuscar.setForeground(null);
+		btnPCientificoModificar.setForeground(null);
 	}
 	//Muestra los elementos para crear
 	public void showCreate() {
-		btnCientificoCrear.setForeground(Color.BLUE);
+		unshowAll();
+		btnPCientificoCrear.setForeground(Color.BLUE);
 		
 		lblCientificoNombre.setVisible(true);
 		lblCientificoDNI.setVisible(true);
@@ -144,31 +173,63 @@ public class ViewCientifico {
 	}
 	//Muestra elementos de la funcion de borrar
 	public void showErase() {
-		
-		btncientificoBorrar.setForeground(Color.BLUE);
+		unshowAll();
+		btnPCientificoBorrar.setForeground(Color.BLUE);
 		
 		btnBorrarCientifico.setVisible(true);
 		tfCientificoDNI.setVisible(true);
 		lblCientificoDNI.setVisible(true);
+		btnCientificoMostrar.setVisible(true);
+		txaMostrarResultados.setVisible(true);
 		
 		btnBorrarCientifico.setEnabled(true);
 		tfCientificoDNI.setEnabled(true);
+		btnCientificoMostrar.setEnabled(true);
+		txaMostrarResultados.setEnabled(true);
 		
 	}
 	//Muestra los elementos de la funcion search
 	public void showSearch() {
-		btnCientificoBuscar.setForeground(Color.BLUE);
+		unshowAll();
+		btnPCientificoBuscar.setForeground(Color.BLUE);
 		
 		btnBuscarCientifico.setVisible(true);
 		tfCientificoDNI.setVisible(true);
 		lblCientificoDNI.setVisible(true);
+		txaMostrarResultados.setVisible(true);
 		
 		btnBuscarCientifico.setEnabled(true);
 		tfCientificoDNI.setEnabled(true);
+		txaMostrarResultados.setEnabled(true);
 	}
 	
 	public void showModify() {
-		btnCientificoModificar.setForeground(Color.BLUE);
+		unshowAll();
+		btnPCientificoModificar.setForeground(Color.BLUE);
+		
+		btnModificarCientifico.setVisible(true);
+		tfCientificoDNI.setVisible(true);
+		lblCientificoDNI.setVisible(true);
+		lblCientificoNombre.setVisible(true);
+		tfCientificoNombre.setVisible(true);
+		btnCientificoMostrar.setVisible(true);
+		
+		
+		btnModificarCientifico.setEnabled(true);
+		tfCientificoNombre.setEnabled(true);
+		btnCientificoMostrar.setEnabled(true);
+	
+	}
+	public void toggleEntity(String entidadActual) {
+		
+		if(entidadActual.equals("Cambiar a Proyecto")) {
+			tglbtnToggleEntity.setText("Cambiar a Cientifico");
+			lblCientifico.setText("Proyecto");
+		}else {
+			tglbtnToggleEntity.setText("Cambiar a Proyecto");
+			lblCientifico.setText("Cientifico");
+		}
+		
 	}
 	
 
@@ -229,35 +290,35 @@ public class ViewCientifico {
 	}
 
 	public JButton getBtnCientificoCrear() {
-		return btnCientificoCrear;
+		return btnPCientificoCrear;
 	}
 
 	public void setBtnCientificoCrear(JButton btnCientificoCrear) {
-		this.btnCientificoCrear = btnCientificoCrear;
+		this.btnPCientificoCrear = btnCientificoCrear;
 	}
 
 	public JButton getBtncientificoBorrar() {
-		return btncientificoBorrar;
+		return btnPCientificoBorrar;
 	}
 
 	public void setBtncientificoBorrar(JButton btncientificoBorrar) {
-		this.btncientificoBorrar = btncientificoBorrar;
+		this.btnPCientificoBorrar = btncientificoBorrar;
 	}
 
 	public JButton getBtnCientificoBuscar() {
-		return btnCientificoBuscar;
+		return btnPCientificoBuscar;
 	}
 
 	public void setBtnCientificoBuscar(JButton btnCientificoBuscar) {
-		this.btnCientificoBuscar = btnCientificoBuscar;
+		this.btnPCientificoBuscar = btnCientificoBuscar;
 	}
 
 	public JButton getBtnCientificoModificar() {
-		return btnCientificoModificar;
+		return btnPCientificoModificar;
 	}
 
 	public void setBtnCientificoModificar(JButton btnCientificoModificar) {
-		this.btnCientificoModificar = btnCientificoModificar;
+		this.btnPCientificoModificar = btnCientificoModificar;
 	}
 
 	public JButton getBtnBorrarCientifico() {
