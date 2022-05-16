@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.example.ud22_controllers.CrearClienteController;
 import com.example.ud22_controllers.ViewController;
 
 /**
@@ -18,6 +19,7 @@ public class MainView {
 
 	public JFrame frame;
 	private ViewController viewModelSelector;
+	private CrearClienteController crearClienteController;
 
 	/** Instancia botones principales vista */
 	private JButton btnCrear = new JButton("Crear");
@@ -25,6 +27,7 @@ public class MainView {
 	private JButton btnEliminar = new JButton("Eliminar");
 	private JButton btnConsultar = new JButton("Consultar");
 	private JButton btnCambiarVista = new JButton("Cambiar a Videos");
+	private JButton btnAceptarCrearCliente = new JButton("Crear Cliente");
 
 	/** Instancia labels vista */
 	private JLabel lblNombreCrearCliente = new JLabel("Nombre:");
@@ -67,6 +70,7 @@ public class MainView {
 
 	public MainView() {
 		viewModelSelector = new ViewController();
+		crearClienteController = new CrearClienteController();
 		initialize();
 	}
 
@@ -88,7 +92,9 @@ public class MainView {
 		frame.getContentPane().add(btnEliminar);
 		frame.getContentPane().add(btnConsultar);
 		frame.getContentPane().add(btnCambiarVista);
+		frame.getContentPane().add(btnAceptarCrearCliente);
 
+		btnAceptarCrearCliente.setBounds(277, 415, 136, 23);
 		btnCrear.setBounds(10, 46, 124, 48);
 		btnModificar.setBounds(10, 105, 124, 48);
 		btnEliminar.setBounds(10, 164, 124, 48);
@@ -182,6 +188,9 @@ public class MainView {
 		txtNombreClienteModificar.setColumns(10);
 		txtDniClienteEliminar.setBounds(314, 60, 124, 20);
 		txtDniClienteEliminar.setColumns(10);
+		
+		
+
 
 		/** Se inicializa la vista con los elementos innecesarios ocultos */
 		mostrarVistaCrear();
@@ -192,6 +201,7 @@ public class MainView {
 		btnConsultar.addActionListener(viewModelSelector);
 		btnEliminar.addActionListener(viewModelSelector);
 		btnModificar.addActionListener(viewModelSelector);
+		btnAceptarCrearCliente.addActionListener(crearClienteController);
 	}
 
 	/**
@@ -229,6 +239,9 @@ public class MainView {
 		txtDniClienteEliminar.setVisible(false);
 		txtTituloCrear.setVisible(false);
 		txtDirectorCrear.setVisible(false);
+		
+		/** Se ocultan botones innecesarios */
+		btnAceptarCrearCliente.setVisible(false);
 	}
 
 	/** Método para cambiar de vista */
@@ -268,6 +281,9 @@ public class MainView {
 			txtDireccionCrearCliente.setVisible(true);
 			txtDniCrearCliente.setVisible(true);
 			txtFechaCrearCliente.setVisible(true);
+			
+			/** Se otorga visibilidad al botón */
+			btnAceptarCrearCliente.setVisible(true);
 
 		} else {
 
@@ -348,6 +364,20 @@ public class MainView {
 	}
 
 	/**
+	 * @return the crearClienteController
+	 */
+	public CrearClienteController getCrearClienteController() {
+		return crearClienteController;
+	}
+
+	/**
+	 * @param crearClienteController the crearClienteController to set
+	 */
+	public void setCrearClienteController(CrearClienteController crearClienteController) {
+		this.crearClienteController = crearClienteController;
+	}
+
+	/**
 	 * @return the btnCrear
 	 */
 	public JButton getBtnCrear() {
@@ -415,6 +445,20 @@ public class MainView {
 	 */
 	public void setBtnCambiarVista(JButton btnCambiarVista) {
 		this.btnCambiarVista = btnCambiarVista;
+	}
+
+	/**
+	 * @return the btnAceptarCrearCliente
+	 */
+	public JButton getBtnAceptarCrearCliente() {
+		return btnAceptarCrearCliente;
+	}
+
+	/**
+	 * @param btnAceptarCrearCliente the btnAceptarCrearCliente to set
+	 */
+	public void setBtnAceptarCrearCliente(JButton btnAceptarCrearCliente) {
+		this.btnAceptarCrearCliente = btnAceptarCrearCliente;
 	}
 
 	/**
@@ -530,6 +574,90 @@ public class MainView {
 	}
 
 	/**
+	 * @return the lblDniClienteModificar
+	 */
+	public JLabel getLblDniClienteModificar() {
+		return lblDniClienteModificar;
+	}
+
+	/**
+	 * @param lblDniClienteModificar the lblDniClienteModificar to set
+	 */
+	public void setLblDniClienteModificar(JLabel lblDniClienteModificar) {
+		this.lblDniClienteModificar = lblDniClienteModificar;
+	}
+
+	/**
+	 * @return the lblNombreClienteModificar
+	 */
+	public JLabel getLblNombreClienteModificar() {
+		return lblNombreClienteModificar;
+	}
+
+	/**
+	 * @param lblNombreClienteModificar the lblNombreClienteModificar to set
+	 */
+	public void setLblNombreClienteModificar(JLabel lblNombreClienteModificar) {
+		this.lblNombreClienteModificar = lblNombreClienteModificar;
+	}
+
+	/**
+	 * @return the lblApellidoClienteModificar
+	 */
+	public JLabel getLblApellidoClienteModificar() {
+		return lblApellidoClienteModificar;
+	}
+
+	/**
+	 * @param lblApellidoClienteModificar the lblApellidoClienteModificar to set
+	 */
+	public void setLblApellidoClienteModificar(JLabel lblApellidoClienteModificar) {
+		this.lblApellidoClienteModificar = lblApellidoClienteModificar;
+	}
+
+	/**
+	 * @return the lblDireccionClienteModificar
+	 */
+	public JLabel getLblDireccionClienteModificar() {
+		return lblDireccionClienteModificar;
+	}
+
+	/**
+	 * @param lblDireccionClienteModificar the lblDireccionClienteModificar to set
+	 */
+	public void setLblDireccionClienteModificar(JLabel lblDireccionClienteModificar) {
+		this.lblDireccionClienteModificar = lblDireccionClienteModificar;
+	}
+
+	/**
+	 * @return the lblFechaClienteModificar
+	 */
+	public JLabel getLblFechaClienteModificar() {
+		return lblFechaClienteModificar;
+	}
+
+	/**
+	 * @param lblFechaClienteModificar the lblFechaClienteModificar to set
+	 */
+	public void setLblFechaClienteModificar(JLabel lblFechaClienteModificar) {
+		this.lblFechaClienteModificar = lblFechaClienteModificar;
+	}
+
+	/**
+	 * @return the lblDniClienteEliminar
+	 */
+	public JLabel getLblDniClienteEliminar() {
+		return lblDniClienteEliminar;
+	}
+
+	/**
+	 * @param lblDniClienteEliminar the lblDniClienteEliminar to set
+	 */
+	public void setLblDniClienteEliminar(JLabel lblDniClienteEliminar) {
+		this.lblDniClienteEliminar = lblDniClienteEliminar;
+	}
+
+	/**
 	 * @return the txtNombreCrearCliente
 	 */
 	public JTextField getTxtNombreCrearCliente() {
@@ -626,4 +754,89 @@ public class MainView {
 	public void setTxtDirectorCrear(JTextField txtDirectorCrear) {
 		this.txtDirectorCrear = txtDirectorCrear;
 	}
+
+	/**
+	 * @return the txtDniClienteModificar
+	 */
+	public JTextField getTxtDniClienteModificar() {
+		return txtDniClienteModificar;
+	}
+
+	/**
+	 * @param txtDniClienteModificar the txtDniClienteModificar to set
+	 */
+	public void setTxtDniClienteModificar(JTextField txtDniClienteModificar) {
+		this.txtDniClienteModificar = txtDniClienteModificar;
+	}
+
+	/**
+	 * @return the txtNombreClienteModificar
+	 */
+	public JTextField getTxtNombreClienteModificar() {
+		return txtNombreClienteModificar;
+	}
+
+	/**
+	 * @param txtNombreClienteModificar the txtNombreClienteModificar to set
+	 */
+	public void setTxtNombreClienteModificar(JTextField txtNombreClienteModificar) {
+		this.txtNombreClienteModificar = txtNombreClienteModificar;
+	}
+
+	/**
+	 * @return the txtApellidoClienteModificar
+	 */
+	public JTextField getTxtApellidoClienteModificar() {
+		return txtApellidoClienteModificar;
+	}
+
+	/**
+	 * @param txtApellidoClienteModificar the txtApellidoClienteModificar to set
+	 */
+	public void setTxtApellidoClienteModificar(JTextField txtApellidoClienteModificar) {
+		this.txtApellidoClienteModificar = txtApellidoClienteModificar;
+	}
+
+	/**
+	 * @return the txtDireccionClienteModificar
+	 */
+	public JTextField getTxtDireccionClienteModificar() {
+		return txtDireccionClienteModificar;
+	}
+
+	/**
+	 * @param txtDireccionClienteModificar the txtDireccionClienteModificar to set
+	 */
+	public void setTxtDireccionClienteModificar(JTextField txtDireccionClienteModificar) {
+		this.txtDireccionClienteModificar = txtDireccionClienteModificar;
+	}
+
+	/**
+	 * @return the txtFechaClienteModificar
+	 */
+	public JTextField getTxtFechaClienteModificar() {
+		return txtFechaClienteModificar;
+	}
+
+	/**
+	 * @param txtFechaClienteModificar the txtFechaClienteModificar to set
+	 */
+	public void setTxtFechaClienteModificar(JTextField txtFechaClienteModificar) {
+		this.txtFechaClienteModificar = txtFechaClienteModificar;
+	}
+
+	/**
+	 * @return the txtDniClienteEliminar
+	 */
+	public JTextField getTxtDniClienteEliminar() {
+		return txtDniClienteEliminar;
+	}
+
+	/**
+	 * @param txtDniClienteEliminar the txtDniClienteEliminar to set
+	 */
+	public void setTxtDniClienteEliminar(JTextField txtDniClienteEliminar) {
+		this.txtDniClienteEliminar = txtDniClienteEliminar;
+	}
+
 }
