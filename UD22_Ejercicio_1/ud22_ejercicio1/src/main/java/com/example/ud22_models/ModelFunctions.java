@@ -169,9 +169,7 @@ public class ModelFunctions {
 		System.out.println("capturando fecha" + fecha);
 		// Creamos una cadena con los parámetros pasados por pantalla.
 		String insert = "INSERT INTO `UD22_Ejecicio_1.cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""+
-		nombre + "\", \"" + apellido + "\", \""+ direccion + "\", " + dni + ", '" + fecha + "');";
-		
-		
+		nombre + "\", \"" + apellido + "\", \""+ direccion + "\", " + dni + ", '" + fecha + "');";	
 		
 		System.out.println(insert);
 		// Ejecutamos la sentencia.
@@ -184,16 +182,19 @@ public class ModelFunctions {
 	 * 
 	 * @throws SQLException
 	 */
-	public void borrarPersona() throws SQLException {
-		// Se crea una sentencia sql.
-		Statement st = (Statement) mysqlConn.createStatement();
+	
+	public void borrarPersona(int dni) throws SQLException {
+		String Querydb = "USE UD22_Ejercicio_1;";             
+		Statement stdb = mysqlConn.createStatement();
+		
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String delete = "DELETE "
-				+ "FROM cliente "
-				+ "WHERE nombre=" + modelo.getNombre() + ", dni=" + modelo.getDni() + ");";
+		String delete = "DELETE FROM `UD22_Ejecicio_1.cliente` WHERE dni = " + dni + ";";
+		
 		// Ejecutamos la sentencia.
-		st.execute(delete);
+		stdb.execute(Querydb);
+		stdb.execute(delete);
 	}
+	
 	
 	
 	/**
