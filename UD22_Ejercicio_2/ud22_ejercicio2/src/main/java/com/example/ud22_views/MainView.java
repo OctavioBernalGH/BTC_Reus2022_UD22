@@ -3,12 +3,12 @@
  */
 package com.example.ud22_views;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import com.example.ud22_models.ViewModelSelector;
+import javax.swing.JToggleButton;
 
 /**
  * @author Gaming
@@ -16,14 +16,15 @@ import javax.swing.JTextField;
  */
 public class MainView {
 
-	private JFrame frame;
+	public JFrame frame;
+	private ViewModelSelector viewModelSelector;
 
 	/** Instancia botones principales vista */
 	private JButton btnCrear = new JButton("Crear");
 	private JButton btnModificar = new JButton("Modificar");
 	private JButton btnEliminar = new JButton("Eliminar");
 	private JButton btnConsultar = new JButton("Consultar");
-	private JButton btnCambiarVista = new JButton("Cambiar Vista");
+	private JButton btnCambiarVista = new JButton("Cambiar a Videos");
 
 	/** Instancia labels vista */
 	private JLabel lblNombreCrearCliente = new JLabel("Nombre:");
@@ -31,7 +32,7 @@ public class MainView {
 	private JLabel lblDireccionCrearCliente = new JLabel("Dirección:");
 	private JLabel lblDniCrearCliente = new JLabel("DNI:");
 	private JLabel lblFechaCrearCliente = new JLabel("Fecha:");
-	private JLabel lblSelectorVistas = new JLabel("");
+	private JLabel lblSelectorVistas = new JLabel("Vista Cliente");
 	private JLabel lblTituloCrear = new JLabel("Titulo:");
 	private JLabel lblDirectorCrear = new JLabel("Director:");
 
@@ -45,25 +46,15 @@ public class MainView {
 	private JTextField txtDirectorCrear;
 
 	/**
-	 * Launch the application.
+	 * 
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { MainView window = new MainView();
+	 * window.frame.setVisible(true); } catch (Exception e) { e.printStackTrace(); }
+	 * } }); }
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainView window = new MainView();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
 	public MainView() {
+		viewModelSelector = new ViewModelSelector();
 		initialize();
 	}
 
@@ -73,6 +64,7 @@ public class MainView {
 	private void initialize() {
 
 		frame = new JFrame();
+		viewModelSelector.setVistaPrincipal(this);
 		lblSelectorVistas.setText("Vista Cliente");
 		frame.setBounds(100, 100, 643, 531);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,7 +81,7 @@ public class MainView {
 		btnModificar.setBounds(10, 105, 124, 48);
 		btnEliminar.setBounds(10, 164, 124, 48);
 		btnConsultar.setBounds(10, 223, 124, 48);
-		btnCambiarVista.setBounds(31, 417, 170, 23);
+		btnCambiarVista.setBounds(36, 415, 152, 23);
 
 		/** Añadir labels al Pane */
 		frame.getContentPane().add(lblNombreCrearCliente);
@@ -145,6 +137,9 @@ public class MainView {
 
 		/** Se inicializa la vista con los elementos innecesarios ocultos */
 		mostrarVistaCrear();
+
+		/** Action Listeners */
+		btnCambiarVista.addActionListener(viewModelSelector);
 	}
 
 	/**
@@ -166,7 +161,7 @@ public class MainView {
 		txtDireccionCrearCliente.setVisible(false);
 		txtDniCrearCliente.setVisible(false);
 		txtFechaCrearCliente.setVisible(false);
-		
+
 		/** Se otorga visibilidad a las etiquetas */
 		lblTituloCrear.setVisible(false);
 		lblDirectorCrear.setVisible(false);
@@ -174,6 +169,21 @@ public class MainView {
 		/** Se otorga visibildiad a los textField */
 		txtTituloCrear.setVisible(false);
 		txtDirectorCrear.setVisible(false);
+	}
+
+	public void cambiarVista(String vistaActual) {
+
+		/** Se vacia completamente el pane */
+		vaciarPanel();
+
+		/** Se selecciona cambio de vista */
+		if (vistaActual.equals("Cambiar a Videos")) {
+			btnCambiarVista.setText("Cambiar a Cliente");
+			lblSelectorVistas.setText("Vista Videos");
+		} else {
+			btnCambiarVista.setText("Cambiar a Videos");
+			lblSelectorVistas.setText("Vista Cliente");
+		}
 	}
 
 	/**
@@ -200,7 +210,7 @@ public class MainView {
 			txtDniCrearCliente.setVisible(true);
 			txtFechaCrearCliente.setVisible(true);
 
-		} else if (lblSelectorVistas.getText().equals("Vista Videos")) {
+		} else {
 
 			/** Se otorga visibilidad a las etiquetas */
 			lblTituloCrear.setVisible(true);
@@ -211,4 +221,313 @@ public class MainView {
 			txtDirectorCrear.setVisible(true);
 		}
 	}
+
+	/**
+	 * @return the frame
+	 */
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	/**
+	 * @param frame the frame to set
+	 */
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	/**
+	 * @return the viewModelSelector
+	 */
+	public ViewModelSelector getViewModelSelector() {
+		return viewModelSelector;
+	}
+
+	/**
+	 * @param viewModelSelector the viewModelSelector to set
+	 */
+	public void setViewModelSelector(ViewModelSelector viewModelSelector) {
+		this.viewModelSelector = viewModelSelector;
+	}
+
+	/**
+	 * @return the btnCrear
+	 */
+	public JButton getBtnCrear() {
+		return btnCrear;
+	}
+
+	/**
+	 * @param btnCrear the btnCrear to set
+	 */
+	public void setBtnCrear(JButton btnCrear) {
+		this.btnCrear = btnCrear;
+	}
+
+	/**
+	 * @return the btnModificar
+	 */
+	public JButton getBtnModificar() {
+		return btnModificar;
+	}
+
+	/**
+	 * @param btnModificar the btnModificar to set
+	 */
+	public void setBtnModificar(JButton btnModificar) {
+		this.btnModificar = btnModificar;
+	}
+
+	/**
+	 * @return the btnEliminar
+	 */
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	/**
+	 * @param btnEliminar the btnEliminar to set
+	 */
+	public void setBtnEliminar(JButton btnEliminar) {
+		this.btnEliminar = btnEliminar;
+	}
+
+	/**
+	 * @return the btnConsultar
+	 */
+	public JButton getBtnConsultar() {
+		return btnConsultar;
+	}
+
+	/**
+	 * @param btnConsultar the btnConsultar to set
+	 */
+	public void setBtnConsultar(JButton btnConsultar) {
+		this.btnConsultar = btnConsultar;
+	}
+
+	/**
+	 * @return the btnCambiarVista
+	 */
+	public JButton getBtnCambiarVista() {
+		return btnCambiarVista;
+	}
+
+	/**
+	 * @param btnCambiarVista the btnCambiarVista to set
+	 */
+	public void setBtnCambiarVista(JButton btnCambiarVista) {
+		this.btnCambiarVista = btnCambiarVista;
+	}
+
+	/**
+	 * @return the lblNombreCrearCliente
+	 */
+	public JLabel getLblNombreCrearCliente() {
+		return lblNombreCrearCliente;
+	}
+
+	/**
+	 * @param lblNombreCrearCliente the lblNombreCrearCliente to set
+	 */
+	public void setLblNombreCrearCliente(JLabel lblNombreCrearCliente) {
+		this.lblNombreCrearCliente = lblNombreCrearCliente;
+	}
+
+	/**
+	 * @return the lblApellidoCrearCliente
+	 */
+	public JLabel getLblApellidoCrearCliente() {
+		return lblApellidoCrearCliente;
+	}
+
+	/**
+	 * @param lblApellidoCrearCliente the lblApellidoCrearCliente to set
+	 */
+	public void setLblApellidoCrearCliente(JLabel lblApellidoCrearCliente) {
+		this.lblApellidoCrearCliente = lblApellidoCrearCliente;
+	}
+
+	/**
+	 * @return the lblDireccionCrearCliente
+	 */
+	public JLabel getLblDireccionCrearCliente() {
+		return lblDireccionCrearCliente;
+	}
+
+	/**
+	 * @param lblDireccionCrearCliente the lblDireccionCrearCliente to set
+	 */
+	public void setLblDireccionCrearCliente(JLabel lblDireccionCrearCliente) {
+		this.lblDireccionCrearCliente = lblDireccionCrearCliente;
+	}
+
+	/**
+	 * @return the lblDniCrearCliente
+	 */
+	public JLabel getLblDniCrearCliente() {
+		return lblDniCrearCliente;
+	}
+
+	/**
+	 * @param lblDniCrearCliente the lblDniCrearCliente to set
+	 */
+	public void setLblDniCrearCliente(JLabel lblDniCrearCliente) {
+		this.lblDniCrearCliente = lblDniCrearCliente;
+	}
+
+	/**
+	 * @return the lblFechaCrearCliente
+	 */
+	public JLabel getLblFechaCrearCliente() {
+		return lblFechaCrearCliente;
+	}
+
+	/**
+	 * @param lblFechaCrearCliente the lblFechaCrearCliente to set
+	 */
+	public void setLblFechaCrearCliente(JLabel lblFechaCrearCliente) {
+		this.lblFechaCrearCliente = lblFechaCrearCliente;
+	}
+
+	/**
+	 * @return the lblSelectorVistas
+	 */
+	public JLabel getLblSelectorVistas() {
+		return lblSelectorVistas;
+	}
+
+	/**
+	 * @param lblSelectorVistas the lblSelectorVistas to set
+	 */
+	public void setLblSelectorVistas(JLabel lblSelectorVistas) {
+		this.lblSelectorVistas = lblSelectorVistas;
+	}
+
+	/**
+	 * @return the lblTituloCrear
+	 */
+	public JLabel getLblTituloCrear() {
+		return lblTituloCrear;
+	}
+
+	/**
+	 * @param lblTituloCrear the lblTituloCrear to set
+	 */
+	public void setLblTituloCrear(JLabel lblTituloCrear) {
+		this.lblTituloCrear = lblTituloCrear;
+	}
+
+	/**
+	 * @return the lblDirectorCrear
+	 */
+	public JLabel getLblDirectorCrear() {
+		return lblDirectorCrear;
+	}
+
+	/**
+	 * @param lblDirectorCrear the lblDirectorCrear to set
+	 */
+	public void setLblDirectorCrear(JLabel lblDirectorCrear) {
+		this.lblDirectorCrear = lblDirectorCrear;
+	}
+
+	/**
+	 * @return the txtNombreCrearCliente
+	 */
+	public JTextField getTxtNombreCrearCliente() {
+		return txtNombreCrearCliente;
+	}
+
+	/**
+	 * @param txtNombreCrearCliente the txtNombreCrearCliente to set
+	 */
+	public void setTxtNombreCrearCliente(JTextField txtNombreCrearCliente) {
+		this.txtNombreCrearCliente = txtNombreCrearCliente;
+	}
+
+	/**
+	 * @return the txtApellidoCrearCliente
+	 */
+	public JTextField getTxtApellidoCrearCliente() {
+		return txtApellidoCrearCliente;
+	}
+
+	/**
+	 * @param txtApellidoCrearCliente the txtApellidoCrearCliente to set
+	 */
+	public void setTxtApellidoCrearCliente(JTextField txtApellidoCrearCliente) {
+		this.txtApellidoCrearCliente = txtApellidoCrearCliente;
+	}
+
+	/**
+	 * @return the txtDireccionCrearCliente
+	 */
+	public JTextField getTxtDireccionCrearCliente() {
+		return txtDireccionCrearCliente;
+	}
+
+	/**
+	 * @param txtDireccionCrearCliente the txtDireccionCrearCliente to set
+	 */
+	public void setTxtDireccionCrearCliente(JTextField txtDireccionCrearCliente) {
+		this.txtDireccionCrearCliente = txtDireccionCrearCliente;
+	}
+
+	/**
+	 * @return the txtDniCrearCliente
+	 */
+	public JTextField getTxtDniCrearCliente() {
+		return txtDniCrearCliente;
+	}
+
+	/**
+	 * @param txtDniCrearCliente the txtDniCrearCliente to set
+	 */
+	public void setTxtDniCrearCliente(JTextField txtDniCrearCliente) {
+		this.txtDniCrearCliente = txtDniCrearCliente;
+	}
+
+	/**
+	 * @return the txtFechaCrearCliente
+	 */
+	public JTextField getTxtFechaCrearCliente() {
+		return txtFechaCrearCliente;
+	}
+
+	/**
+	 * @param txtFechaCrearCliente the txtFechaCrearCliente to set
+	 */
+	public void setTxtFechaCrearCliente(JTextField txtFechaCrearCliente) {
+		this.txtFechaCrearCliente = txtFechaCrearCliente;
+	}
+
+	/**
+	 * @return the txtTituloCrear
+	 */
+	public JTextField getTxtTituloCrear() {
+		return txtTituloCrear;
+	}
+
+	/**
+	 * @param txtTituloCrear the txtTituloCrear to set
+	 */
+	public void setTxtTituloCrear(JTextField txtTituloCrear) {
+		this.txtTituloCrear = txtTituloCrear;
+	}
+
+	/**
+	 * @return the txtDirectorCrear
+	 */
+	public JTextField getTxtDirectorCrear() {
+		return txtDirectorCrear;
+	}
+
+	/**
+	 * @param txtDirectorCrear the txtDirectorCrear to set
+	 */
+	public void setTxtDirectorCrear(JTextField txtDirectorCrear) {
+		this.txtDirectorCrear = txtDirectorCrear;
+	}
+
 }
