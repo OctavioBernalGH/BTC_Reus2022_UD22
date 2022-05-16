@@ -2,6 +2,8 @@ package com.example.ud22_controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
 import com.example.ud22_views.ViewCRUDSelector;
@@ -46,7 +48,12 @@ public class ActionsUpdate implements ActionListener {
 			}
 			
 			// Llamamos la funcion de crearCliente y seteamos los textos
-			funcionesModelo.updateCliente(nombre, apellido, direccion, dni, sqlDate);
+			try {
+				funcionesModelo.updatePersona(nombre, apellido, direccion, dni, sqlDate);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			break;
 		case "Atras":
 
