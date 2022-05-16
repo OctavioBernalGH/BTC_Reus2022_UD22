@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 
 import com.example.ud22_views.ViewErrorConnection;
@@ -42,7 +45,7 @@ public class ModelFunctions {
 	public static void selectServer(int option) throws Throwable {
 
 		mysqlConn = null;
-		
+
 		switch (option) {
 		case 0:// uri
 			address = "192.168.56.102";
@@ -70,7 +73,7 @@ public class ModelFunctions {
 			break;
 		}
 	}
-	
+
 
 	/**
 	 * Funcion para crear la cadena de conexión SQL y establecer conexión.
@@ -103,13 +106,13 @@ public class ModelFunctions {
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			
+
 			mysqlConn = DriverManager.getConnection("jdbc:mysql://" + address + ":3306?useTimezone=UTC", userMysql,
 					passwordMysql);
 
 
 		} catch (SQLException | ClassNotFoundException e) {
-			
+
 			//errorView.frameErrorConection.setVisible(true);
 			//JOptionPane.showMessageDialog( null, "No se ha podido establecer conexión" + e.getLocalizedMessage());
 		}
@@ -134,11 +137,21 @@ public class ModelFunctions {
 				flag = true;
 			}
 		} catch (SQLException e) {
-			 ViewErrorConnection errorView 	= new ViewErrorConnection();
-			 errorView.frameErrorConection.setVisible(true);
+			ViewErrorConnection errorView 	= new ViewErrorConnection();
+			errorView.frameErrorConection.setVisible(true);
 		}
 		System.out.println(flag);
 		return flag;
+	}
+
+
+	public static java.sql.Date formatStringToSQLDate(String strDate) throws Exception{             
+		Date utilDate = new Date(); //DateFormat             
+		SimpleDateFormat dfFormat = new SimpleDateFormat("dd/MM/yyyy"); // parse string into a DATE format                   
+		utilDate = dfFormat.parse(strDate); // convert a util.Date to milliseconds via its getTime() method                      
+		long time = utilDate.getTime(); // get the long value of java.sql.Date              
+		java.sql.Date sqlDate = new java.sql.Date(time);             
+		return sqlDate;            
 	}
 
 
@@ -147,18 +160,21 @@ public class ModelFunctions {
 	 * 
 	 * @throws SQLException
 	 */
-	public void crearCliente() throws SQLException {
+	public void crearCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws SQLException {
+		String Querydb = "USE UD22_Ejercicio_1;";             
+		Statement stdb = mysqlConn.createStatement();             
+
+
 		// Se crea una sentencia sql.
-		Statement st = (Statement) mysqlConn.createStatement();
+		System.out.println("capturando fecha" + fecha);
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha";
-		modelo.setNombre(modelo.getNombre());
-		modelo.setApellido(modelo.getApellido());
-		modelo.setDireccion(modelo.getDireccion());
-		modelo.setDni(modelo.getDni());
-		modelo.setFecha(modelo.getFecha());
+		String insert = "INSERT INTO `UD22_Ejecicio_1.cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""+
+				nombre + "\", \"" + apellido + "\", \""+ direccion + "\", " + dni + ", '" + fecha + "');";	
+
+		System.out.println(insert);
 		// Ejecutamos la sentencia.
-		st.execute(insert);
+		stdb.execute(Querydb);
+		stdb.execute(insert);
 	}
 
 	/**
@@ -166,32 +182,37 @@ public class ModelFunctions {
 	 * 
 	 * @throws SQLException
 	 */
-	public void borrarPersona() throws SQLException {
-		// Se crea una sentencia sql.
-		Statement st = (Statement) mysqlConn.createStatement();
+
+	public void borrarPersona(int dni) throws SQLException {
+		String Querydb = "USE UD22_Ejercicio_1;";             
+		Statement stdb = mysqlConn.createStatement();
+
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String delete = "DELETE "
-				+ "FROM cliente "
-				+ "WHERE nombre=" + modelo.getNombre() + ", dni=" + modelo.getDni() + ");";
+		String delete = "DELETE FROM `UD22_Ejecicio_1.cliente` WHERE dni = " + dni + ";";
+
 		// Ejecutamos la sentencia.
-		st.execute(delete);
+		stdb.execute(Querydb);
+		stdb.execute(delete);
 	}
-	
-	
+
+
+
 	/**
 	 * Función para actualizar un registro de la tabla.
 	 * 
 	 * @throws SQLException
 	 */
-	
-	public void updatePersona() throws SQLException {
-		// Se crea una sentencia sql.
-		Statement st = (Statement) mysqlConn.createStatement();
+
+	public void updatePersona(String nombre, String apellido, String direccion, int dni, Date fecha) throws SQLException {
+		String Querydb = "USE UD22_Ejercicio_1;";             
+		Statement stdb = mysqlConn.createStatement();  
+
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String update = "UPDATE " 
-				+ "FROM cliente "
-				+ "WHERE dni=" + modelo.getDni() + ");";
+		String update = "UPDATE `UD22_Ejecicio_1.cliente` SET nombre = \"" + nombre +"\", apellido = \""+ apellido + "\", direccion = \"" + direccion + "\", fecha = '" + fecha + "' WHERE dni = "+ dni + ";";
+		System.out.println(update);
+
 		// Ejecutamos la sentencia.
-		st.execute(update);
+		stdb.execute(Querydb);
+		stdb.execute(update);
 	}
 }
