@@ -8,8 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.example.ud22_controllers.ViewModelSelector;
-
+import com.example.ud22_controllers.ViewController;
 
 /**
  * @author Gaming
@@ -18,7 +17,7 @@ import com.example.ud22_controllers.ViewModelSelector;
 public class MainView {
 
 	public JFrame frame;
-	private ViewModelSelector viewModelSelector;
+	private ViewController viewModelSelector;
 
 	/** Instancia botones principales vista */
 	private JButton btnCrear = new JButton("Crear");
@@ -36,6 +35,11 @@ public class MainView {
 	private JLabel lblSelectorVistas = new JLabel("Vista Cliente");
 	private JLabel lblTituloCrear = new JLabel("Titulo:");
 	private JLabel lblDirectorCrear = new JLabel("Director:");
+	private JLabel lblDniClienteModificar = new JLabel("DNI:");
+	private JLabel lblNombreClienteModificar = new JLabel("Nombre:");
+	private JLabel lblApellidoClienteModificar = new JLabel("Apellido");
+	private JLabel lblDireccionClienteModificar = new JLabel("Dirección:");
+	private JLabel lblFechaClienteModificar = new JLabel("Fecha:");
 
 	/** Instanacia textfields vista */
 	private JTextField txtNombreCrearCliente;
@@ -45,6 +49,11 @@ public class MainView {
 	private JTextField txtFechaCrearCliente;
 	private JTextField txtTituloCrear;
 	private JTextField txtDirectorCrear;
+	private JTextField txtDniClienteModificar;
+	private JTextField txtNombreClienteModificar;
+	private JTextField txtApellidoClienteModificar;
+	private JTextField txtDireccionClienteModificar;
+	private JTextField txtFechaClienteModificar;
 
 	/**
 	 * 
@@ -55,7 +64,7 @@ public class MainView {
 	 */
 
 	public MainView() {
-		viewModelSelector = new ViewModelSelector();
+		viewModelSelector = new ViewController();
 		initialize();
 	}
 
@@ -92,6 +101,11 @@ public class MainView {
 		frame.getContentPane().add(lblFechaCrearCliente);
 		frame.getContentPane().add(lblTituloCrear);
 		frame.getContentPane().add(lblDirectorCrear);
+		frame.getContentPane().add(lblDniClienteModificar);
+		frame.getContentPane().add(lblNombreClienteModificar);
+		frame.getContentPane().add(lblApellidoClienteModificar);
+		frame.getContentPane().add(lblDireccionClienteModificar);
+		frame.getContentPane().add(lblFechaClienteModificar);
 
 		lblNombreCrearCliente.setBounds(226, 63, 81, 14);
 		lblApellidoCrearCliente.setBounds(226, 122, 81, 14);
@@ -101,6 +115,11 @@ public class MainView {
 		lblTituloCrear.setBounds(226, 63, 81, 14);
 		lblDirectorCrear.setBounds(226, 122, 46, 14);
 		lblSelectorVistas.setBounds(71, 390, 73, 14);
+		lblDniClienteModificar.setBounds(226, 63, 46, 14);
+		lblNombreClienteModificar.setBounds(226, 122, 46, 14);
+		lblApellidoClienteModificar.setBounds(226, 181, 46, 14);
+		lblDireccionClienteModificar.setBounds(226, 240, 60, 14);
+		lblFechaClienteModificar.setBounds(226, 291, 60, 14);
 
 		/** Instancia TextFileds vista */
 		txtNombreCrearCliente = new JTextField();
@@ -110,6 +129,11 @@ public class MainView {
 		txtFechaCrearCliente = new JTextField();
 		txtTituloCrear = new JTextField();
 		txtDirectorCrear = new JTextField();
+		txtNombreClienteModificar = new JTextField();
+		txtApellidoClienteModificar = new JTextField();
+		txtDireccionClienteModificar = new JTextField();
+		txtFechaClienteModificar = new JTextField();
+		txtDniClienteModificar = new JTextField();
 
 		/** Añadir TextFields al pane */
 		frame.getContentPane().add(txtApellidoCrearCliente);
@@ -120,6 +144,11 @@ public class MainView {
 		frame.getContentPane().add(lblSelectorVistas);
 		frame.getContentPane().add(txtTituloCrear);
 		frame.getContentPane().add(txtDirectorCrear);
+		frame.getContentPane().add(txtDniClienteModificar);
+		frame.getContentPane().add(txtNombreClienteModificar);
+		frame.getContentPane().add(txtApellidoClienteModificar);
+		frame.getContentPane().add(txtDireccionClienteModificar);
+		frame.getContentPane().add(txtFechaClienteModificar);
 
 		txtNombreCrearCliente.setBounds(314, 60, 124, 20);
 		txtNombreCrearCliente.setColumns(10);
@@ -135,6 +164,16 @@ public class MainView {
 		txtTituloCrear.setColumns(10);
 		txtDirectorCrear.setColumns(10);
 		txtDirectorCrear.setBounds(313, 119, 125, 20);
+		txtDniClienteModificar.setBounds(314, 60, 124, 20);
+		txtDniClienteModificar.setColumns(10);
+		txtApellidoClienteModificar.setColumns(10);
+		txtApellidoClienteModificar.setBounds(314, 178, 124, 20);
+		txtDireccionClienteModificar.setColumns(10);
+		txtDireccionClienteModificar.setBounds(313, 237, 124, 20);
+		txtFechaClienteModificar.setColumns(10);
+		txtFechaClienteModificar.setBounds(313, 288, 124, 20);
+		txtNombreClienteModificar.setBounds(314, 119, 124, 20);
+		txtNombreClienteModificar.setColumns(10);
 
 		/** Se inicializa la vista con los elementos innecesarios ocultos */
 		mostrarVistaCrear();
@@ -159,6 +198,11 @@ public class MainView {
 		lblDireccionCrearCliente.setVisible(false);
 		lblDniCrearCliente.setVisible(false);
 		lblFechaCrearCliente.setVisible(false);
+		lblDniClienteModificar.setVisible(false);
+		lblNombreClienteModificar.setVisible(false);
+		lblApellidoClienteModificar.setVisible(false);
+		lblDireccionClienteModificar.setVisible(false);
+		lblFechaClienteModificar.setVisible(false);
 
 		/** Se ocultan los campos de texto del pane */
 		txtNombreCrearCliente.setVisible(false);
@@ -166,6 +210,11 @@ public class MainView {
 		txtDireccionCrearCliente.setVisible(false);
 		txtDniCrearCliente.setVisible(false);
 		txtFechaCrearCliente.setVisible(false);
+		txtDniClienteModificar.setVisible(false);
+		txtNombreClienteModificar.setVisible(false);
+		txtApellidoClienteModificar.setVisible(false);
+		txtDireccionClienteModificar.setVisible(false);
+		txtFechaClienteModificar.setVisible(false);
 
 		/** Se otorga visibilidad a las etiquetas */
 		lblTituloCrear.setVisible(false);
@@ -176,6 +225,7 @@ public class MainView {
 		txtDirectorCrear.setVisible(false);
 	}
 
+	/** Método para cambiar de vista */
 	public void cambiarVista(String vistaActual) {
 
 		/** Se vacia completamente el pane */
@@ -191,9 +241,7 @@ public class MainView {
 		}
 	}
 
-	/**
-	 * Método para mostrar la vista Crear.
-	 */
+	/** Método para mostrar la vista Crear. */
 	public void mostrarVistaCrear() {
 
 		/** Se vacía completamente el pane */
@@ -201,7 +249,7 @@ public class MainView {
 
 		if (lblSelectorVistas.getText().equals("Vista Cliente")) {
 
-			/** Se otorga visibilidad a las etiquetas innecesarias del pane */
+			/** Se otorga visibilidad a las etiquetas de la vista crear. */
 			lblNombreCrearCliente.setVisible(true);
 			lblApellidoCrearCliente.setVisible(true);
 			lblDireccionCrearCliente.setVisible(true);
@@ -226,6 +274,29 @@ public class MainView {
 			txtDirectorCrear.setVisible(true);
 		}
 	}
+	
+	public void mostrarVistaModificar() {
+		
+		/** Se vacía completamente el pane */
+		vaciarPanel();
+		
+		if(lblSelectorVistas.getText().equals("Vista Cliente")) {
+			
+			/** Se otorga visibilidad a las etiquetas de la vista modificar */
+			lblDniClienteModificar.setVisible(true);
+			lblNombreClienteModificar.setVisible(true);
+			lblApellidoClienteModificar.setVisible(true);
+			lblDireccionClienteModificar.setVisible(true);
+			lblFechaClienteModificar.setVisible(true);
+			
+			/** Se otorga visibildad a los TextArea de la vista modificar */
+			txtDniClienteModificar.setVisible(true);
+			txtNombreClienteModificar.setVisible(true);
+			txtApellidoClienteModificar.setVisible(true);
+			txtDireccionClienteModificar.setVisible(true);
+			txtFechaClienteModificar.setVisible(true);
+		}
+	}
 
 	/**
 	 * @return the frame
@@ -244,14 +315,14 @@ public class MainView {
 	/**
 	 * @return the viewModelSelector
 	 */
-	public ViewModelSelector getViewModelSelector() {
+	public ViewController getViewModelSelector() {
 		return viewModelSelector;
 	}
 
 	/**
 	 * @param viewModelSelector the viewModelSelector to set
 	 */
-	public void setViewModelSelector(ViewModelSelector viewModelSelector) {
+	public void setViewModelSelector(ViewController viewModelSelector) {
 		this.viewModelSelector = viewModelSelector;
 	}
 
@@ -534,5 +605,4 @@ public class MainView {
 	public void setTxtDirectorCrear(JTextField txtDirectorCrear) {
 		this.txtDirectorCrear = txtDirectorCrear;
 	}
-
 }

@@ -12,7 +12,7 @@ import com.example.ud22_views.MainView;
  * @author Gaming
  *
  */
-public class ViewModelSelector implements ActionListener {
+public class ViewController implements ActionListener {
 
 	private MainView vistaPrincipal;
 
@@ -37,8 +37,10 @@ public class ViewModelSelector implements ActionListener {
 		
 		switch(name) {
 		case "Crear":
-			System.out.println(name);
 			vistaPrincipal.mostrarVistaCrear();
+			break;
+		case "Modificar":
+			vistaPrincipal.mostrarVistaModificar();
 			break;
 		case "Cambiar a Cliente":
 			vistaPrincipal.cambiarVista("Cambiar a Cliente");
@@ -54,8 +56,9 @@ public class ViewModelSelector implements ActionListener {
 		
 		switch(name) {
 		case "Crear":
-			System.out.println(name);
 			vistaPrincipal.mostrarVistaCrear();
+		case "Modificar":
+			vistaPrincipal.mostrarVistaModificar();
 			break;
 		case "Cambiar a Cliente":
 			vistaPrincipal.cambiarVista("Cambiar a Cliente");

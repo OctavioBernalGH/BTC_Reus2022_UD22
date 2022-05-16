@@ -1,6 +1,6 @@
 package com.example.ud22_ejercicio2;
 
-import com.example.ud22_controllers.ViewModelSelector;
+import com.example.ud22_controllers.ViewController;
 import com.example.ud22_views.MainView;
 
 /**
@@ -12,7 +12,7 @@ public class App
     public static void main( String[] args )
     {
        MainView vistaPrincipal = new MainView();
-       ViewModelSelector selectorVista = new ViewModelSelector();
+       ViewController selectorVista = new ViewController();
        
        vistaPrincipal.setViewModelSelector(selectorVista);
        selectorVista.setVistaPrincipal(vistaPrincipal);
