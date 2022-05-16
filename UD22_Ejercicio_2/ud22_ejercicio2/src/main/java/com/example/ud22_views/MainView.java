@@ -40,6 +40,7 @@ public class MainView {
 	private JLabel lblApellidoClienteModificar = new JLabel("Apellido");
 	private JLabel lblDireccionClienteModificar = new JLabel("Dirección:");
 	private JLabel lblFechaClienteModificar = new JLabel("Fecha:");
+	private JLabel lblDniClienteEliminar = new JLabel("DNI:");
 
 	/** Instanacia textfields vista */
 	private JTextField txtNombreCrearCliente;
@@ -54,6 +55,7 @@ public class MainView {
 	private JTextField txtApellidoClienteModificar;
 	private JTextField txtDireccionClienteModificar;
 	private JTextField txtFechaClienteModificar;
+	private JTextField txtDniClienteEliminar;
 
 	/**
 	 * 
@@ -106,6 +108,7 @@ public class MainView {
 		frame.getContentPane().add(lblApellidoClienteModificar);
 		frame.getContentPane().add(lblDireccionClienteModificar);
 		frame.getContentPane().add(lblFechaClienteModificar);
+		frame.getContentPane().add(lblDniClienteEliminar);
 
 		lblNombreCrearCliente.setBounds(226, 63, 81, 14);
 		lblApellidoCrearCliente.setBounds(226, 122, 81, 14);
@@ -120,6 +123,7 @@ public class MainView {
 		lblApellidoClienteModificar.setBounds(226, 181, 46, 14);
 		lblDireccionClienteModificar.setBounds(226, 240, 60, 14);
 		lblFechaClienteModificar.setBounds(226, 291, 60, 14);
+		lblDniClienteEliminar.setBounds(226, 63, 46, 14);
 
 		/** Instancia TextFileds vista */
 		txtNombreCrearCliente = new JTextField();
@@ -134,6 +138,7 @@ public class MainView {
 		txtDireccionClienteModificar = new JTextField();
 		txtFechaClienteModificar = new JTextField();
 		txtDniClienteModificar = new JTextField();
+		txtDniClienteEliminar = new JTextField();
 
 		/** Añadir TextFields al pane */
 		frame.getContentPane().add(txtApellidoCrearCliente);
@@ -149,6 +154,7 @@ public class MainView {
 		frame.getContentPane().add(txtApellidoClienteModificar);
 		frame.getContentPane().add(txtDireccionClienteModificar);
 		frame.getContentPane().add(txtFechaClienteModificar);
+		frame.getContentPane().add(txtDniClienteEliminar);
 
 		txtNombreCrearCliente.setBounds(314, 60, 124, 20);
 		txtNombreCrearCliente.setColumns(10);
@@ -174,6 +180,8 @@ public class MainView {
 		txtFechaClienteModificar.setBounds(313, 288, 124, 20);
 		txtNombreClienteModificar.setBounds(314, 119, 124, 20);
 		txtNombreClienteModificar.setColumns(10);
+		txtDniClienteEliminar.setBounds(314, 60, 124, 20);
+		txtDniClienteEliminar.setColumns(10);
 
 		/** Se inicializa la vista con los elementos innecesarios ocultos */
 		mostrarVistaCrear();
@@ -203,6 +211,9 @@ public class MainView {
 		lblApellidoClienteModificar.setVisible(false);
 		lblDireccionClienteModificar.setVisible(false);
 		lblFechaClienteModificar.setVisible(false);
+		lblDniClienteEliminar.setVisible(false);
+		lblTituloCrear.setVisible(false);
+		lblDirectorCrear.setVisible(false);
 
 		/** Se ocultan los campos de texto del pane */
 		txtNombreCrearCliente.setVisible(false);
@@ -215,12 +226,7 @@ public class MainView {
 		txtApellidoClienteModificar.setVisible(false);
 		txtDireccionClienteModificar.setVisible(false);
 		txtFechaClienteModificar.setVisible(false);
-
-		/** Se otorga visibilidad a las etiquetas */
-		lblTituloCrear.setVisible(false);
-		lblDirectorCrear.setVisible(false);
-
-		/** Se otorga visibildiad a los textField */
+		txtDniClienteEliminar.setVisible(false);
 		txtTituloCrear.setVisible(false);
 		txtDirectorCrear.setVisible(false);
 	}
@@ -274,27 +280,42 @@ public class MainView {
 			txtDirectorCrear.setVisible(true);
 		}
 	}
-	
+
 	public void mostrarVistaModificar() {
-		
+
 		/** Se vacía completamente el pane */
 		vaciarPanel();
-		
-		if(lblSelectorVistas.getText().equals("Vista Cliente")) {
-			
+
+		if (lblSelectorVistas.getText().equals("Vista Cliente")) {
+
 			/** Se otorga visibilidad a las etiquetas de la vista modificar */
 			lblDniClienteModificar.setVisible(true);
 			lblNombreClienteModificar.setVisible(true);
 			lblApellidoClienteModificar.setVisible(true);
 			lblDireccionClienteModificar.setVisible(true);
 			lblFechaClienteModificar.setVisible(true);
-			
+
 			/** Se otorga visibildad a los TextArea de la vista modificar */
 			txtDniClienteModificar.setVisible(true);
 			txtNombreClienteModificar.setVisible(true);
 			txtApellidoClienteModificar.setVisible(true);
 			txtDireccionClienteModificar.setVisible(true);
 			txtFechaClienteModificar.setVisible(true);
+		}
+	}
+	
+	public void mostrarVistaEliminar() {
+
+		/** Se vacía completamente el pane */
+		vaciarPanel();
+
+		if (lblSelectorVistas.getText().equals("Vista Cliente")) {
+
+			/** Se otorga visibilidad a las etiquetas de la vista modificar */
+			lblDniClienteEliminar.setVisible(true);
+
+			/** Se otorga visibildad a los TextArea de la vista modificar */
+			txtDniClienteEliminar.setVisible(true);
 		}
 	}
 

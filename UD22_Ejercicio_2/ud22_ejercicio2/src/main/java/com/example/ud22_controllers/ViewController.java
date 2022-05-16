@@ -42,6 +42,9 @@ public class ViewController implements ActionListener {
 		case "Modificar":
 			vistaPrincipal.mostrarVistaModificar();
 			break;
+		case "Eliminar":
+			vistaPrincipal.mostrarVistaEliminar();
+			break;
 		case "Cambiar a Cliente":
 			vistaPrincipal.cambiarVista("Cambiar a Cliente");
 			break;
@@ -57,8 +60,12 @@ public class ViewController implements ActionListener {
 		switch(name) {
 		case "Crear":
 			vistaPrincipal.mostrarVistaCrear();
+			break;
 		case "Modificar":
 			vistaPrincipal.mostrarVistaModificar();
+			break;
+		case "Eliminar":
+			vistaPrincipal.mostrarVistaEliminar();
 			break;
 		case "Cambiar a Cliente":
 			vistaPrincipal.cambiarVista("Cambiar a Cliente");
