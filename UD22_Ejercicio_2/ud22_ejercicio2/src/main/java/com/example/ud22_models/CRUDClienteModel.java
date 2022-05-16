@@ -6,6 +6,7 @@ package com.example.ud22_models;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 /**
  * @author Josep Oriol López Bosch
@@ -13,10 +14,13 @@ import java.sql.Statement;
  * @author Octavio Bernal Vilana
  */
 
+import com.example.ud22_models.ConnectorModel;
+
 public class CRUDClienteModel {
 
 	/* Instancias de Clase */
-	ConnectorModel mysqlConn = new ConnectorModel();
+		
+	ConnectorModel mysqlConn= new ConnectorModel();
 	ClienteClass modeloCliente = new ClienteClass();
 
 	/**
@@ -25,20 +29,20 @@ public class CRUDClienteModel {
 	 * @param mysqlConn
 	 * @throws SQLException
 	 */
-	public void crearCliente(Connection mysqlConn) throws SQLException {
+	public void crearCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws SQLException {
 
-		Statement st = (Statement) mysqlConn.createStatement();
+		String Querydb = "USE UD22_Ejercicio_2;";             
+				
+		Statement st = ((Connection) mysqlConn).createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha";
-		modeloCliente.setNombre(modeloCliente.getNombre());
-		modeloCliente.setApellido(modeloCliente.getApellido());
-		modeloCliente.setDireccion(modeloCliente.getDireccion());
-		modeloCliente.setDni(modeloCliente.getDni());
-		modeloCliente.setFecha(modeloCliente.getFecha());
+		String insert = "INSERT INTO `cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""+
+				nombre + "\", \"" + apellido + "\", \""+ direccion + "\", " + dni + ", '" + fecha + "');";
+		System.out.println(insert);
 		// Ejecutamos la sentencia.
+		st.execute(Querydb);
 		st.execute(insert);
 	}
-
+ 
 	/**
 	 * Método para eliminar un cliente.
 	 * 
