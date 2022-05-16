@@ -1,5 +1,10 @@
 package com.example.ud22_models;
 
+/**
+ * @author Josep Oriol López Bosch
+ * @author David Dalmau Dieguez
+ * @author Octavio Bernal Vilana
+ */
 import java.util.Date;
 
 /**

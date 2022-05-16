@@ -5,7 +5,6 @@ package com.example.ud22_views;
  * @author David Dalmau Dieguez
  * @author Octavio Bernal Vilana
  */
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;

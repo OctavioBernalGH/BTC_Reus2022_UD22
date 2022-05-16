@@ -11,9 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.swing.JOptionPane;
-
 import com.example.ud22_views.ViewErrorConnection;
 
 public class ModelFunctions {
