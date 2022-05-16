@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 
 import com.example.ud22_views.ViewErrorConnection;
@@ -141,24 +144,39 @@ public class ModelFunctions {
 		return flag;
 	}
 
+	
+	public static java.sql.Date formatStringToSQLDate(String strDate) throws Exception{             
+		Date utilDate = new Date(); //DateFormat             
+		SimpleDateFormat dfFormat = new SimpleDateFormat("dd/MM/yyyy"); // parse string into a DATE format                   
+		utilDate = dfFormat.parse(strDate); // convert a util.Date to milliseconds via its getTime() method                      
+		long time = utilDate.getTime(); // get the long value of java.sql.Date              
+		java.sql.Date sqlDate = new java.sql.Date(time);             
+		return sqlDate;            
+		}
+	
 
 	/**
 	 * Función para añadir una persona nueva al registro.
 	 * 
 	 * @throws SQLException
 	 */
-	public void crearCliente() throws SQLException {
+	public void crearCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws SQLException {
+		String Querydb = "USE UD22_Ejercicio_1;";             
+		Statement stdb = mysqlConn.createStatement();             
+		
+		
 		// Se crea una sentencia sql.
-		Statement st = (Statement) mysqlConn.createStatement();
+		System.out.println("capturando fecha" + fecha);
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha";
-		modelo.setNombre(modelo.getNombre());
-		modelo.setApellido(modelo.getApellido());
-		modelo.setDireccion(modelo.getDireccion());
-		modelo.setDni(modelo.getDni());
-		modelo.setFecha(modelo.getFecha());
+		String insert = "INSERT INTO `UD22_Ejecicio_1.cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""+
+		nombre + "\", \"" + apellido + "\", \""+ direccion + "\", " + dni + ", '" + fecha + "');";
+		
+		
+		
+		System.out.println(insert);
 		// Ejecutamos la sentencia.
-		st.execute(insert);
+		stdb.execute(Querydb);
+		stdb.execute(insert);
 	}
 
 	/**
