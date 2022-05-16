@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.ud22_models;
+package com.example.ud22_controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +37,7 @@ public class ViewModelSelector implements ActionListener {
 		
 		switch(name) {
 		case "Crear":
+			System.out.println(name);
 			vistaPrincipal.mostrarVistaCrear();
 			break;
 		case "Cambiar a Cliente":
@@ -53,6 +54,7 @@ public class ViewModelSelector implements ActionListener {
 		
 		switch(name) {
 		case "Crear":
+			System.out.println(name);
 			vistaPrincipal.mostrarVistaCrear();
 			break;
 		case "Cambiar a Cliente":

@@ -37,6 +37,7 @@ public class ActionsCientifico implements ActionListener{
 		
 		switch(name) {
 			case "Crear":
+				System.out.println(name);
 				viewGeneral.showCreate();
 				break;
 			case "Borrar":

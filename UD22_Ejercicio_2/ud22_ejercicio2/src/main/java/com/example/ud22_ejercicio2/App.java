@@ -1,6 +1,6 @@
 package com.example.ud22_ejercicio2;
 
-import com.example.ud22_models.ViewModelSelector;
+import com.example.ud22_controllers.ViewModelSelector;
 import com.example.ud22_views.MainView;
 
 /**

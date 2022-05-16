@@ -7,8 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import com.example.ud22_models.ViewModelSelector;
-import javax.swing.JToggleButton;
+
+import com.example.ud22_controllers.ViewModelSelector;
+
 
 /**
  * @author Gaming
@@ -140,6 +141,10 @@ public class MainView {
 
 		/** Action Listeners */
 		btnCambiarVista.addActionListener(viewModelSelector);
+		btnCrear.addActionListener(viewModelSelector);
+		btnConsultar.addActionListener(viewModelSelector);
+		btnEliminar.addActionListener(viewModelSelector);
+		btnModificar.addActionListener(viewModelSelector);
 	}
 
 	/**
