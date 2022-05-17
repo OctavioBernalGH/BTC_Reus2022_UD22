@@ -69,7 +69,7 @@ public class CRUDClienteModel {
 		// Se crea una sentencia sql.
 		Statement st = (Statement) mysqlConn.createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String update = "UPDATE UD22_Ejecicio_2.cliente SET nombre, apellido, direccion, dni, fecha WHERE dni=" + modeloCliente.getDni() + ");";
+		String update = "UPDATE `UD22_Ejecicio_2.cliente` SET nombre, apellido, direccion, dni, fecha WHERE dni=" + modeloCliente.getDni() + ");";
 		modeloCliente.setNombre(modeloCliente.getNombre());
 		modeloCliente.setApellido(modeloCliente.getApellido());
 		modeloCliente.setDireccion(modeloCliente.getDireccion());
