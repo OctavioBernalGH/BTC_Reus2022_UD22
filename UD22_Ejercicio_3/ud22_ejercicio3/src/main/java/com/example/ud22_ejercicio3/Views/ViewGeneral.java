@@ -10,7 +10,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 
-import com.example.ud22_ejercicio3.controllers.ActionsCientifico;
+import com.example.ud22_ejercicio3.controllers.ActionsCientificoController;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -22,7 +22,7 @@ public class ViewGeneral {
 	public JFrame frame;
 	private JTextField tfCientificoNombre;
 	private JTextField tfCientificoDNI;
-	private ActionsCientifico actionsCientifico;
+	private ActionsCientificoController actionsCientifico;
 	
 	private JLabel lblTittle = new JLabel("Cientifico");
 	private JLabel lblCientificoNombre = new JLabel("Nombre");
@@ -57,7 +57,7 @@ public class ViewGeneral {
 	private final JButton btnProyectoModificar = new JButton("Modificar Proyecto");
 	
 	public ViewGeneral() {
-		actionsCientifico = new ActionsCientifico(); 
+		actionsCientifico = new ActionsCientificoController(); 
 		initialize();
 	}
 
@@ -390,11 +390,11 @@ public class ViewGeneral {
 		this.tfCientificoDNI = tfCientificoDNI;
 	}
 
-	public ActionsCientifico getActionsCientifico() {
+	public ActionsCientificoController getActionsCientifico() {
 		return actionsCientifico;
 	}
 
-	public void setActionsCientifico(ActionsCientifico actionsCientifico) {
+	public void setActionsCientifico(ActionsCientificoController actionsCientifico) {
 		this.actionsCientifico = actionsCientifico;
 	}
 

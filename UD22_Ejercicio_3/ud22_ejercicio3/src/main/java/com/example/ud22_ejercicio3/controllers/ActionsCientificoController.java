@@ -8,7 +8,7 @@ import javax.swing.JButton;
 
 import com.example.ud22_ejercicio3.Views.ViewGeneral;
 
-public class ActionsCientifico implements ActionListener{
+public class ActionsCientificoController implements ActionListener{
 	
 	private ViewGeneral viewGeneral;
 	
