@@ -28,6 +28,7 @@ public class ActionsClienteController implements ActionListener {
 	 * botones de confirmación de acción, como por ejemplo el botón de crear un
 	 * cliente, modificar un cliente o eliminarlo.
 	 */
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		/** Se define el botón de cada funcionalidad */
@@ -35,7 +36,7 @@ public class ActionsClienteController implements ActionListener {
 		/** Se recibe el elemento botón */
 		String nombreBoton = botonAceptar.getText();
 		/** Se crea una instancia de la clase FunctionModel */
-		FunctionModel creacionCliente = new FunctionModel();
+		FunctionModel functionModel = new FunctionModel();
 
 		/** Se realizan acciones en función del nombre del botón */
 		switch (nombreBoton) {
@@ -55,14 +56,14 @@ public class ActionsClienteController implements ActionListener {
 
 			// Se convierte la fecha de cadena a sentencia SQL
 			try {
-				fechaSQL = creacionCliente.formatStringToSQLDate(fecha);
+				fechaSQL = functionModel.formatStringToSQLDate(fecha);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 
 			// Se crea un cliente con la función crearCliente.
 			try {
-				creacionCliente.crearCliente(nombre, apellido, direccion, dni, fechaSQL);
+				functionModel.crearCliente(nombre, apellido, direccion, dni, fechaSQL);
 			} catch (Throwable e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -84,14 +85,14 @@ public class ActionsClienteController implements ActionListener {
 
 			// Se convierte la fecha de cadena a sentencia SQL
 			try {
-				fechaSQL = creacionCliente.formatStringToSQLDate(fecha);
+				fechaSQL = functionModel.formatStringToSQLDate(fecha);
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 
 			// Llamamos la funcion de crearCliente y seteamos los textos
 			try {
-				creacionCliente.updateCliente(nombre, apellido, direccion, dni, fechaSQL);
+				functionModel.updateCliente(nombre, apellido, direccion, dni, fechaSQL);
 			} catch (Throwable e1) {
 				e1.printStackTrace();
 			}
@@ -106,7 +107,7 @@ public class ActionsClienteController implements ActionListener {
 
 			// Se elimina un cliente mediante la función eliminarCliente.
 			try {
-				creacionCliente.eliminarCliente(dni);
+				functionModel.eliminarCliente(dni);
 			} catch (Throwable e1) {
 				e1.printStackTrace();
 			}
