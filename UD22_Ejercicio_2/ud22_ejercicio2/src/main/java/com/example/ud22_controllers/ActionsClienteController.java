@@ -7,8 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JButton;
-import com.example.ud22_models.CRUDClienteModel;
-import com.example.ud22_models.ConnectorModel;
+import com.example.ud22_models.FunctionModel;
 import com.example.ud22_views.MainView;
 /**
  * @author Josep Oriol López Bosch
@@ -17,7 +16,7 @@ import com.example.ud22_views.MainView;
  */
 public class ActionsClienteController implements ActionListener {
 
-	ConnectorModel conexion = new ConnectorModel();
+	FunctionModel conexion = new FunctionModel();
 	private MainView vista;
 	
 	public void CrearClienteController() {
@@ -43,7 +42,7 @@ public class ActionsClienteController implements ActionListener {
 			
 			/** Se convierte la fecha de cadena a sentencia SQL */
 			try {
-				fechaSQL = ConnectorModel.formatStringToSQLDate(fecha);
+				fechaSQL = FunctionModel.formatStringToSQLDate(fecha);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -51,7 +50,7 @@ public class ActionsClienteController implements ActionListener {
 			/** Se crea un cliente */
 			
 			try {
-				ConnectorModel connectorModel = new ConnectorModel();
+				FunctionModel connectorModel = new FunctionModel();
 				connectorModel.crearCliente(nombre, apellido, direccion, dni, fechaSQL);
 			} catch (Throwable e1) {
 				// TODO Auto-generated catch block

@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
-import com.example.ud22_models.ConnectorModel;
+import com.example.ud22_models.FunctionModel;
 import com.example.ud22_views.MainView;
 
 /**
@@ -16,7 +16,7 @@ import com.example.ud22_views.MainView;
  */
 public class ViewController implements ActionListener {
 
-	private ConnectorModel conectorModelo = new ConnectorModel();
+	private FunctionModel conectorModelo = new FunctionModel();
 	private MainView vistaPrincipal; 
 
 	@Override

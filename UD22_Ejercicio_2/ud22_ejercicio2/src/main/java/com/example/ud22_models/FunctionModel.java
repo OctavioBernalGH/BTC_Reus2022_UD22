@@ -16,7 +16,7 @@ import java.util.Date;
  * @author David Dalmau Dieguez
  * @author Octavio Bernal Vilana
  */
-public class ConnectorModel {
+public class FunctionModel {
 
 	// Se crea una conexion del tipo Connection.
 	public static Connection mysqlConn = null;
@@ -26,6 +26,7 @@ public class ConnectorModel {
 	static String password;
 
 	private ClienteClass modelo 			= new ClienteClass();
+	private VideosClass modeloVideos 		= new VideosClass();
 
 	/**
 	 * Función para seleccionar el servidor.
@@ -214,4 +215,50 @@ public class ConnectorModel {
 		stdb.execute(Querydb);
 		stdb.execute(update);
 	}
+	
+	public void crearVideo(Connection mysqlConn) throws SQLException {
+
+		Statement st = (Statement) mysqlConn.createStatement();
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String insert = "INSERT INTO videos (title, director, cli_id "+");";
+		modeloVideos.setTitle(modeloVideos.getTitle());
+		modeloVideos.setDirector(modeloVideos.getDirector());
+		modeloVideos.setCli_id(modelo.getId());
+		// Ejecutamos la sentencia.
+		st.execute(insert);
+	}
+
+	/**
+	 * Método para eliminar un video.
+	 * 
+	 * @param mysqlConn
+	 * @throws SQLException
+	 */
+	public void borrarVideo(Connection mysqlConn) throws SQLException {
+		// Se crea una sentencia sql.
+		Statement st = (Statement) mysqlConn.createStatement();
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String delete = "DELETE " + "FROM videos " + "WHERE id=" + modeloVideos.getId() + ");";
+		// Ejecutamos la sentencia.
+		st.execute(delete);
+	}
+
+
+	/**
+	 * Método para actualizar un video.
+	 * @param mysqlConn
+	 * @throws SQLException
+	 */
+	public void actualizarVideo(Connection mysqlConn) throws SQLException {
+		// Se crea una sentencia sql.
+		Statement st = (Statement) mysqlConn.createStatement();
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String update = "UPDATE videos SET title, director, cli_id WHERE id=" + modeloVideos.getId() + ");";
+		modeloVideos.setTitle(modeloVideos.getTitle());
+		modeloVideos.setDirector(modeloVideos.getDirector());
+		modeloVideos.setCli_id(modelo.getId());
+		// Ejecutamos la sentencia.
+		st.execute(update);
+	}
 }
+
