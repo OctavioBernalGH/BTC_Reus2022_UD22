@@ -49,13 +49,13 @@ public class ActionsVideoController implements ActionListener {
 			System.out.println("Evento boton crear video");
 			// Se obtienen los datos de los campos de texto.
 			String title = vista.getTxtTituloCrear().getText();
+			System.out.println(title);
 			String director = vista.getTxtDirectorCrear().getText();
 
 			// Se crea un cliente con la función crearCliente.
 			try {
-				functionModel.crearVideo(title, director);
+				functionModel.createVideo(title, director);
 			} catch (Throwable e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
