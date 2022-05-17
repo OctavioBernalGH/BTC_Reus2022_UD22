@@ -5,7 +5,6 @@ package com.example.ud22_views;
  * @author David Dalmau Dieguez
  * @author Octavio Bernal Vilana
  */
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -18,7 +17,7 @@ import javax.swing.JButton;
 
 public class ViewDelete {
 
-	public JFrame frmCrearPersona;
+	public JFrame frmDeletePersona;
 	private JTextField nombreBorrarField;
 	private JTextField dniBorrarField;
 	
@@ -41,7 +40,7 @@ public class ViewDelete {
 		actionsDelete.setViewDelete(this);
 
 //Creating elements
-		frmCrearPersona 						= new JFrame();
+		frmDeletePersona 						= new JFrame();
 		nombreBorrarField 						= new JTextField();
 		dniBorrarField 							= new JTextField();
 		
@@ -54,11 +53,11 @@ public class ViewDelete {
 		JLabel lblDocumentoDeIdentidadBorrar 	= new JLabel("DNI:");
 
 //Parameterizing
-		frmCrearPersona.setTitle("Borrar persona");
-		frmCrearPersona.getContentPane().setBackground(Color.DARK_GRAY);
-		frmCrearPersona.setBounds(100, 100, 415, 465);
-		frmCrearPersona.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmCrearPersona.getContentPane().setLayout(null);
+		frmDeletePersona.setTitle("Borrar persona");
+		frmDeletePersona.getContentPane().setBackground(Color.DARK_GRAY);
+		frmDeletePersona.setBounds(100, 100, 415, 465);
+		frmDeletePersona.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmDeletePersona.getContentPane().setLayout(null);
 
 		lblTituloBorrar.setForeground(Color.WHITE);
 		lblTituloBorrar.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -68,7 +67,7 @@ public class ViewDelete {
 		lblNombreBorrar.setForeground(Color.WHITE);
 		lblNombreBorrar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNombreBorrar.setBounds(29, 105, 78, 31);
-		
+		lblNombreBorrar.setVisible(false);
 
 		lblDocumentoDeIdentidadBorrar.setForeground(Color.WHITE);
 		lblDocumentoDeIdentidadBorrar.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -79,6 +78,7 @@ public class ViewDelete {
 		nombreBorrarField.setForeground(Color.WHITE);
 		nombreBorrarField.setBackground(Color.LIGHT_GRAY);
 		nombreBorrarField.setBounds(117, 111, 190, 20);
+		nombreBorrarField.setVisible(false);
 		
 		nombreBorrarField.setColumns(10);
 
@@ -109,15 +109,15 @@ public class ViewDelete {
 		btnBorrar.addActionListener(actionsDelete);
 		
 //Adding to content Panel
-		frmCrearPersona.getContentPane().add(btnAtras);
-		frmCrearPersona.getContentPane().add(lblBuscarPorDniBorrar);
-		frmCrearPersona.getContentPane().add(lblIntroducirDatosBorrar);
-		frmCrearPersona.getContentPane().add(btnBorrar);
-		frmCrearPersona.getContentPane().add(dniBorrarField);
-		frmCrearPersona.getContentPane().add(nombreBorrarField);
-		frmCrearPersona.getContentPane().add(lblDocumentoDeIdentidadBorrar);
-		frmCrearPersona.getContentPane().add(lblNombreBorrar);
-		frmCrearPersona.getContentPane().add(lblTituloBorrar);
+		frmDeletePersona.getContentPane().add(btnAtras);
+		frmDeletePersona.getContentPane().add(lblBuscarPorDniBorrar);
+		frmDeletePersona.getContentPane().add(lblIntroducirDatosBorrar);
+		frmDeletePersona.getContentPane().add(btnBorrar);
+		frmDeletePersona.getContentPane().add(dniBorrarField);
+		frmDeletePersona.getContentPane().add(nombreBorrarField);
+		frmDeletePersona.getContentPane().add(lblDocumentoDeIdentidadBorrar);
+		frmDeletePersona.getContentPane().add(lblNombreBorrar);
+		frmDeletePersona.getContentPane().add(lblTituloBorrar);
 	}
 
 	public ActionsDelete getActionsDelete() {
@@ -127,5 +127,23 @@ public class ViewDelete {
 	public void setActionsDelete(ActionsDelete actionsDelete) {
 		this.actionsDelete = actionsDelete;
 	}
+
+	public JTextField getNombreBorrarField() {
+		return nombreBorrarField;
+	}
+
+	public void setNombreBorrarField(JTextField nombreBorrarField) {
+		this.nombreBorrarField = nombreBorrarField;
+	}
+
+	public JTextField getDniBorrarField() {
+		return dniBorrarField;
+	}
+
+	public void setDniBorrarField(JTextField dniBorrarField) {
+		this.dniBorrarField = dniBorrarField;
+	}
+	
+	
 	
 }

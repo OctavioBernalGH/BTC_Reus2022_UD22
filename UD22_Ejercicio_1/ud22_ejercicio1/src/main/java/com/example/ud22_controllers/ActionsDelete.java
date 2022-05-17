@@ -2,6 +2,8 @@ package com.example.ud22_controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import com.example.ud22_models.ModelFunctions;
 import com.example.ud22_views.ViewCRUDSelector;
@@ -30,7 +32,15 @@ public class ActionsDelete implements ActionListener {
 
 //CRUDSelectorView
 		case "Borrar":
-			System.out.println("Borrar");
+			int dni = Integer.parseInt(viewDelete.getDniBorrarField().getText());
+			
+			try {
+				funcionesModelo.borrarPersona(dni);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			break;
 		case "Atras":
 			break;

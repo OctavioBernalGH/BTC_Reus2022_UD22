@@ -1,19 +1,22 @@
+/**
+ * Clase ConnectorModel.
+ */
 package com.example.ud22_models;
 
-/**
- * @author Josep Oriol López Bosch
- * @author David Dalmau Dieguez
- * @author Octavio Bernal Vilana
- */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.example.ud22_views.ViewErrorConnection;
 
-public class ModelFunctions {
+
+/**
+ * @author Josep Oriol López Bosch
+ * @author David Dalmau Dieguez
+ * @author Octavio Bernal Vilana
+ */
+public class ConnectorModel {
 
 	// Se crea una conexion del tipo Connection.
 	public static Connection mysqlConn = null;
@@ -134,8 +137,8 @@ public class ModelFunctions {
 				flag = true;
 			}
 		} catch (SQLException e) {
-			ViewErrorConnection errorView 	= new ViewErrorConnection();
-			errorView.frameErrorConection.setVisible(true);
+			//ViewErrorConnection errorView 	= new ViewErrorConnection();
+			//errorView.frameErrorConection.setVisible(true);
 		}
 		System.out.println(flag);
 		return flag;
@@ -154,13 +157,12 @@ public class ModelFunctions {
 
 	/**
 	 * Función para añadir una persona nueva al registro.
-	 * 
-	 * @throws SQLException
+	 * @throws Throwable 
 	 */
-	public void crearCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws SQLException {
+	public void crearCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws Throwable {
+		selectServer(2);
 		String Querydb = "USE UD22_Ejercicio_1;";             
-		Statement stdb = mysqlConn.createStatement();             
-
+		Statement stdb = (Statement)mysqlConn.createStatement();             
 
 		// Se crea una sentencia sql.
 		System.out.println("capturando fecha" + fecha);
@@ -180,9 +182,9 @@ public class ModelFunctions {
 	 * @throws SQLException
 	 */
 
-	public void borrarPersona(int dni) throws SQLException {
+	public static void borrarPersona(int dni) throws SQLException {
 		String Querydb = "USE UD22_Ejercicio_1;";             
-		Statement stdb = mysqlConn.createStatement();
+		Statement stdb = (Statement)mysqlConn.createStatement();
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
 		String delete = "DELETE FROM `UD22_Ejecicio_1.cliente` WHERE dni = " + dni + ";";
@@ -200,9 +202,9 @@ public class ModelFunctions {
 	 * @throws SQLException
 	 */
 
-	public void updatePersona(String nombre, String apellido, String direccion, int dni, Date fecha) throws SQLException {
+	public static void updatePersona(String nombre, String apellido, String direccion, int dni, Date fecha) throws SQLException {
 		String Querydb = "USE UD22_Ejercicio_1;";             
-		Statement stdb = mysqlConn.createStatement();  
+		Statement stdb = (Statement)mysqlConn.createStatement();  
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
 		String update = "UPDATE `UD22_Ejecicio_1.cliente` SET nombre = \"" + nombre +"\", apellido = \""+ apellido + "\", direccion = \"" + direccion + "\", fecha = '" + fecha + "' WHERE dni = "+ dni + ";";

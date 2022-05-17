@@ -1,10 +1,8 @@
+/**
+ * Clase ClienteClass.
+ */
 package com.example.ud22_models;
 
-/**
- * @author Josep Oriol López Bosch
- * @author David Dalmau Dieguez
- * @author Octavio Bernal Vilana
- */
 import java.util.Date;
 
 /**
@@ -14,31 +12,26 @@ import java.util.Date;
  */
 public class ClienteClass {
 
-	/**
-	 * Se crean los atributos de clase correspondiente a las columnas de la tablas.
-	 */
+	/* Atributos de clase ClienteClass */
 	private int id;
 	private String nombre;
 	private String apellido;
 	private String direccion;
-	private String dni;
+	private int dni;
 	private Date fecha;
 
-	/**
-	 * Se crea constructor vacío
-	 */
-	public ClienteClass() {
-	}
+	/* Se crea el constructor de clase */
 
+	public ClienteClass() {}
 	/**
-	 * Se crea constructor completo
-	 * 
 	 * @param nombre
 	 * @param apellido
 	 * @param direccion
+	 * @param dni
 	 * @param fecha
 	 */
-	public ClienteClass(String nombre, String apellido, String direccion, String dni, Date fecha) {
+	public ClienteClass(String nombre, String apellido, String direccion, int dni, Date fecha) {
+		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
@@ -46,7 +39,8 @@ public class ClienteClass {
 		this.fecha = fecha;
 	}
 
-	// Se crean los getters y setters de las diferentes columnas.
+	/* Se crean los métodos Get y Set de los diferentes atributos. */
+
 	/**
 	 * @return the id
 	 */
@@ -54,6 +48,9 @@ public class ClienteClass {
 		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -103,14 +100,14 @@ public class ClienteClass {
 	/**
 	 * @return the dni
 	 */
-	public String getDni() {
+	public int getDni() {
 		return dni;
 	}
 
 	/**
-	 * @param dni to set to dni
+	 * @param dni the dni to set
 	 */
-	public void setDni(String dni) {
+	public void setDni(int dni) {
 		this.dni = dni;
 	}
 
