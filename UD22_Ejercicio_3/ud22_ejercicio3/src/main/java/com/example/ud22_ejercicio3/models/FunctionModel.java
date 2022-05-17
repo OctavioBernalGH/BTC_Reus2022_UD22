@@ -187,4 +187,18 @@ public class FunctionModel {
 		stdb.execute(Querydb);
 		stdb.execute(delete);
 	}
+	
+	public static void updateCientifico(String dni, String nombreApels)throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_3;";
+		Statement stdb = (Statement) mysqlConn.createStatement();
+
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String update = "UPDATE `cientifico` SET dni = \"" + dni + "\", nombreApels = \"" + nombreApels + ";";
+		System.out.println(update);
+
+		// Ejecutamos la sentencia.
+		stdb.execute(Querydb);
+		stdb.execute(update);
+	}
 }
