@@ -7,10 +7,8 @@ import com.example.ud22_views.MainView;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main( String[] args )    {
        MainView vistaPrincipal = new MainView();
        ViewController selectorVista = new ViewController();
        
