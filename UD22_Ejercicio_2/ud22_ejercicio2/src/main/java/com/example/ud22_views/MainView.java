@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.example.ud22_controllers.ActionsClienteController;
+import com.example.ud22_controllers.ActionsVideoController;
 import com.example.ud22_controllers.ViewController;
 
 /**
@@ -20,6 +21,7 @@ public class MainView {
 	public JFrame frame;
 	private ViewController viewModelSelector;
 	private ActionsClienteController crearClienteController;
+	private ActionsVideoController crearVideosController;
 
 	/** Instancia botones principales vista */
 	private JButton btnCrear = new JButton("Crear");
@@ -27,7 +29,7 @@ public class MainView {
 	private JButton btnEliminar = new JButton("Eliminar");
 	private JButton btnConsultar = new JButton("Consultar");
 	private JButton btnCambiarVista = new JButton("Cambiar a Videos");
-	private JButton btnAceptarCrearCliente = new JButton("Crear Cliente");
+	private JButton btnAceptarCreacion = new JButton("Crear Cliente");
 	private JButton btnAsignarVideoCliente = new JButton("Asignar");
 	
 	/** Instancia labels vista */
@@ -64,12 +66,14 @@ public class MainView {
 	private JTextField txtDniClienteEliminar;
 	
 	//Eliminar
-	private JButton btnClienteEliminar = new JButton("Eliminar Cliente");
+	private JButton btnAceptarEliminacion = new JButton("Eliminar Cliente");
 	//Modificar
-	private JButton btnClienteModificar = new JButton("Actualizar Cliente");
+	private JButton btnAceptarModificacion = new JButton("Actualizar Cliente");
 	private JButton btnClienteConsultar = new JButton("Consultar Cliente");
 	private JTextField txtDefinirCliente;
 	private JTextField txtAsignarVideo;
+	private JTextField txtTituloModificar = new JTextField();
+	private JTextField txtDirectorModificar = new JTextField();
 
 	/**
 	 * 
@@ -89,6 +93,10 @@ public class MainView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		txtDirectorModificar.setBounds(313, 119, 124, 20);
+		txtDirectorModificar.setColumns(10);
+		txtTituloModificar.setBounds(314, 60, 124, 20);
+		txtTituloModificar.setColumns(10);
 		crearClienteController.setVista(this);
 
 		frame = new JFrame();
@@ -104,20 +112,20 @@ public class MainView {
 		frame.getContentPane().add(btnEliminar);
 		frame.getContentPane().add(btnConsultar);
 		frame.getContentPane().add(btnCambiarVista);
-		frame.getContentPane().add(btnAceptarCrearCliente);
-		frame.getContentPane().add(btnClienteEliminar);
-		frame.getContentPane().add(btnClienteModificar);
+		frame.getContentPane().add(btnAceptarCreacion);
+		frame.getContentPane().add(btnAceptarEliminacion);
+		frame.getContentPane().add(btnAceptarModificacion);
 		frame.getContentPane().add(btnClienteConsultar);
 		frame.getContentPane().add(btnAsignarVideoCliente);
 		
-		btnAceptarCrearCliente.setBounds(277, 415, 136, 23);
+		btnAceptarCreacion.setBounds(277, 415, 136, 23);
 		btnCrear.setBounds(10, 46, 124, 48);
 		btnModificar.setBounds(10, 105, 124, 48);
 		btnEliminar.setBounds(10, 164, 124, 48);
 		btnConsultar.setBounds(10, 223, 124, 48);
 		btnCambiarVista.setBounds(24, 415, 152, 23);
-		btnClienteEliminar.setBounds(277, 412, 136, 29);
-		btnClienteModificar.setBounds(277, 412, 152, 29);
+		btnAceptarEliminacion.setBounds(277, 412, 136, 29);
+		btnAceptarModificacion.setBounds(277, 412, 152, 29);
 		btnClienteConsultar.setBounds(261, 412, 152, 29);
 		btnAsignarVideoCliente.setBounds(10, 478, 124, 48);
 		
@@ -189,6 +197,8 @@ public class MainView {
 		frame.getContentPane().add(txtDniClienteEliminar);
 		frame.getContentPane().add(txtDefinirCliente);
 		frame.getContentPane().add(txtAsignarVideo);
+		frame.getContentPane().add(txtTituloModificar);
+		frame.getContentPane().add(txtDirectorModificar);
 		
 		txtNombreCrearCliente.setBounds(314, 60, 124, 20);
 		txtNombreCrearCliente.setColumns(10);
@@ -220,7 +230,7 @@ public class MainView {
 		txtDefinirCliente.setColumns(10);
 		txtAsignarVideo.setBounds(300, 509, 86, 20);
 		txtAsignarVideo.setColumns(10);
-
+		
 		/** Se inicializa la vista con los elementos innecesarios ocultos */
 		mostrarVistaCrear();
 
@@ -230,10 +240,10 @@ public class MainView {
 		btnConsultar.addActionListener(viewModelSelector);
 		btnEliminar.addActionListener(viewModelSelector);
 		btnModificar.addActionListener(viewModelSelector);
-		btnAceptarCrearCliente.addActionListener(crearClienteController);
-		btnClienteModificar.addActionListener(crearClienteController);
+		btnAceptarCreacion.addActionListener(crearClienteController);
+		btnAceptarModificacion.addActionListener(crearClienteController);
 		btnAsignarVideoCliente.addActionListener(crearClienteController);
-		btnClienteEliminar.addActionListener(crearClienteController);
+		btnAceptarEliminacion.addActionListener(crearClienteController);
 	}
 
 	/**
@@ -271,10 +281,12 @@ public class MainView {
 		txtDniClienteEliminar.setVisible(false);
 		txtTituloCrear.setVisible(false);
 		txtDirectorCrear.setVisible(false);
-		btnClienteEliminar.setVisible(false);
-		btnClienteModificar.setVisible(false);
+		btnAceptarEliminacion.setVisible(false);
+		btnAceptarModificacion.setVisible(false);
 		btnClienteConsultar.setVisible(false);
-		btnAceptarCrearCliente.setVisible(false);
+		btnAceptarCreacion.setVisible(false);
+		txtTituloModificar.setVisible(false);
+		txtDirectorModificar.setVisible(false);
 		
 		/** Se deshabilitan los componentes de la vista */
 		txtNombreCrearCliente.setEnabled(false);
@@ -297,13 +309,13 @@ public class MainView {
 		txtApellidoClienteModificar.setEnabled(false);
 		txtDireccionClienteModificar.setEnabled(false);
 		txtFechaClienteModificar.setEnabled(false);
-		btnClienteModificar.setVisible(false);
-		btnClienteModificar.setEnabled(false);
+		btnAceptarModificacion.setVisible(false);
+		btnAceptarModificacion.setEnabled(false);
 		txtDniClienteEliminar.setEnabled(true);
-		btnClienteEliminar.setEnabled(false);
+		btnAceptarEliminacion.setEnabled(false);
 		btnClienteConsultar.setEnabled(false);
-		btnClienteEliminar.setEnabled(false);
-		btnClienteModificar.setEnabled(false);
+		btnAceptarEliminacion.setEnabled(false);
+		btnAceptarModificacion.setEnabled(false);
 	}
 
 	/** Método para cambiar de vista */
@@ -325,6 +337,8 @@ public class MainView {
 	/** Método para mostrar la vista Crear. */
 	public void mostrarVistaCrear() {
 
+		btnAceptarCreacion.setText("Crear Cliente");
+		
 		/** Se vacía completamente el pane */
 		vaciarPanel();
 
@@ -352,10 +366,12 @@ public class MainView {
 			txtFechaCrearCliente.setEnabled(true);
 			
 			/** Se otorga visibilidad al botón */
-			btnAceptarCrearCliente.setVisible(true);
+			btnAceptarCreacion.setVisible(true);
 
 		} else {
 
+			btnAceptarCreacion.setText("Crear Video");
+			
 			/** Se otorga visibilidad a las etiquetas */
 			lblTituloCrear.setVisible(true);
 			lblDirectorCrear.setVisible(true);
@@ -367,6 +383,9 @@ public class MainView {
 			/** Se habilitan los campos */
 			txtTituloCrear.setEnabled(true);
 			txtDirectorCrear.setEnabled(true);
+			
+			btnAceptarCreacion.setEnabled(true);
+			btnAceptarCreacion.setVisible(true);
 		}
 	}
 
@@ -377,6 +396,8 @@ public class MainView {
 
 		if (lblSelectorVistas.getText().equals("Vista Cliente")) {
 
+			btnAceptarModificacion.setText("Actualizar Cliente");
+			
 			/** Se otorga visibilidad a las etiquetas de la vista modificar */
 			lblDniClienteModificar.setVisible(true);
 			lblNombreClienteModificar.setVisible(true);
@@ -397,8 +418,29 @@ public class MainView {
 			txtApellidoClienteModificar.setEnabled(true);
 			txtDireccionClienteModificar.setEnabled(true);
 			txtFechaClienteModificar.setEnabled(true);
-			btnClienteModificar.setVisible(true);
-			btnClienteModificar.setEnabled(true);
+			btnAceptarModificacion.setVisible(true);
+			btnAceptarModificacion.setEnabled(true);
+			
+		}
+		
+		else {
+
+			btnAceptarModificacion.setText("Actualizar Video");
+			
+			/** Se otorga visibilidad a las etiquetas */
+			lblTituloCrear.setVisible(true);
+			lblDirectorCrear.setVisible(true);
+
+			/** Se otorga visibildiad a los textField */
+			txtTituloModificar.setVisible(true);
+			txtDirectorModificar.setVisible(true);
+			
+			/** Se habilitan los campos */
+			txtTituloModificar.setEnabled(true);
+			txtDirectorModificar.setEnabled(true);
+			
+			btnAceptarModificacion.setEnabled(true);
+			btnAceptarModificacion.setVisible(true);
 		}
 	}
 	
@@ -409,16 +451,34 @@ public class MainView {
 
 		if (lblSelectorVistas.getText().equals("Vista Cliente")) {
 
+			/** Se cambia el nombre al botón para duplicar función */
+			btnAceptarEliminacion.setText("Eliminar Cliente");
+			
 			/** Se otorga visibilidad a las etiquetas de la vista modificar */
 			lblDniClienteEliminar.setVisible(true);
 
 			/** Se otorga visibildad a los TextArea de la vista modificar */
 			txtDniClienteEliminar.setVisible(true);
-			btnClienteEliminar.setVisible(true);
+			btnAceptarEliminacion.setVisible(true);
 
 			/** Se habilitan los componentes de la vista eliminar */
 			txtDniClienteEliminar.setEnabled(true);
-			btnClienteEliminar.setEnabled(true);
+			btnAceptarEliminacion.setEnabled(true);
+		}
+		
+		else {
+			
+			/** Se cambia el nombre al botón para duplicar función */
+			btnAceptarEliminacion.setText("Eliminar Video");
+			
+			/** Se otorga visibilidad a los componentes */
+			lblTituloCrear.setVisible(true);
+			txtTituloCrear.setVisible(true);
+			btnAceptarEliminacion.setVisible(true);
+			
+			/** Se habilitan los componentes de la vista eliminar */
+			txtTituloCrear.setEnabled(true);
+			btnAceptarEliminacion.setEnabled(true);
 		}
 	}
 	public void mostrarVistaMostrar() {
@@ -476,6 +536,20 @@ public class MainView {
 	 */
 	public void setCrearClienteController(ActionsClienteController crearClienteController) {
 		this.crearClienteController = crearClienteController;
+	}
+
+	/**
+	 * @return the crearVideosController
+	 */
+	public ActionsVideoController getCrearVideosController() {
+		return crearVideosController;
+	}
+
+	/**
+	 * @param crearVideosController the crearVideosController to set
+	 */
+	public void setCrearVideosController(ActionsVideoController crearVideosController) {
+		this.crearVideosController = crearVideosController;
 	}
 
 	/**
@@ -552,14 +626,28 @@ public class MainView {
 	 * @return the btnAceptarCrearCliente
 	 */
 	public JButton getBtnAceptarCrearCliente() {
-		return btnAceptarCrearCliente;
+		return btnAceptarCreacion;
 	}
 
 	/**
 	 * @param btnAceptarCrearCliente the btnAceptarCrearCliente to set
 	 */
 	public void setBtnAceptarCrearCliente(JButton btnAceptarCrearCliente) {
-		this.btnAceptarCrearCliente = btnAceptarCrearCliente;
+		this.btnAceptarCreacion = btnAceptarCrearCliente;
+	}
+
+	/**
+	 * @return the btnAsignarVideoCliente
+	 */
+	public JButton getBtnAsignarVideoCliente() {
+		return btnAsignarVideoCliente;
+	}
+
+	/**
+	 * @param btnAsignarVideoCliente the btnAsignarVideoCliente to set
+	 */
+	public void setBtnAsignarVideoCliente(JButton btnAsignarVideoCliente) {
+		this.btnAsignarVideoCliente = btnAsignarVideoCliente;
 	}
 
 	/**
@@ -759,6 +847,34 @@ public class MainView {
 	}
 
 	/**
+	 * @return the lblAsignarCliente
+	 */
+	public JLabel getLblAsignarCliente() {
+		return lblAsignarCliente;
+	}
+
+	/**
+	 * @param lblAsignarCliente the lblAsignarCliente to set
+	 */
+	public void setLblAsignarCliente(JLabel lblAsignarCliente) {
+		this.lblAsignarCliente = lblAsignarCliente;
+	}
+
+	/**
+	 * @return the lblAsignarVideos
+	 */
+	public JLabel getLblAsignarVideos() {
+		return lblAsignarVideos;
+	}
+
+	/**
+	 * @param lblAsignarVideos the lblAsignarVideos to set
+	 */
+	public void setLblAsignarVideos(JLabel lblAsignarVideos) {
+		this.lblAsignarVideos = lblAsignarVideos;
+	}
+
+	/**
 	 * @return the txtNombreCrearCliente
 	 */
 	public JTextField getTxtNombreCrearCliente() {
@@ -939,4 +1055,110 @@ public class MainView {
 	public void setTxtDniClienteEliminar(JTextField txtDniClienteEliminar) {
 		this.txtDniClienteEliminar = txtDniClienteEliminar;
 	}
+
+	/**
+	 * @return the btnClienteEliminar
+	 */
+	public JButton getBtnClienteEliminar() {
+		return btnAceptarEliminacion;
+	}
+
+	/**
+	 * @param btnClienteEliminar the btnClienteEliminar to set
+	 */
+	public void setBtnClienteEliminar(JButton btnClienteEliminar) {
+		this.btnAceptarEliminacion = btnClienteEliminar;
+	}
+
+	/**
+	 * @return the btnClienteModificar
+	 */
+	public JButton getBtnClienteModificar() {
+		return btnAceptarModificacion;
+	}
+
+	/**
+	 * @param btnClienteModificar the btnClienteModificar to set
+	 */
+	public void setBtnClienteModificar(JButton btnClienteModificar) {
+		this.btnAceptarModificacion = btnClienteModificar;
+	}
+
+	/**
+	 * @return the btnClienteConsultar
+	 */
+	public JButton getBtnClienteConsultar() {
+		return btnClienteConsultar;
+	}
+
+	/**
+	 * @param btnClienteConsultar the btnClienteConsultar to set
+	 */
+	public void setBtnClienteConsultar(JButton btnClienteConsultar) {
+		this.btnClienteConsultar = btnClienteConsultar;
+	}
+
+	/**
+	 * @return the txtDefinirCliente
+	 */
+	public JTextField getTxtDefinirCliente() {
+		return txtDefinirCliente;
+	}
+
+	/**
+	 * @param txtDefinirCliente the txtDefinirCliente to set
+	 */
+	public void setTxtDefinirCliente(JTextField txtDefinirCliente) {
+		this.txtDefinirCliente = txtDefinirCliente;
+	}
+
+	/**
+	 * @return the txtAsignarVideo
+	 */
+	public JTextField getTxtAsignarVideo() {
+		return txtAsignarVideo;
+	}
+
+	/**
+	 * @param txtAsignarVideo the txtAsignarVideo to set
+	 */
+	public void setTxtAsignarVideo(JTextField txtAsignarVideo) {
+		this.txtAsignarVideo = txtAsignarVideo;
+	}
+
+	/**
+	 * @return the txtTituloModificar
+	 */
+	public JTextField getTxtTituloModificar() {
+		return txtTituloModificar;
+	}
+
+	/**
+	 * @param txtTituloModificar the txtTituloModificar to set
+	 */
+	public void setTxtTituloModificar(JTextField txtTituloModificar) {
+		this.txtTituloModificar = txtTituloModificar;
+	}
+
+	/**
+	 * @return the txtDirectorModificar
+	 */
+	public JTextField getTxtDirectorModificar() {
+		return txtDirectorModificar;
+	}
+
+	/**
+	 * @param txtDirectorModificar the txtDirectorModificar to set
+	 */
+	public void setTxtDirectorModificar(JTextField txtDirectorModificar) {
+		this.txtDirectorModificar = txtDirectorModificar;
+	}
+
+
+	
+	
+	
+	
+	
+	
 }

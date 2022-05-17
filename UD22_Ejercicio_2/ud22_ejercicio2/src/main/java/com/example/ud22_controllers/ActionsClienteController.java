@@ -63,9 +63,26 @@ public class ActionsClienteController implements ActionListener {
 
 			// Se crea un cliente con la función crearCliente.
 			try {
-				functionModel.crearCliente(nombre, apellido, direccion, dni, fechaSQL);
+				functionModel.createCliente(nombre, apellido, direccion, dni, fechaSQL);
 			} catch (Throwable e1) {
 				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			break;
+
+		/** Botón crear cliente */
+		case "Crear Video":
+			// Se muestra un comentario para comprobar entrada en el case.
+			System.out.println("Evento boton crear video");
+			// Se obtienen los datos de los campos de texto.
+			String title = vista.getTxtTituloCrear().getText();
+			System.out.println(title);
+			String director = vista.getTxtDirectorCrear().getText();
+
+			// Se crea un cliente con la función crearCliente.
+			try {
+				functionModel.createVideo(title, director);
+			} catch (Throwable e1) {
 				e1.printStackTrace();
 			}
 			break;
@@ -98,16 +115,46 @@ public class ActionsClienteController implements ActionListener {
 			}
 			break;
 
+		/** Botón actualizar video */
+		case "Actualizar Video":
+			// Se muestra un comentario para comprobar entrada en el case.
+			System.out.println("Evento boton actualizar");
+			// Se obtienen los datos de los campos de texto.
+			title = vista.getTxtTituloModificar().getText();
+			director = vista.getTxtDirectorModificar().getText();
+
+			// Llamamos la funcion de crearCliente y seteamos los textos
+			try {
+				functionModel.updateVideo(title, director);
+			} catch (Throwable e1) {
+				e1.printStackTrace();
+			}
+			break;
+
 		/** Botón eliminar cliente */
 		case "Eliminar Cliente":
 			// Se muestra un comentario para comprobar entrada en el case.
-			System.out.println("Evento boton eliminar");
+			System.out.println("Evento boton eliminar cliente");
 			// Se obtienen los datos de los campos de texto.
 			dni = Integer.parseInt(vista.getTxtDniClienteEliminar().getText());
 
 			// Se elimina un cliente mediante la función eliminarCliente.
 			try {
-				functionModel.eliminarCliente(dni);
+				functionModel.deleteCliente(dni);
+			} catch (Throwable e1) {
+				e1.printStackTrace();
+			}
+			break;
+
+		/** Botón eliminar cliente */
+		case "Eliminar Video":
+			// Se muestra un comentario para comprobar entrada en el case.
+			System.out.println("Evento boton eliminar video");
+			// Se obtienen los datos de los campos de texto.
+			title = vista.getTxtTituloCrear().getText();
+			// Se elimina un cliente mediante la función eliminarCliente.
+			try {
+				functionModel.deleteVideo(title);
 			} catch (Throwable e1) {
 				e1.printStackTrace();
 			}
