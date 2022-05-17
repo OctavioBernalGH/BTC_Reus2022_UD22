@@ -2,9 +2,13 @@ package com.example.ud22_ejercicio3.models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+
+import com.mysql.cj.protocol.Resultset;
 
 
 /**
@@ -105,6 +109,7 @@ public class FunctionModel {
 			throws ClassNotFoundException {
 
 		System.out.println("Create connection: " + address + " " + userMysql + " " + passwordMysql);
+		System.out.println(address + " " + userMysql + " " + passwordMysql);
 
 		try {
 
@@ -154,14 +159,14 @@ public class FunctionModel {
 	 * 
 	 * @throws Throwable
 	 */
-	public void crearCientifico(String dni, String nombreApels) throws Throwable {
+	public static void crearCientifico(String dni, String nombreApels) throws Throwable {
 		selectServer(2);
 		String Querydb = "USE UD22_Ejercicio_3;";
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Se crea una sentencia sql.
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO `cientificos` (dni, nombreApels)VALUES(\""
+		String insert = "INSERT INTO `cientificos` (DNI, NomApels)VALUES(\""
 				+ dni + "\", \"" + nombreApels + "\");";
 
 		System.out.println(insert);
@@ -194,7 +199,7 @@ public class FunctionModel {
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String update = "UPDATE `cientifico` SET dni = \"" + dni + "\", nombreApels = \"" + nombreApels + ";";
+		String update = "UPDATE `cientificos` SET nomApels = \"" + nombreApels + "\" WHERE dni = \"" + dni +"\";";
 		System.out.println(update);
 
 		// Ejecutamos la sentencia.
@@ -207,7 +212,7 @@ public class FunctionModel {
 	 * 
 	 * @throws Throwable
 	 */
-	public void crearProyecto(String id, String nombre, int horas) throws Throwable {
+	public static void crearProyecto(String id, String nombre, int horas) throws Throwable {
 		selectServer(2);
 		String Querydb = "USE UD22_Ejercicio_3;";
 		Statement stdb = (Statement) mysqlConn.createStatement();
@@ -215,7 +220,7 @@ public class FunctionModel {
 		// Se crea una sentencia sql.
 		// Creamos una cadena con los parámetros pasados por pantalla.
 		String insert = "INSERT INTO `proyecto` (id, nombre, horas)VALUES(\""
-				+ id + "\", \"" + nombre + "\", \", " + horas + "');";
+				+ id + "\", \"" + nombre + "\", " + horas + ");";
 
 		System.out.println(insert);
 		// Ejecutamos la sentencia.
@@ -229,21 +234,21 @@ public class FunctionModel {
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String delete = "DELETE FROM `proyecto` WHERE id = " + id + ";";
+		String delete = "DELETE FROM `proyecto` WHERE id = \"" + id + "\";";
 
 		// Ejecutamos la sentencia.
 		stdb.execute(Querydb);
 		stdb.execute(delete);
 	}
 	
-	public void updateProyecto(String id, String nombre, int horas) throws Throwable {
+	public static void updateProyecto(String id, String nombre, int horas) throws Throwable {
 		selectServer(2);
 		String Querydb = "USE UD22_Ejercicio_3;";
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Se crea una sentencia sql.
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String update = "UPDATE `cliente` SET id = \"" + id + "\", nombre = \"" + nombre + "\", ' WHERE horas = " + horas + ";";
+		String update = "UPDATE `proyecto` SET nombre = \"" + nombre + "\", horas = " + horas + " WHERE id = \"" + id +"\";" ;
 
 		System.out.println(update);
 		// Ejecutamos la sentencia.
@@ -251,4 +256,15 @@ public class FunctionModel {
 		stdb.execute(update);
 	}
 	
+	public static void buscarCientificoDNI(String dni) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_3;";
+		Statement stdb = (Statement) mysqlConn.createStatement();
+		
+		String buscar = "Select * from `cientificos` WHERE dni = \"" + dni + "\";";
+		System.out.println(buscar);
+		// Ejecutamos la sentencia.
+		stdb.execute(Querydb);
+		stdb.execute(buscar);
+	}
 }

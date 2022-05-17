@@ -1,20 +1,16 @@
 package com.example.ud22_ejercicio3;
 
 import com.example.ud22_ejercicio3.Views.ViewGeneral;
-import com.example.ud22_ejercicio3.controllers.ActionsCientificoController;
-
-/**
- * Hello world!
- *
- */
+import com.example.ud22_ejercicio3.controllers.ViewSwicherController;
 
 public class App {
     public static void main( String[] args )    {
+     
        ViewGeneral vistaPrincipal = new ViewGeneral();
-       ViewController selectorVista = new ViewController();
+       ViewSwicherController selectorVista = new ViewSwicherController();
        
-       vistaPrincipal.setViewModelSelector(selectorVista);
-       selectorVista.setVistaPrincipal(vistaPrincipal);
+       vistaPrincipal.setCambiarVistas(selectorVista);
+       selectorVista.setViewCientifico(vistaPrincipal);
        
        vistaPrincipal.frame.setVisible(true);
     }
