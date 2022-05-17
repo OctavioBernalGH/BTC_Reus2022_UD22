@@ -12,8 +12,7 @@ public class CientificoClass {
 		
 	}
 	
-	public CientificoClass(String dni, String nomApels) {
-		super();
+	public CientificoClass(String dni, String nomApels) {		
 		this.dni = dni;
 		this.nomApels = nomApels;
 	}

@@ -10,8 +10,7 @@ public class ProyectoClass {
 		
 	}
 	
-	public ProyectoClass(String id, String nombre, int horas) {
-		super();
+	public ProyectoClass(String id, String nombre, int horas) {		
 		this.id = id;
 		this.nombre = nombre;
 		this.horas = horas;
@@ -40,6 +39,4 @@ public class ProyectoClass {
 	public void setHoras(int horas) {
 		this.horas = horas;
 	}
-	
-	
 }
