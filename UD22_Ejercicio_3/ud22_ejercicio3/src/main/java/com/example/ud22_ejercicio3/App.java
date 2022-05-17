@@ -7,10 +7,8 @@ import com.example.ud22_ejercicio3.controllers.ActionsCientifico;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main( String[] args ){
     	new App().iniciar();
     }
     public void iniciar() {
