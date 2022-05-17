@@ -1,15 +1,15 @@
 package com.example.ud22_ejercicio3.models;
 
-public class asignado_aClass {
+public class Asignado_aClass {
 	/* Atributos de clase ClienteClass */
 	private String cientifico;
 	private String proyecto;
 	
-	public asignado_aClass() {
+	public Asignado_aClass() {
 		
 	}
 	
-	public asignado_aClass(String cientifico, String proyecto) {
+	public Asignado_aClass(String cientifico, String proyecto) {
 		this.cientifico = cientifico;
 		this.proyecto = proyecto;
 		
