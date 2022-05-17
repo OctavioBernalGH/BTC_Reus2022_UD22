@@ -160,13 +160,13 @@ public class FunctionModel {
 	 */
 	public void crearCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws Throwable {
 		selectServer(2);
-		String Querydb = "USE UD22_Ejercicio_1;";
+		String Querydb = "USE UD22_Ejercicio_2;";
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Se crea una sentencia sql.
 		System.out.println("capturando fecha" + fecha);
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO `UD22_Ejecicio_1.cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""
+		String insert = "INSERT INTO `UD22_Ejecicio_2.cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""
 				+ nombre + "\", \"" + apellido + "\", \"" + direccion + "\", " + dni + ", '" + fecha + "');";
 
 		System.out.println(insert);
@@ -182,11 +182,11 @@ public class FunctionModel {
 	 */
 
 	public static void borrarPersona(int dni) throws SQLException {
-		String Querydb = "USE UD22_Ejercicio_1;";
+		String Querydb = "USE UD22_Ejercicio_2;";
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String delete = "DELETE FROM `UD22_Ejecicio_1.cliente` WHERE dni = " + dni + ";";
+		String delete = "DELETE FROM `UD22_Ejecicio_2.cliente` WHERE dni = " + dni + ";";
 
 		// Ejecutamos la sentencia.
 		stdb.execute(Querydb);
@@ -201,11 +201,11 @@ public class FunctionModel {
 
 	public static void updatePersona(String nombre, String apellido, String direccion, int dni, Date fecha)
 			throws SQLException {
-		String Querydb = "USE UD22_Ejercicio_1;";
+		String Querydb = "USE UD22_Ejercicio_2;";
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String update = "UPDATE `UD22_Ejecicio_1.cliente` SET nombre = \"" + nombre + "\", apellido = \"" + apellido
+		String update = "UPDATE `UD22_Ejecicio_2.cliente` SET nombre = \"" + nombre + "\", apellido = \"" + apellido
 				+ "\", direccion = \"" + direccion + "\", fecha = '" + fecha + "' WHERE dni = " + dni + ";";
 		System.out.println(update);
 
