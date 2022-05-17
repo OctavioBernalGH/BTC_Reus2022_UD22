@@ -6,6 +6,8 @@ package com.example.ud22_controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+
+import com.example.ud22_models.ConnectorModel;
 import com.example.ud22_views.MainView;
 
 /**
@@ -14,7 +16,8 @@ import com.example.ud22_views.MainView;
  */
 public class ViewController implements ActionListener {
 
-	private MainView vistaPrincipal;
+	private ConnectorModel conectorModelo = new ConnectorModel();
+	private MainView vistaPrincipal; 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -37,7 +40,14 @@ public class ViewController implements ActionListener {
 		
 		switch(name) {
 		case "Crear":
-			vistaPrincipal.mostrarVistaCrear();
+			try {
+				conectorModelo.selectServer(3);
+				vistaPrincipal.mostrarVistaCrear();
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
 			break;
 		case "Modificar":
 			vistaPrincipal.mostrarVistaModificar();

@@ -20,9 +20,11 @@ public class CRUDClienteModel {
 
 	/* Instancias de Clase */
 		
-	ConnectorModel mysqlConn= new ConnectorModel();
+	public static Connection mysqlConn = null;
 	ClienteClass modeloCliente = new ClienteClass();
-
+	ConnectorModel conexion = new ConnectorModel();
+	
+	
 	/**
 	 * Método para crear un cliente.
 	 * 
@@ -31,9 +33,17 @@ public class CRUDClienteModel {
 	 */
 	public void crearCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws SQLException {
 
+				
+		try {
+			mysqlConn = ConnectorModel.createConnection("192.168.1.123", "remote", "Reus_2022");
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		String Querydb = "USE UD22_Ejercicio_2;";             
 				
-		Statement st = ((Connection) mysqlConn).createStatement();
+		Statement st = (Statement)mysqlConn.createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
 		String insert = "INSERT INTO `cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""+
 				nombre + "\", \"" + apellido + "\", \""+ direccion + "\", " + dni + ", '" + fecha + "');";

@@ -83,7 +83,7 @@ public class ModelFunctions {
 	 */
 	public static Connection createStringConnection(String adress, String userSQL, String password) throws Throwable {
 
-		mysqlConn = createConnection(address, userSQL, password);
+		mysqlConn = createConnection(adress, userSQL, password);
 
 		return mysqlConn;
 	}

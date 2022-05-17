@@ -18,7 +18,6 @@ import com.example.ud22_views.MainView;
 public class ActionsClienteController implements ActionListener {
 
 	ConnectorModel conexion = new ConnectorModel();
-	CRUDClienteModel crudCliente = new CRUDClienteModel();
 	private MainView vista;
 	
 	public void CrearClienteController() {
@@ -31,17 +30,17 @@ public class ActionsClienteController implements ActionListener {
 		JButton botonAceptar = (JButton) e.getSource();
 		String nombreBoton = botonAceptar.getText();
 		//vista = new MainView();		
-		
+
 		switch (nombreBoton) {
 		case "Crear Cliente":
 			//System.out.println("Evento boton");
 			String nombre = vista.getTxtNombreCrearCliente().getText();
 			String apellido = vista.getTxtApellidoCrearCliente().getText();
 			String direccion = vista.getTxtDireccionCrearCliente().getText();
-			
 			int dni = Integer.parseInt(vista.getTxtDniCrearCliente().getText());
 			String fecha = vista.getTxtFechaCrearCliente().getText();
 			java.sql.Date fechaSQL = null;
+			
 			/** Se convierte la fecha de cadena a sentencia SQL */
 			try {
 				fechaSQL = ConnectorModel.formatStringToSQLDate(fecha);
@@ -50,9 +49,12 @@ public class ActionsClienteController implements ActionListener {
 			}
 
 			/** Se crea un cliente */
+			
 			try {
-				crudCliente.crearCliente(nombre, apellido, direccion, dni, fechaSQL);
-			} catch (SQLException e1) {
+				ConnectorModel connectorModel = new ConnectorModel();
+				connectorModel.crearCliente(nombre, apellido, direccion, dni, fechaSQL);
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
@@ -70,6 +72,7 @@ public class ActionsClienteController implements ActionListener {
 			
 			break;
 		}
+		
 
 
 	}
