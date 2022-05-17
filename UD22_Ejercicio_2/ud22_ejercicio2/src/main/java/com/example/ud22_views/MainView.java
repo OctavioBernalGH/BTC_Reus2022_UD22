@@ -28,7 +28,8 @@ public class MainView {
 	private JButton btnConsultar = new JButton("Consultar");
 	private JButton btnCambiarVista = new JButton("Cambiar a Videos");
 	private JButton btnAceptarCrearCliente = new JButton("Crear Cliente");
-
+	private JButton btnAsignarVideoCliente = new JButton("Asignar");
+	
 	/** Instancia labels vista */
 	private JLabel lblNombreCrearCliente = new JLabel("Nombre:");
 	private JLabel lblApellidoCrearCliente = new JLabel("Apellido:");
@@ -44,7 +45,9 @@ public class MainView {
 	private JLabel lblDireccionClienteModificar = new JLabel("Dirección:");
 	private JLabel lblFechaClienteModificar = new JLabel("Fecha:");
 	private JLabel lblDniClienteEliminar = new JLabel("DNI:");
-
+	private JLabel lblAsignarCliente = new JLabel("Cliente ID");
+	private JLabel lblAsignarVideos = new JLabel("Videos ID");
+	
 	/** Instanacia textfields vista */
 	private JTextField txtNombreCrearCliente;
 	private JTextField txtApellidoCrearCliente;
@@ -63,8 +66,10 @@ public class MainView {
 	//Eliminar
 	private JButton btnClienteEliminar = new JButton("Eliminar Cliente");
 	//Modificar
-	private JButton btnClienteModificar = new JButton("Modificar Cliente");
+	private JButton btnClienteModificar = new JButton("Actualizar Cliente");
 	private JButton btnClienteConsultar = new JButton("Consultar Cliente");
+	private JTextField txtDefinirCliente;
+	private JTextField txtAsignarVideo;
 
 	/**
 	 * 
@@ -89,7 +94,7 @@ public class MainView {
 		frame = new JFrame();
 		viewModelSelector.setVistaPrincipal(this);
 		lblSelectorVistas.setText("Vista Cliente");
-		frame.setBounds(100, 100, 643, 531);
+		frame.setBounds(100, 100, 643, 597);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -100,14 +105,22 @@ public class MainView {
 		frame.getContentPane().add(btnConsultar);
 		frame.getContentPane().add(btnCambiarVista);
 		frame.getContentPane().add(btnAceptarCrearCliente);
-
+		frame.getContentPane().add(btnClienteEliminar);
+		frame.getContentPane().add(btnClienteModificar);
+		frame.getContentPane().add(btnClienteConsultar);
+		frame.getContentPane().add(btnAsignarVideoCliente);
+		
 		btnAceptarCrearCliente.setBounds(277, 415, 136, 23);
 		btnCrear.setBounds(10, 46, 124, 48);
 		btnModificar.setBounds(10, 105, 124, 48);
 		btnEliminar.setBounds(10, 164, 124, 48);
 		btnConsultar.setBounds(10, 223, 124, 48);
-		btnCambiarVista.setBounds(36, 415, 152, 23);
-
+		btnCambiarVista.setBounds(24, 415, 152, 23);
+		btnClienteEliminar.setBounds(277, 412, 136, 29);
+		btnClienteModificar.setBounds(277, 412, 152, 29);
+		btnClienteConsultar.setBounds(261, 412, 152, 29);
+		btnAsignarVideoCliente.setBounds(10, 478, 124, 48);
+		
 		/** Añadir labels al Pane */
 		frame.getContentPane().add(lblNombreCrearCliente);
 		frame.getContentPane().add(lblApellidoCrearCliente);
@@ -122,6 +135,8 @@ public class MainView {
 		frame.getContentPane().add(lblDireccionClienteModificar);
 		frame.getContentPane().add(lblFechaClienteModificar);
 		frame.getContentPane().add(lblDniClienteEliminar);
+		frame.getContentPane().add(lblAsignarCliente);
+		frame.getContentPane().add(lblAsignarVideos);
 
 		lblNombreCrearCliente.setBounds(226, 63, 81, 14);
 		lblApellidoCrearCliente.setBounds(226, 122, 81, 14);
@@ -137,6 +152,8 @@ public class MainView {
 		lblDireccionClienteModificar.setBounds(226, 240, 60, 14);
 		lblFechaClienteModificar.setBounds(226, 291, 60, 14);
 		lblDniClienteEliminar.setBounds(226, 63, 46, 14);
+		lblAsignarCliente.setBounds(212, 478, 60, 14);
+		lblAsignarVideos.setBounds(212, 512, 46, 14);
 
 		/** Instancia TextFileds vista */
 		txtNombreCrearCliente = new JTextField();
@@ -152,7 +169,9 @@ public class MainView {
 		txtFechaClienteModificar = new JTextField();
 		txtDniClienteModificar = new JTextField();
 		txtDniClienteEliminar = new JTextField();
-
+		txtDefinirCliente = new JTextField();
+		txtAsignarVideo = new JTextField();
+		
 		/** Añadir TextFields al pane */
 		frame.getContentPane().add(txtApellidoCrearCliente);
 		frame.getContentPane().add(txtDireccionCrearCliente);
@@ -168,7 +187,9 @@ public class MainView {
 		frame.getContentPane().add(txtDireccionClienteModificar);
 		frame.getContentPane().add(txtFechaClienteModificar);
 		frame.getContentPane().add(txtDniClienteEliminar);
-
+		frame.getContentPane().add(txtDefinirCliente);
+		frame.getContentPane().add(txtAsignarVideo);
+		
 		txtNombreCrearCliente.setBounds(314, 60, 124, 20);
 		txtNombreCrearCliente.setColumns(10);
 		txtApellidoCrearCliente.setColumns(10);
@@ -195,19 +216,10 @@ public class MainView {
 		txtNombreClienteModificar.setColumns(10);
 		txtDniClienteEliminar.setBounds(314, 60, 124, 20);
 		txtDniClienteEliminar.setColumns(10);
-		
-		
-		btnClienteEliminar.setBounds(277, 412, 136, 29);
-		frame.getContentPane().add(btnClienteEliminar);
-		btnClienteModificar.setBounds(277, 412, 152, 29);
-		
-		frame.getContentPane().add(btnClienteModificar);
-		btnClienteConsultar.setBounds(261, 412, 152, 29);
-		
-		frame.getContentPane().add(btnClienteConsultar);
-		
-		
-
+		txtDefinirCliente.setBounds(300, 475, 86, 20);
+		txtDefinirCliente.setColumns(10);
+		txtAsignarVideo.setBounds(300, 509, 86, 20);
+		txtAsignarVideo.setColumns(10);
 
 		/** Se inicializa la vista con los elementos innecesarios ocultos */
 		mostrarVistaCrear();
@@ -219,6 +231,9 @@ public class MainView {
 		btnEliminar.addActionListener(viewModelSelector);
 		btnModificar.addActionListener(viewModelSelector);
 		btnAceptarCrearCliente.addActionListener(crearClienteController);
+		btnClienteModificar.addActionListener(crearClienteController);
+		btnAsignarVideoCliente.addActionListener(crearClienteController);
+		btnClienteEliminar.addActionListener(crearClienteController);
 	}
 
 	/**
@@ -256,7 +271,12 @@ public class MainView {
 		txtDniClienteEliminar.setVisible(false);
 		txtTituloCrear.setVisible(false);
 		txtDirectorCrear.setVisible(false);
+		btnClienteEliminar.setVisible(false);
+		btnClienteModificar.setVisible(false);
+		btnClienteConsultar.setVisible(false);
+		btnAceptarCrearCliente.setVisible(false);
 		
+		/** Se deshabilitan los componentes de la vista */
 		txtNombreCrearCliente.setEnabled(false);
 		txtApellidoCrearCliente.setEnabled(false);
 		txtDireccionCrearCliente.setEnabled(false);
@@ -270,19 +290,20 @@ public class MainView {
 		txtDniClienteEliminar.setEnabled(false);
 		txtTituloCrear.setEnabled(false);
 		txtDirectorCrear.setEnabled(false);
-		
-		//Eliminar
-		btnClienteEliminar.setVisible(false);
-		btnClienteEliminar.setEnabled(false);
-		//modificar
+		txtTituloCrear.setEnabled(false);
+		txtDirectorCrear.setEnabled(false);
+		txtDniClienteModificar.setEnabled(false);
+		txtNombreClienteModificar.setEnabled(false);
+		txtApellidoClienteModificar.setEnabled(false);
+		txtDireccionClienteModificar.setEnabled(false);
+		txtFechaClienteModificar.setEnabled(false);
 		btnClienteModificar.setVisible(false);
 		btnClienteModificar.setEnabled(false);
-		//Consultat
-		btnClienteConsultar.setVisible(false);
+		txtDniClienteEliminar.setEnabled(true);
+		btnClienteEliminar.setEnabled(false);
 		btnClienteConsultar.setEnabled(false);
-		
-		/** Se ocultan botones innecesarios */
-		btnAceptarCrearCliente.setVisible(false);
+		btnClienteEliminar.setEnabled(false);
+		btnClienteModificar.setEnabled(false);
 	}
 
 	/** Método para cambiar de vista */
@@ -323,6 +344,7 @@ public class MainView {
 			txtDniCrearCliente.setVisible(true);
 			txtFechaCrearCliente.setVisible(true);
 			
+			/** Se habilitan los campos */
 			txtNombreCrearCliente.setEnabled(true);
 			txtApellidoCrearCliente.setEnabled(true);
 			txtDireccionCrearCliente.setEnabled(true);
@@ -341,6 +363,10 @@ public class MainView {
 			/** Se otorga visibildiad a los textField */
 			txtTituloCrear.setVisible(true);
 			txtDirectorCrear.setVisible(true);
+			
+			/** Se habilitan los campos */
+			txtTituloCrear.setEnabled(true);
+			txtDirectorCrear.setEnabled(true);
 		}
 	}
 
@@ -365,6 +391,12 @@ public class MainView {
 			txtDireccionClienteModificar.setVisible(true);
 			txtFechaClienteModificar.setVisible(true);
 			
+			/** Se habilitan los componentes de la vista */
+			txtDniClienteModificar.setEnabled(true);
+			txtNombreClienteModificar.setEnabled(true);
+			txtApellidoClienteModificar.setEnabled(true);
+			txtDireccionClienteModificar.setEnabled(true);
+			txtFechaClienteModificar.setEnabled(true);
 			btnClienteModificar.setVisible(true);
 			btnClienteModificar.setEnabled(true);
 		}
@@ -383,6 +415,9 @@ public class MainView {
 			/** Se otorga visibildad a los TextArea de la vista modificar */
 			txtDniClienteEliminar.setVisible(true);
 			btnClienteEliminar.setVisible(true);
+
+			/** Se habilitan los componentes de la vista eliminar */
+			txtDniClienteEliminar.setEnabled(true);
 			btnClienteEliminar.setEnabled(true);
 		}
 	}

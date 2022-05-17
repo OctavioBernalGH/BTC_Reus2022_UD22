@@ -63,6 +63,7 @@ public class FunctionModel {
 			address = "192.168.1.123";
 			userSQL = "remote";
 			password = "Reus_2022";
+			System.out.println("Parametros selectServer 2");
 			createStringConnection(address, userSQL, password);
 			break;
 		case 3:
@@ -85,7 +86,10 @@ public class FunctionModel {
 	 */
 	public static Connection createStringConnection(String adress, String userSQL, String password) throws Throwable {
 
+		System.out.println("Create String Connection: " + adress + " " + userSQL + " " + password);
 		mysqlConn = createConnection(adress, userSQL, password);
+		System.out.println(mysqlConn.toString());
+		System.out.println("Funcion CreateStringConnection");
 
 		return mysqlConn;
 	}
@@ -102,15 +106,18 @@ public class FunctionModel {
 	public static Connection createConnection(String address, String userMysql, String passwordMysql)
 			throws ClassNotFoundException {
 
+		System.out.println("Create connection: " + address + " " + userMysql + " " + passwordMysql);
+		
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			mysqlConn = DriverManager.getConnection("jdbc:mysql://" + address + ":3306?useTimezone=UTC", userMysql,
 					passwordMysql);
-
+			System.out.println("Conectado");
+			
 		} catch (SQLException | ClassNotFoundException e) {
-
+			System.out.println("Error: " + e);
 			// errorView.frameErrorConection.setVisible(true);
 			// JOptionPane.showMessageDialog( null, "No se ha podido establecer conexión" +
 			// e.getLocalizedMessage());
@@ -160,13 +167,13 @@ public class FunctionModel {
 	 */
 	public void crearCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws Throwable {
 		selectServer(2);
-		String Querydb = "USE UD22_Ejercicio_1;";
+		String Querydb = "USE UD22_Ejercicio_2;";
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Se crea una sentencia sql.
 		System.out.println("capturando fecha" + fecha);
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO `UD22_Ejecicio_1.cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""
+		String insert = "INSERT INTO `cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""
 				+ nombre + "\", \"" + apellido + "\", \"" + direccion + "\", " + dni + ", '" + fecha + "');";
 
 		System.out.println(insert);
@@ -177,16 +184,16 @@ public class FunctionModel {
 
 	/**
 	 * Función para eliminar un registro de la tabla.
-	 * 
-	 * @throws SQLException
+	 * @throws Throwable 
 	 */
 
-	public static void borrarPersona(int dni) throws SQLException {
-		String Querydb = "USE UD22_Ejercicio_1;";
+	public static void eliminarCliente(int dni) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_2;";
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String delete = "DELETE FROM `UD22_Ejecicio_1.cliente` WHERE dni = " + dni + ";";
+		String delete = "DELETE FROM `cliente` WHERE dni = " + dni + ";";
 
 		// Ejecutamos la sentencia.
 		stdb.execute(Querydb);
@@ -195,17 +202,17 @@ public class FunctionModel {
 
 	/**
 	 * Función para actualizar un registro de la tabla.
-	 * 
-	 * @throws SQLException
+	 * @throws Throwable 
 	 */
 
-	public static void updatePersona(String nombre, String apellido, String direccion, int dni, Date fecha)
-			throws SQLException {
-		String Querydb = "USE UD22_Ejercicio_1;";
+	public static void updateCliente(String nombre, String apellido, String direccion, int dni, Date fecha)
+			throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_2;";
 		Statement stdb = (Statement) mysqlConn.createStatement();
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String update = "UPDATE `UD22_Ejecicio_1.cliente` SET nombre = \"" + nombre + "\", apellido = \"" + apellido
+		String update = "UPDATE `cliente` SET nombre = \"" + nombre + "\", apellido = \"" + apellido
 				+ "\", direccion = \"" + direccion + "\", fecha = '" + fecha + "' WHERE dni = " + dni + ";";
 		System.out.println(update);
 
