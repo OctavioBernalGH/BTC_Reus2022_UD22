@@ -38,7 +38,7 @@ public class ActionsCRUDView implements ActionListener {
 			break;
 		case "Borrar Cliente":
 			System.out.println("Entra");
-			viewDelete.frmCrearPersona.setVisible(true);
+			viewDelete.frmDeletePersona.setVisible(true);
 			break;
 		case "Modificar Cliente":
 			viewUpdate.frmCrearPersona.setVisible(true);
