@@ -169,4 +169,22 @@ public class FunctionModel {
 		stdb.execute(Querydb);
 		stdb.execute(insert);
 	}
+	
+	/**
+	 * Función para eliminar un registro de la tabla.
+	 * @throws Throwable 
+	 */
+
+	public static void eliminarCientifico(String dni) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_3;";
+		Statement stdb = (Statement) mysqlConn.createStatement();
+
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String delete = "DELETE FROM `cientificos` WHERE dni = " + dni + ";";
+
+		// Ejecutamos la sentencia.
+		stdb.execute(Querydb);
+		stdb.execute(delete);
+	}
 }
