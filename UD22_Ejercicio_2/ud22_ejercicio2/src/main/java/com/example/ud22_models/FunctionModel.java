@@ -107,7 +107,7 @@ public class FunctionModel {
 			throws ClassNotFoundException {
 
 		System.out.println("Create connection: " + address + " " + userMysql + " " + passwordMysql);
-		
+
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -115,7 +115,7 @@ public class FunctionModel {
 			mysqlConn = DriverManager.getConnection("jdbc:mysql://" + address + ":3306?useTimezone=UTC", userMysql,
 					passwordMysql);
 			System.out.println("Conectado");
-			
+
 		} catch (SQLException | ClassNotFoundException e) {
 			System.out.println("Error: " + e);
 			// errorView.frameErrorConection.setVisible(true);
@@ -165,51 +165,53 @@ public class FunctionModel {
 	 * 
 	 * @throws Throwable
 	 */
-	public void crearCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws Throwable {
+	public void createCliente(String nombre, String apellido, String direccion, int dni, Date fecha) throws Throwable {
 		selectServer(2);
 		String Querydb = "USE UD22_Ejercicio_2;";
-		Statement stdb = (Statement) mysqlConn.createStatement();
+		Statement st = (Statement) mysqlConn.createStatement();
 
 		// Se crea una sentencia sql.
 		System.out.println("capturando fecha" + fecha);
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO `cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""
-				+ nombre + "\", \"" + apellido + "\", \"" + direccion + "\", " + dni + ", '" + fecha + "');";
+		String insert = "INSERT INTO `cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\"" + nombre + "\", \""
+				+ apellido + "\", \"" + direccion + "\", " + dni + ", '" + fecha + "');";
 
 		System.out.println(insert);
 		// Ejecutamos la sentencia.
-		stdb.execute(Querydb);
-		stdb.execute(insert);
+		st.execute(Querydb);
+		st.execute(insert);
 	}
 
 	/**
 	 * Función para eliminar un registro de la tabla.
-	 * @throws Throwable 
+	 * 
+	 * @throws Throwable
 	 */
 
-	public static void eliminarCliente(int dni) throws Throwable {
+	public static void deleteCliente(int dni) throws Throwable {
 		selectServer(2);
 		String Querydb = "USE UD22_Ejercicio_2;";
-		Statement stdb = (Statement) mysqlConn.createStatement();
+		Statement st = (Statement) mysqlConn.createStatement();
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
 		String delete = "DELETE FROM `cliente` WHERE dni = " + dni + ";";
 
 		// Ejecutamos la sentencia.
-		stdb.execute(Querydb);
-		stdb.execute(delete);
+		st.execute(Querydb);
+		st.execute(delete);
 	}
 
 	/**
 	 * Función para actualizar un registro de la tabla.
-	 * @throws Throwable 
+	 * 
+	 * @throws Throwable
 	 */
 
 	public static void updateCliente(String nombre, String apellido, String direccion, int dni, Date fecha)
 			throws Throwable {
 		selectServer(2);
 		String Querydb = "USE UD22_Ejercicio_2;";
-		Statement stdb = (Statement) mysqlConn.createStatement();
+		Statement st = (Statement) mysqlConn.createStatement();
 
 		// Creamos una cadena con los parámetros pasados por pantalla.
 		String update = "UPDATE `cliente` SET nombre = \"" + nombre + "\", apellido = \"" + apellido
@@ -217,19 +219,28 @@ public class FunctionModel {
 		System.out.println(update);
 
 		// Ejecutamos la sentencia.
-		stdb.execute(Querydb);
-		stdb.execute(update);
+		st.execute(Querydb);
+		st.execute(update);
 	}
 
-	public void crearVideo(Connection mysqlConn) throws SQLException {
-
+	/**
+	 * Función para crear un Video
+	 * 
+	 * @param titulo
+	 * @param director
+	 * @throws Throwable
+	 */
+	public static void createVideo(String title, String director) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_2;";
 		Statement st = (Statement) mysqlConn.createStatement();
+		
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO videos (title, director, cli_id " + ");";
-		modeloVideos.setTitle(modeloVideos.getTitle());
-		modeloVideos.setDirector(modeloVideos.getDirector());
-		modeloVideos.setCli_id(modelo.getId());
+		String insert = "INSERT INTO `videos` (title, director)VALUES(\"" + title + "\", \"" + director + "\");";
+		System.out.println(insert);
+		
 		// Ejecutamos la sentencia.
+		st.execute(Querydb);
 		st.execute(insert);
 	}
 
@@ -237,14 +248,18 @@ public class FunctionModel {
 	 * Método para eliminar un video.
 	 * 
 	 * @param mysqlConn
-	 * @throws SQLException
+	 * @throws Throwable 
 	 */
-	public void borrarVideo(Connection mysqlConn) throws SQLException {
-		// Se crea una sentencia sql.
+	public void deleteVideo(String title) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_2;";
 		Statement st = (Statement) mysqlConn.createStatement();
+
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String delete = "DELETE " + "FROM videos " + "WHERE id=" + modeloVideos.getId() + ");";
+		String delete = "DELETE FROM `videos` WHERE title = \"" + title + "\";";
+
 		// Ejecutamos la sentencia.
+		st.execute(Querydb);
 		st.execute(delete);
 	}
 
@@ -252,17 +267,18 @@ public class FunctionModel {
 	 * Método para actualizar un video.
 	 * 
 	 * @param mysqlConn
-	 * @throws SQLException
+	 * @throws Throwable 
 	 */
-	public void actualizarVideo(Connection mysqlConn) throws SQLException {
-		// Se crea una sentencia sql.
+	public static void updateVideo(String title, String director) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_2;";
 		Statement st = (Statement) mysqlConn.createStatement();
+
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String update = "UPDATE videos SET title, director, cli_id WHERE id=" + modeloVideos.getId() + ");";
-		modeloVideos.setTitle(modeloVideos.getTitle());
-		modeloVideos.setDirector(modeloVideos.getDirector());
-		modeloVideos.setCli_id(modelo.getId());
+		String update = "UPDATE `videos` SET director = \"" + director + "\" WHERE title = \"" + title + "\";";
+		System.out.println(update);
 		// Ejecutamos la sentencia.
+		st.execute(Querydb);
 		st.execute(update);
 	}
 }
