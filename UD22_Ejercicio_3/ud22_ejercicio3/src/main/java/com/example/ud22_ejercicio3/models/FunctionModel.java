@@ -201,4 +201,54 @@ public class FunctionModel {
 		stdb.execute(Querydb);
 		stdb.execute(update);
 	}
+	
+	/**
+	 * Función para añadir una persona nueva al registro.
+	 * 
+	 * @throws Throwable
+	 */
+	public void crearProyecto(String id, String nombre, int horas) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_3;";
+		Statement stdb = (Statement) mysqlConn.createStatement();
+
+		// Se crea una sentencia sql.
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String insert = "INSERT INTO `proyecto` (id, nombre, horas)VALUES(\""
+				+ id + "\", \"" + nombre + "\", \", " + horas + "');";
+
+		System.out.println(insert);
+		// Ejecutamos la sentencia.
+		stdb.execute(Querydb);
+		stdb.execute(insert);
+	}
+	
+	public static void eliminarProyecto(String id) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_3;";
+		Statement stdb = (Statement) mysqlConn.createStatement();
+
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String delete = "DELETE FROM `proyecto` WHERE id = " + id + ";";
+
+		// Ejecutamos la sentencia.
+		stdb.execute(Querydb);
+		stdb.execute(delete);
+	}
+	
+	public void updateProyecto(String id, String nombre, int horas) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_3;";
+		Statement stdb = (Statement) mysqlConn.createStatement();
+
+		// Se crea una sentencia sql.
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String update = "UPDATE `cliente` SET id = \"" + id + "\", nombre = \"" + nombre + "\", ' WHERE horas = " + horas + ";";
+
+		System.out.println(update);
+		// Ejecutamos la sentencia.
+		stdb.execute(Querydb);
+		stdb.execute(update);
+	}
+	
 }
