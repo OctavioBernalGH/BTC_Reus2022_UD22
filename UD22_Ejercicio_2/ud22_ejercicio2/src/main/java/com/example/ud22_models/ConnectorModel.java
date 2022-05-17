@@ -21,7 +21,7 @@ public class ConnectorModel {
 	// Se crea una connexión del tipo Connection.
 	public static Connection mysqlConn = null;
 	// Atributos para completar la String de conexión al servidor.
-	static String address = "192.168.1.123";
+	static String address = "192.168.1.69";
 	static String userSQL = "remote";
 	static String password = "Reus_2022";
 

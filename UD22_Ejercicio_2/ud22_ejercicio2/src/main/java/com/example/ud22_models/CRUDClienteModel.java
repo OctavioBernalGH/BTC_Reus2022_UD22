@@ -35,7 +35,7 @@ public class CRUDClienteModel {
 				
 		Statement st = ((Connection) mysqlConn).createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String insert = "INSERT INTO `cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""+
+		String insert = "INSERT INTO `UD22_Ejecicio_2.cliente` (nombre, apellido, direccion, dni, fecha)VALUES(\""+
 				nombre + "\", \"" + apellido + "\", \""+ direccion + "\", " + dni + ", '" + fecha + "');";
 		System.out.println(insert);
 		// Ejecutamos la sentencia.
@@ -53,7 +53,7 @@ public class CRUDClienteModel {
 		// Se crea una sentencia sql.
 		Statement st = (Statement) mysqlConn.createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String delete = "DELETE " + "FROM cliente " + "WHERE nombre=" + modeloCliente.getNombre() + ", dni="
+		String delete = "DELETE " + "FROM UD22_Ejecicio_2.cliente " + "WHERE nombre=" + modeloCliente.getNombre() + ", dni="
 				+ modeloCliente.getDni() + ");";
 		// Ejecutamos la sentencia.
 		st.execute(delete);
@@ -69,7 +69,7 @@ public class CRUDClienteModel {
 		// Se crea una sentencia sql.
 		Statement st = (Statement) mysqlConn.createStatement();
 		// Creamos una cadena con los parámetros pasados por pantalla.
-		String update = "UPDATE clinte SET nombre, apellido, direccion, dni, fecha WHERE dni=" + modeloCliente.getDni() + ");";
+		String update = "UPDATE UD22_Ejecicio_2.cliente SET nombre, apellido, direccion, dni, fecha WHERE dni=" + modeloCliente.getDni() + ");";
 		modeloCliente.setNombre(modeloCliente.getNombre());
 		modeloCliente.setApellido(modeloCliente.getApellido());
 		modeloCliente.setDireccion(modeloCliente.getDireccion());
