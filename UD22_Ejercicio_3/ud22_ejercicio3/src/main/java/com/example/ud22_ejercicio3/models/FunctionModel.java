@@ -3,6 +3,8 @@ package com.example.ud22_ejercicio3.models;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 
 
 /**
@@ -70,7 +72,7 @@ public class FunctionModel {
 			break;
 		}
 	}
-	
+
 	/**
 	 * Funcion para crear la cadena de conexión SQL y establecer conexión.
 	 * 
@@ -89,7 +91,7 @@ public class FunctionModel {
 
 		return mysqlConn;
 	}
-	
+
 	/**
 	 * Función para crear la conexión a la BBDD.
 	 * 
@@ -103,7 +105,7 @@ public class FunctionModel {
 			throws ClassNotFoundException {
 
 		System.out.println("Create connection: " + address + " " + userMysql + " " + passwordMysql);
-		
+
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -111,7 +113,7 @@ public class FunctionModel {
 			mysqlConn = DriverManager.getConnection("jdbc:mysql://" + address + ":3306?useTimezone=UTC", userMysql,
 					passwordMysql);
 			System.out.println("Conectado");
-			
+
 		} catch (SQLException | ClassNotFoundException e) {
 			System.out.println("Error: " + e);
 			// errorView.frameErrorConection.setVisible(true);
@@ -145,5 +147,26 @@ public class FunctionModel {
 		}
 		System.out.println(flag);
 		return flag;
+	}
+
+	/**
+	 * Función para añadir una persona nueva al registro.
+	 * 
+	 * @throws Throwable
+	 */
+	public void crearCientifico(String dni, String nombreApels) throws Throwable {
+		selectServer(2);
+		String Querydb = "USE UD22_Ejercicio_3;";
+		Statement stdb = (Statement) mysqlConn.createStatement();
+
+		// Se crea una sentencia sql.
+		// Creamos una cadena con los parámetros pasados por pantalla.
+		String insert = "INSERT INTO `cientificos` (dni, nombreApels)VALUES(\""
+				+ dni + "\", \"" + nombreApels + "\");";
+
+		System.out.println(insert);
+		// Ejecutamos la sentencia.
+		stdb.execute(Querydb);
+		stdb.execute(insert);
 	}
 }
