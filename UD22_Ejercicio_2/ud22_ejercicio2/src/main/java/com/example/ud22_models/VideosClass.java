@@ -17,11 +17,26 @@ public class VideosClass {
 	private int cli_id;
 
 	/* Se crea constructor de clase */
-
+	/**
+	 * @param title
+	 * @param director
+	 * @param cli_id
+	 */
 	public VideosClass() {
 	}
-
+	
 	/**
+	 * 
+	 * @param title
+	 * @param director
+	 */
+	public VideosClass(String title, String director) {
+		this.title = title;
+		this.director = director;
+	}
+	
+	/**
+	 * 
 	 * @param title
 	 * @param director
 	 * @param cli_id
